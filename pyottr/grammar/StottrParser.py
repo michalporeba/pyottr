@@ -1,4 +1,4 @@
-# Generated from stOTTR.g4 by ANTLR 4.12.0
+# Generated from Stottr.g4 by ANTLR 4.12.0
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
@@ -117,9 +117,9 @@ def serializedATN():
         242,245,253,274,282,286,292,298
     ]
 
-class stOTTRParser ( Parser ):
+class StottrParser ( Parser ):
 
-    grammarFileName = "stOTTR.g4"
+    grammarFileName = "Stottr.g4"
 
     atn = ATNDeserializer().deserialize(serializedATN())
 
@@ -271,24 +271,24 @@ class stOTTRParser ( Parser ):
             self.parser = parser
 
         def EOF(self):
-            return self.getToken(stOTTRParser.EOF, 0)
+            return self.getToken(StottrParser.EOF, 0)
 
         def directive(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(stOTTRParser.DirectiveContext)
+                return self.getTypedRuleContexts(StottrParser.DirectiveContext)
             else:
-                return self.getTypedRuleContext(stOTTRParser.DirectiveContext,i)
+                return self.getTypedRuleContext(StottrParser.DirectiveContext,i)
 
 
         def statement(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(stOTTRParser.StatementContext)
+                return self.getTypedRuleContexts(StottrParser.StatementContext)
             else:
-                return self.getTypedRuleContext(stOTTRParser.StatementContext,i)
+                return self.getTypedRuleContext(StottrParser.StatementContext,i)
 
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_stOTTRDoc
+            return StottrParser.RULE_stOTTRDoc
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterStOTTRDoc" ):
@@ -303,7 +303,7 @@ class stOTTRParser ( Parser ):
 
     def stOTTRDoc(self):
 
-        localctx = stOTTRParser.StOTTRDocContext(self, self._ctx, self.state)
+        localctx = StottrParser.StOTTRDocContext(self, self._ctx, self.state)
         self.enterRule(localctx, 0, self.RULE_stOTTRDoc)
         self._la = 0 # Token type
         try:
@@ -331,7 +331,7 @@ class stOTTRParser ( Parser ):
                 _la = self._input.LA(1)
 
             self.state = 83
-            self.match(stOTTRParser.EOF)
+            self.match(StottrParser.EOF)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -349,23 +349,23 @@ class stOTTRParser ( Parser ):
             self.parser = parser
 
         def signature(self):
-            return self.getTypedRuleContext(stOTTRParser.SignatureContext,0)
+            return self.getTypedRuleContext(StottrParser.SignatureContext,0)
 
 
         def template(self):
-            return self.getTypedRuleContext(stOTTRParser.TemplateContext,0)
+            return self.getTypedRuleContext(StottrParser.TemplateContext,0)
 
 
         def baseTemplate(self):
-            return self.getTypedRuleContext(stOTTRParser.BaseTemplateContext,0)
+            return self.getTypedRuleContext(StottrParser.BaseTemplateContext,0)
 
 
         def instance(self):
-            return self.getTypedRuleContext(stOTTRParser.InstanceContext,0)
+            return self.getTypedRuleContext(StottrParser.InstanceContext,0)
 
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_statement
+            return StottrParser.RULE_statement
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterStatement" ):
@@ -380,7 +380,7 @@ class stOTTRParser ( Parser ):
 
     def statement(self):
 
-        localctx = stOTTRParser.StatementContext(self, self._ctx, self.state)
+        localctx = StottrParser.StatementContext(self, self._ctx, self.state)
         self.enterRule(localctx, 2, self.RULE_statement)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -409,7 +409,7 @@ class stOTTRParser ( Parser ):
 
 
             self.state = 91
-            self.match(stOTTRParser.T__0)
+            self.match(StottrParser.T__0)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -427,19 +427,19 @@ class stOTTRParser ( Parser ):
             self.parser = parser
 
         def templateName(self):
-            return self.getTypedRuleContext(stOTTRParser.TemplateNameContext,0)
+            return self.getTypedRuleContext(StottrParser.TemplateNameContext,0)
 
 
         def parameterList(self):
-            return self.getTypedRuleContext(stOTTRParser.ParameterListContext,0)
+            return self.getTypedRuleContext(StottrParser.ParameterListContext,0)
 
 
         def annotationList(self):
-            return self.getTypedRuleContext(stOTTRParser.AnnotationListContext,0)
+            return self.getTypedRuleContext(StottrParser.AnnotationListContext,0)
 
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_signature
+            return StottrParser.RULE_signature
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterSignature" ):
@@ -454,7 +454,7 @@ class stOTTRParser ( Parser ):
 
     def signature(self):
 
-        localctx = stOTTRParser.SignatureContext(self, self._ctx, self.state)
+        localctx = StottrParser.SignatureContext(self, self._ctx, self.state)
         self.enterRule(localctx, 4, self.RULE_signature)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -487,11 +487,11 @@ class stOTTRParser ( Parser ):
             self.parser = parser
 
         def iri(self):
-            return self.getTypedRuleContext(stOTTRParser.IriContext,0)
+            return self.getTypedRuleContext(StottrParser.IriContext,0)
 
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_templateName
+            return StottrParser.RULE_templateName
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterTemplateName" ):
@@ -506,7 +506,7 @@ class stOTTRParser ( Parser ):
 
     def templateName(self):
 
-        localctx = stOTTRParser.TemplateNameContext(self, self._ctx, self.state)
+        localctx = StottrParser.TemplateNameContext(self, self._ctx, self.state)
         self.enterRule(localctx, 6, self.RULE_templateName)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -530,13 +530,13 @@ class stOTTRParser ( Parser ):
 
         def parameter(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(stOTTRParser.ParameterContext)
+                return self.getTypedRuleContexts(StottrParser.ParameterContext)
             else:
-                return self.getTypedRuleContext(stOTTRParser.ParameterContext,i)
+                return self.getTypedRuleContext(StottrParser.ParameterContext,i)
 
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_parameterList
+            return StottrParser.RULE_parameterList
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterParameterList" ):
@@ -551,13 +551,13 @@ class stOTTRParser ( Parser ):
 
     def parameterList(self):
 
-        localctx = stOTTRParser.ParameterListContext(self, self._ctx, self.state)
+        localctx = StottrParser.ParameterListContext(self, self._ctx, self.state)
         self.enterRule(localctx, 8, self.RULE_parameterList)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 100
-            self.match(stOTTRParser.T__1)
+            self.match(StottrParser.T__1)
             self.state = 109
             self._errHandler.sync(self)
             _la = self._input.LA(1)
@@ -569,7 +569,7 @@ class stOTTRParser ( Parser ):
                 _la = self._input.LA(1)
                 while _la==3:
                     self.state = 102
-                    self.match(stOTTRParser.T__2)
+                    self.match(StottrParser.T__2)
                     self.state = 103
                     self.parameter()
                     self.state = 108
@@ -579,7 +579,7 @@ class stOTTRParser ( Parser ):
 
 
             self.state = 111
-            self.match(stOTTRParser.T__3)
+            self.match(StottrParser.T__3)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -597,24 +597,24 @@ class stOTTRParser ( Parser ):
             self.parser = parser
 
         def Variable(self):
-            return self.getToken(stOTTRParser.Variable, 0)
+            return self.getToken(StottrParser.Variable, 0)
 
         def ParameterMode(self, i:int=None):
             if i is None:
-                return self.getTokens(stOTTRParser.ParameterMode)
+                return self.getTokens(StottrParser.ParameterMode)
             else:
-                return self.getToken(stOTTRParser.ParameterMode, i)
+                return self.getToken(StottrParser.ParameterMode, i)
 
         def type_(self):
-            return self.getTypedRuleContext(stOTTRParser.TypeContext,0)
+            return self.getTypedRuleContext(StottrParser.TypeContext,0)
 
 
         def defaultValue(self):
-            return self.getTypedRuleContext(stOTTRParser.DefaultValueContext,0)
+            return self.getTypedRuleContext(StottrParser.DefaultValueContext,0)
 
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_parameter
+            return StottrParser.RULE_parameter
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterParameter" ):
@@ -629,7 +629,7 @@ class stOTTRParser ( Parser ):
 
     def parameter(self):
 
-        localctx = stOTTRParser.ParameterContext(self, self._ctx, self.state)
+        localctx = StottrParser.ParameterContext(self, self._ctx, self.state)
         self.enterRule(localctx, 10, self.RULE_parameter)
         self._la = 0 # Token type
         try:
@@ -639,7 +639,7 @@ class stOTTRParser ( Parser ):
             _la = self._input.LA(1)
             while _la==25:
                 self.state = 113
-                self.match(stOTTRParser.ParameterMode)
+                self.match(StottrParser.ParameterMode)
                 self.state = 118
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
@@ -653,7 +653,7 @@ class stOTTRParser ( Parser ):
 
 
             self.state = 122
-            self.match(stOTTRParser.Variable)
+            self.match(StottrParser.Variable)
             self.state = 124
             self._errHandler.sync(self)
             _la = self._input.LA(1)
@@ -679,11 +679,11 @@ class stOTTRParser ( Parser ):
             self.parser = parser
 
         def constantTerm(self):
-            return self.getTypedRuleContext(stOTTRParser.ConstantTermContext,0)
+            return self.getTypedRuleContext(StottrParser.ConstantTermContext,0)
 
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_defaultValue
+            return StottrParser.RULE_defaultValue
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterDefaultValue" ):
@@ -698,12 +698,12 @@ class stOTTRParser ( Parser ):
 
     def defaultValue(self):
 
-        localctx = stOTTRParser.DefaultValueContext(self, self._ctx, self.state)
+        localctx = StottrParser.DefaultValueContext(self, self._ctx, self.state)
         self.enterRule(localctx, 12, self.RULE_defaultValue)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 126
-            self.match(stOTTRParser.T__4)
+            self.match(StottrParser.T__4)
             self.state = 127
             self.constantTerm()
         except RecognitionException as re:
@@ -724,13 +724,13 @@ class stOTTRParser ( Parser ):
 
         def annotation(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(stOTTRParser.AnnotationContext)
+                return self.getTypedRuleContexts(StottrParser.AnnotationContext)
             else:
-                return self.getTypedRuleContext(stOTTRParser.AnnotationContext,i)
+                return self.getTypedRuleContext(StottrParser.AnnotationContext,i)
 
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_annotationList
+            return StottrParser.RULE_annotationList
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterAnnotationList" ):
@@ -745,7 +745,7 @@ class stOTTRParser ( Parser ):
 
     def annotationList(self):
 
-        localctx = stOTTRParser.AnnotationListContext(self, self._ctx, self.state)
+        localctx = StottrParser.AnnotationListContext(self, self._ctx, self.state)
         self.enterRule(localctx, 14, self.RULE_annotationList)
         self._la = 0 # Token type
         try:
@@ -761,7 +761,7 @@ class stOTTRParser ( Parser ):
                 _la = self._input.LA(1)
                 if _la==3:
                     self.state = 130
-                    self.match(stOTTRParser.T__2)
+                    self.match(StottrParser.T__2)
 
 
                 self.state = 137
@@ -785,11 +785,11 @@ class stOTTRParser ( Parser ):
             self.parser = parser
 
         def instance(self):
-            return self.getTypedRuleContext(stOTTRParser.InstanceContext,0)
+            return self.getTypedRuleContext(StottrParser.InstanceContext,0)
 
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_annotation
+            return StottrParser.RULE_annotation
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterAnnotation" ):
@@ -804,12 +804,12 @@ class stOTTRParser ( Parser ):
 
     def annotation(self):
 
-        localctx = stOTTRParser.AnnotationContext(self, self._ctx, self.state)
+        localctx = StottrParser.AnnotationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 16, self.RULE_annotation)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 138
-            self.match(stOTTRParser.T__5)
+            self.match(StottrParser.T__5)
             self.state = 139
             self.instance()
         except RecognitionException as re:
@@ -829,11 +829,11 @@ class stOTTRParser ( Parser ):
             self.parser = parser
 
         def signature(self):
-            return self.getTypedRuleContext(stOTTRParser.SignatureContext,0)
+            return self.getTypedRuleContext(StottrParser.SignatureContext,0)
 
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_baseTemplate
+            return StottrParser.RULE_baseTemplate
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterBaseTemplate" ):
@@ -848,16 +848,16 @@ class stOTTRParser ( Parser ):
 
     def baseTemplate(self):
 
-        localctx = stOTTRParser.BaseTemplateContext(self, self._ctx, self.state)
+        localctx = StottrParser.BaseTemplateContext(self, self._ctx, self.state)
         self.enterRule(localctx, 18, self.RULE_baseTemplate)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 141
             self.signature()
             self.state = 142
-            self.match(stOTTRParser.T__6)
+            self.match(StottrParser.T__6)
             self.state = 143
-            self.match(stOTTRParser.T__7)
+            self.match(StottrParser.T__7)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -875,15 +875,15 @@ class stOTTRParser ( Parser ):
             self.parser = parser
 
         def signature(self):
-            return self.getTypedRuleContext(stOTTRParser.SignatureContext,0)
+            return self.getTypedRuleContext(StottrParser.SignatureContext,0)
 
 
         def patternList(self):
-            return self.getTypedRuleContext(stOTTRParser.PatternListContext,0)
+            return self.getTypedRuleContext(StottrParser.PatternListContext,0)
 
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_template
+            return StottrParser.RULE_template
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterTemplate" ):
@@ -898,14 +898,14 @@ class stOTTRParser ( Parser ):
 
     def template(self):
 
-        localctx = stOTTRParser.TemplateContext(self, self._ctx, self.state)
+        localctx = StottrParser.TemplateContext(self, self._ctx, self.state)
         self.enterRule(localctx, 20, self.RULE_template)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 145
             self.signature()
             self.state = 146
-            self.match(stOTTRParser.T__6)
+            self.match(StottrParser.T__6)
             self.state = 147
             self.patternList()
         except RecognitionException as re:
@@ -926,13 +926,13 @@ class stOTTRParser ( Parser ):
 
         def instance(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(stOTTRParser.InstanceContext)
+                return self.getTypedRuleContexts(StottrParser.InstanceContext)
             else:
-                return self.getTypedRuleContext(stOTTRParser.InstanceContext,i)
+                return self.getTypedRuleContext(StottrParser.InstanceContext,i)
 
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_patternList
+            return StottrParser.RULE_patternList
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterPatternList" ):
@@ -947,13 +947,13 @@ class stOTTRParser ( Parser ):
 
     def patternList(self):
 
-        localctx = stOTTRParser.PatternListContext(self, self._ctx, self.state)
+        localctx = StottrParser.PatternListContext(self, self._ctx, self.state)
         self.enterRule(localctx, 22, self.RULE_patternList)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 149
-            self.match(stOTTRParser.T__8)
+            self.match(StottrParser.T__8)
             self.state = 156
             self._errHandler.sync(self)
             _la = self._input.LA(1)
@@ -965,7 +965,7 @@ class stOTTRParser ( Parser ):
                 _la = self._input.LA(1)
                 if _la==3:
                     self.state = 151
-                    self.match(stOTTRParser.T__2)
+                    self.match(StottrParser.T__2)
 
 
                 self.state = 158
@@ -973,7 +973,7 @@ class stOTTRParser ( Parser ):
                 _la = self._input.LA(1)
 
             self.state = 159
-            self.match(stOTTRParser.T__9)
+            self.match(StottrParser.T__9)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -991,18 +991,18 @@ class stOTTRParser ( Parser ):
             self.parser = parser
 
         def templateName(self):
-            return self.getTypedRuleContext(stOTTRParser.TemplateNameContext,0)
+            return self.getTypedRuleContext(StottrParser.TemplateNameContext,0)
 
 
         def argumentList(self):
-            return self.getTypedRuleContext(stOTTRParser.ArgumentListContext,0)
+            return self.getTypedRuleContext(StottrParser.ArgumentListContext,0)
 
 
         def ListExpander(self):
-            return self.getToken(stOTTRParser.ListExpander, 0)
+            return self.getToken(StottrParser.ListExpander, 0)
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_instance
+            return StottrParser.RULE_instance
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterInstance" ):
@@ -1017,7 +1017,7 @@ class stOTTRParser ( Parser ):
 
     def instance(self):
 
-        localctx = stOTTRParser.InstanceContext(self, self._ctx, self.state)
+        localctx = StottrParser.InstanceContext(self, self._ctx, self.state)
         self.enterRule(localctx, 24, self.RULE_instance)
         self._la = 0 # Token type
         try:
@@ -1027,9 +1027,9 @@ class stOTTRParser ( Parser ):
             _la = self._input.LA(1)
             if _la==26:
                 self.state = 161
-                self.match(stOTTRParser.ListExpander)
+                self.match(StottrParser.ListExpander)
                 self.state = 162
-                self.match(stOTTRParser.T__10)
+                self.match(StottrParser.T__10)
 
 
             self.state = 165
@@ -1054,13 +1054,13 @@ class stOTTRParser ( Parser ):
 
         def argument(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(stOTTRParser.ArgumentContext)
+                return self.getTypedRuleContexts(StottrParser.ArgumentContext)
             else:
-                return self.getTypedRuleContext(stOTTRParser.ArgumentContext,i)
+                return self.getTypedRuleContext(StottrParser.ArgumentContext,i)
 
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_argumentList
+            return StottrParser.RULE_argumentList
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterArgumentList" ):
@@ -1075,13 +1075,13 @@ class stOTTRParser ( Parser ):
 
     def argumentList(self):
 
-        localctx = stOTTRParser.ArgumentListContext(self, self._ctx, self.state)
+        localctx = StottrParser.ArgumentListContext(self, self._ctx, self.state)
         self.enterRule(localctx, 26, self.RULE_argumentList)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 168
-            self.match(stOTTRParser.T__11)
+            self.match(StottrParser.T__11)
             self.state = 177
             self._errHandler.sync(self)
             _la = self._input.LA(1)
@@ -1093,7 +1093,7 @@ class stOTTRParser ( Parser ):
                 _la = self._input.LA(1)
                 while _la==3:
                     self.state = 170
-                    self.match(stOTTRParser.T__2)
+                    self.match(StottrParser.T__2)
                     self.state = 171
                     self.argument()
                     self.state = 176
@@ -1103,7 +1103,7 @@ class stOTTRParser ( Parser ):
 
 
             self.state = 179
-            self.match(stOTTRParser.T__12)
+            self.match(StottrParser.T__12)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1121,14 +1121,14 @@ class stOTTRParser ( Parser ):
             self.parser = parser
 
         def term(self):
-            return self.getTypedRuleContext(stOTTRParser.TermContext,0)
+            return self.getTypedRuleContext(StottrParser.TermContext,0)
 
 
         def ListExpand(self):
-            return self.getToken(stOTTRParser.ListExpand, 0)
+            return self.getToken(StottrParser.ListExpand, 0)
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_argument
+            return StottrParser.RULE_argument
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterArgument" ):
@@ -1143,7 +1143,7 @@ class stOTTRParser ( Parser ):
 
     def argument(self):
 
-        localctx = stOTTRParser.ArgumentContext(self, self._ctx, self.state)
+        localctx = StottrParser.ArgumentContext(self, self._ctx, self.state)
         self.enterRule(localctx, 28, self.RULE_argument)
         self._la = 0 # Token type
         try:
@@ -1153,7 +1153,7 @@ class stOTTRParser ( Parser ):
             _la = self._input.LA(1)
             if _la==27:
                 self.state = 181
-                self.match(stOTTRParser.ListExpand)
+                self.match(StottrParser.ListExpand)
 
 
             self.state = 184
@@ -1175,23 +1175,23 @@ class stOTTRParser ( Parser ):
             self.parser = parser
 
         def basicType(self):
-            return self.getTypedRuleContext(stOTTRParser.BasicTypeContext,0)
+            return self.getTypedRuleContext(StottrParser.BasicTypeContext,0)
 
 
         def lubType(self):
-            return self.getTypedRuleContext(stOTTRParser.LubTypeContext,0)
+            return self.getTypedRuleContext(StottrParser.LubTypeContext,0)
 
 
         def listType(self):
-            return self.getTypedRuleContext(stOTTRParser.ListTypeContext,0)
+            return self.getTypedRuleContext(StottrParser.ListTypeContext,0)
 
 
         def neListType(self):
-            return self.getTypedRuleContext(stOTTRParser.NeListTypeContext,0)
+            return self.getTypedRuleContext(StottrParser.NeListTypeContext,0)
 
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_type
+            return StottrParser.RULE_type
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterType" ):
@@ -1206,7 +1206,7 @@ class stOTTRParser ( Parser ):
 
     def type_(self):
 
-        localctx = stOTTRParser.TypeContext(self, self._ctx, self.state)
+        localctx = StottrParser.TypeContext(self, self._ctx, self.state)
         self.enterRule(localctx, 30, self.RULE_type)
         try:
             self.state = 190
@@ -1252,11 +1252,11 @@ class stOTTRParser ( Parser ):
             self.parser = parser
 
         def type_(self):
-            return self.getTypedRuleContext(stOTTRParser.TypeContext,0)
+            return self.getTypedRuleContext(StottrParser.TypeContext,0)
 
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_listType
+            return StottrParser.RULE_listType
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterListType" ):
@@ -1271,16 +1271,16 @@ class stOTTRParser ( Parser ):
 
     def listType(self):
 
-        localctx = stOTTRParser.ListTypeContext(self, self._ctx, self.state)
+        localctx = StottrParser.ListTypeContext(self, self._ctx, self.state)
         self.enterRule(localctx, 32, self.RULE_listType)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 192
-            self.match(stOTTRParser.T__13)
+            self.match(StottrParser.T__13)
             self.state = 193
             self.type_()
             self.state = 194
-            self.match(stOTTRParser.T__14)
+            self.match(StottrParser.T__14)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1298,11 +1298,11 @@ class stOTTRParser ( Parser ):
             self.parser = parser
 
         def type_(self):
-            return self.getTypedRuleContext(stOTTRParser.TypeContext,0)
+            return self.getTypedRuleContext(StottrParser.TypeContext,0)
 
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_neListType
+            return StottrParser.RULE_neListType
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterNeListType" ):
@@ -1317,16 +1317,16 @@ class stOTTRParser ( Parser ):
 
     def neListType(self):
 
-        localctx = stOTTRParser.NeListTypeContext(self, self._ctx, self.state)
+        localctx = StottrParser.NeListTypeContext(self, self._ctx, self.state)
         self.enterRule(localctx, 34, self.RULE_neListType)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 196
-            self.match(stOTTRParser.T__15)
+            self.match(StottrParser.T__15)
             self.state = 197
             self.type_()
             self.state = 198
-            self.match(stOTTRParser.T__14)
+            self.match(StottrParser.T__14)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1344,11 +1344,11 @@ class stOTTRParser ( Parser ):
             self.parser = parser
 
         def basicType(self):
-            return self.getTypedRuleContext(stOTTRParser.BasicTypeContext,0)
+            return self.getTypedRuleContext(StottrParser.BasicTypeContext,0)
 
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_lubType
+            return StottrParser.RULE_lubType
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterLubType" ):
@@ -1363,16 +1363,16 @@ class stOTTRParser ( Parser ):
 
     def lubType(self):
 
-        localctx = stOTTRParser.LubTypeContext(self, self._ctx, self.state)
+        localctx = StottrParser.LubTypeContext(self, self._ctx, self.state)
         self.enterRule(localctx, 36, self.RULE_lubType)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 200
-            self.match(stOTTRParser.T__16)
+            self.match(StottrParser.T__16)
             self.state = 201
             self.basicType()
             self.state = 202
-            self.match(stOTTRParser.T__14)
+            self.match(StottrParser.T__14)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1390,11 +1390,11 @@ class stOTTRParser ( Parser ):
             self.parser = parser
 
         def prefixedName(self):
-            return self.getTypedRuleContext(stOTTRParser.PrefixedNameContext,0)
+            return self.getTypedRuleContext(StottrParser.PrefixedNameContext,0)
 
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_basicType
+            return StottrParser.RULE_basicType
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterBasicType" ):
@@ -1409,7 +1409,7 @@ class stOTTRParser ( Parser ):
 
     def basicType(self):
 
-        localctx = stOTTRParser.BasicTypeContext(self, self._ctx, self.state)
+        localctx = StottrParser.BasicTypeContext(self, self._ctx, self.state)
         self.enterRule(localctx, 38, self.RULE_basicType)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -1432,18 +1432,18 @@ class stOTTRParser ( Parser ):
             self.parser = parser
 
         def Variable(self):
-            return self.getToken(stOTTRParser.Variable, 0)
+            return self.getToken(StottrParser.Variable, 0)
 
         def constant(self):
-            return self.getTypedRuleContext(stOTTRParser.ConstantContext,0)
+            return self.getTypedRuleContext(StottrParser.ConstantContext,0)
 
 
         def termList(self):
-            return self.getTypedRuleContext(stOTTRParser.TermListContext,0)
+            return self.getTypedRuleContext(StottrParser.TermListContext,0)
 
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_term
+            return StottrParser.RULE_term
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterTerm" ):
@@ -1458,7 +1458,7 @@ class stOTTRParser ( Parser ):
 
     def term(self):
 
-        localctx = stOTTRParser.TermContext(self, self._ctx, self.state)
+        localctx = StottrParser.TermContext(self, self._ctx, self.state)
         self.enterRule(localctx, 40, self.RULE_term)
         try:
             self.state = 209
@@ -1467,7 +1467,7 @@ class stOTTRParser ( Parser ):
             if token in [28]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 206
-                self.match(stOTTRParser.Variable)
+                self.match(StottrParser.Variable)
                 pass
             elif token in [2, 18, 29, 30, 31, 32, 33, 34, 36, 37, 38]:
                 self.enterOuterAlt(localctx, 2)
@@ -1499,15 +1499,15 @@ class stOTTRParser ( Parser ):
             self.parser = parser
 
         def constant(self):
-            return self.getTypedRuleContext(stOTTRParser.ConstantContext,0)
+            return self.getTypedRuleContext(StottrParser.ConstantContext,0)
 
 
         def constantList(self):
-            return self.getTypedRuleContext(stOTTRParser.ConstantListContext,0)
+            return self.getTypedRuleContext(StottrParser.ConstantListContext,0)
 
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_constantTerm
+            return StottrParser.RULE_constantTerm
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterConstantTerm" ):
@@ -1522,7 +1522,7 @@ class stOTTRParser ( Parser ):
 
     def constantTerm(self):
 
-        localctx = stOTTRParser.ConstantTermContext(self, self._ctx, self.state)
+        localctx = StottrParser.ConstantTermContext(self, self._ctx, self.state)
         self.enterRule(localctx, 42, self.RULE_constantTerm)
         try:
             self.state = 213
@@ -1558,23 +1558,23 @@ class stOTTRParser ( Parser ):
             self.parser = parser
 
         def iri(self):
-            return self.getTypedRuleContext(stOTTRParser.IriContext,0)
+            return self.getTypedRuleContext(StottrParser.IriContext,0)
 
 
         def blankNode(self):
-            return self.getTypedRuleContext(stOTTRParser.BlankNodeContext,0)
+            return self.getTypedRuleContext(StottrParser.BlankNodeContext,0)
 
 
         def literal(self):
-            return self.getTypedRuleContext(stOTTRParser.LiteralContext,0)
+            return self.getTypedRuleContext(StottrParser.LiteralContext,0)
 
 
         def none(self):
-            return self.getTypedRuleContext(stOTTRParser.NoneContext,0)
+            return self.getTypedRuleContext(StottrParser.NoneContext,0)
 
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_constant
+            return StottrParser.RULE_constant
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterConstant" ):
@@ -1589,7 +1589,7 @@ class stOTTRParser ( Parser ):
 
     def constant(self):
 
-        localctx = stOTTRParser.ConstantContext(self, self._ctx, self.state)
+        localctx = StottrParser.ConstantContext(self, self._ctx, self.state)
         self.enterRule(localctx, 44, self.RULE_constant)
         try:
             self.state = 219
@@ -1636,7 +1636,7 @@ class stOTTRParser ( Parser ):
 
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_none
+            return StottrParser.RULE_none
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterNone" ):
@@ -1651,12 +1651,12 @@ class stOTTRParser ( Parser ):
 
     def none(self):
 
-        localctx = stOTTRParser.NoneContext(self, self._ctx, self.state)
+        localctx = StottrParser.NoneContext(self, self._ctx, self.state)
         self.enterRule(localctx, 46, self.RULE_none)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 221
-            self.match(stOTTRParser.T__17)
+            self.match(StottrParser.T__17)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1675,13 +1675,13 @@ class stOTTRParser ( Parser ):
 
         def term(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(stOTTRParser.TermContext)
+                return self.getTypedRuleContexts(StottrParser.TermContext)
             else:
-                return self.getTypedRuleContext(stOTTRParser.TermContext,i)
+                return self.getTypedRuleContext(StottrParser.TermContext,i)
 
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_termList
+            return StottrParser.RULE_termList
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterTermList" ):
@@ -1696,13 +1696,13 @@ class stOTTRParser ( Parser ):
 
     def termList(self):
 
-        localctx = stOTTRParser.TermListContext(self, self._ctx, self.state)
+        localctx = StottrParser.TermListContext(self, self._ctx, self.state)
         self.enterRule(localctx, 48, self.RULE_termList)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 223
-            self.match(stOTTRParser.T__11)
+            self.match(StottrParser.T__11)
             self.state = 232
             self._errHandler.sync(self)
             _la = self._input.LA(1)
@@ -1714,7 +1714,7 @@ class stOTTRParser ( Parser ):
                 _la = self._input.LA(1)
                 while _la==3:
                     self.state = 225
-                    self.match(stOTTRParser.T__2)
+                    self.match(StottrParser.T__2)
                     self.state = 226
                     self.term()
                     self.state = 231
@@ -1724,7 +1724,7 @@ class stOTTRParser ( Parser ):
 
 
             self.state = 234
-            self.match(stOTTRParser.T__12)
+            self.match(StottrParser.T__12)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1743,13 +1743,13 @@ class stOTTRParser ( Parser ):
 
         def constantTerm(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(stOTTRParser.ConstantTermContext)
+                return self.getTypedRuleContexts(StottrParser.ConstantTermContext)
             else:
-                return self.getTypedRuleContext(stOTTRParser.ConstantTermContext,i)
+                return self.getTypedRuleContext(StottrParser.ConstantTermContext,i)
 
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_constantList
+            return StottrParser.RULE_constantList
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterConstantList" ):
@@ -1764,13 +1764,13 @@ class stOTTRParser ( Parser ):
 
     def constantList(self):
 
-        localctx = stOTTRParser.ConstantListContext(self, self._ctx, self.state)
+        localctx = StottrParser.ConstantListContext(self, self._ctx, self.state)
         self.enterRule(localctx, 50, self.RULE_constantList)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 236
-            self.match(stOTTRParser.T__11)
+            self.match(StottrParser.T__11)
             self.state = 245
             self._errHandler.sync(self)
             _la = self._input.LA(1)
@@ -1782,7 +1782,7 @@ class stOTTRParser ( Parser ):
                 _la = self._input.LA(1)
                 while _la==3:
                     self.state = 238
-                    self.match(stOTTRParser.T__2)
+                    self.match(StottrParser.T__2)
                     self.state = 239
                     self.constantTerm()
                     self.state = 244
@@ -1792,7 +1792,7 @@ class stOTTRParser ( Parser ):
 
 
             self.state = 247
-            self.match(stOTTRParser.T__12)
+            self.match(StottrParser.T__12)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1810,23 +1810,23 @@ class stOTTRParser ( Parser ):
             self.parser = parser
 
         def prefixID(self):
-            return self.getTypedRuleContext(stOTTRParser.PrefixIDContext,0)
+            return self.getTypedRuleContext(StottrParser.PrefixIDContext,0)
 
 
         def base(self):
-            return self.getTypedRuleContext(stOTTRParser.BaseContext,0)
+            return self.getTypedRuleContext(StottrParser.BaseContext,0)
 
 
         def sparqlPrefix(self):
-            return self.getTypedRuleContext(stOTTRParser.SparqlPrefixContext,0)
+            return self.getTypedRuleContext(StottrParser.SparqlPrefixContext,0)
 
 
         def sparqlBase(self):
-            return self.getTypedRuleContext(stOTTRParser.SparqlBaseContext,0)
+            return self.getTypedRuleContext(StottrParser.SparqlBaseContext,0)
 
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_directive
+            return StottrParser.RULE_directive
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterDirective" ):
@@ -1841,7 +1841,7 @@ class stOTTRParser ( Parser ):
 
     def directive(self):
 
-        localctx = stOTTRParser.DirectiveContext(self, self._ctx, self.state)
+        localctx = StottrParser.DirectiveContext(self, self._ctx, self.state)
         self.enterRule(localctx, 52, self.RULE_directive)
         try:
             self.state = 253
@@ -1887,13 +1887,13 @@ class stOTTRParser ( Parser ):
             self.parser = parser
 
         def PNAME_NS(self):
-            return self.getToken(stOTTRParser.PNAME_NS, 0)
+            return self.getToken(StottrParser.PNAME_NS, 0)
 
         def IRIREF(self):
-            return self.getToken(stOTTRParser.IRIREF, 0)
+            return self.getToken(StottrParser.IRIREF, 0)
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_prefixID
+            return StottrParser.RULE_prefixID
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterPrefixID" ):
@@ -1908,18 +1908,18 @@ class stOTTRParser ( Parser ):
 
     def prefixID(self):
 
-        localctx = stOTTRParser.PrefixIDContext(self, self._ctx, self.state)
+        localctx = StottrParser.PrefixIDContext(self, self._ctx, self.state)
         self.enterRule(localctx, 54, self.RULE_prefixID)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 255
-            self.match(stOTTRParser.T__18)
+            self.match(StottrParser.T__18)
             self.state = 256
-            self.match(stOTTRParser.PNAME_NS)
+            self.match(StottrParser.PNAME_NS)
             self.state = 257
-            self.match(stOTTRParser.IRIREF)
+            self.match(StottrParser.IRIREF)
             self.state = 258
-            self.match(stOTTRParser.T__0)
+            self.match(StottrParser.T__0)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1937,10 +1937,10 @@ class stOTTRParser ( Parser ):
             self.parser = parser
 
         def IRIREF(self):
-            return self.getToken(stOTTRParser.IRIREF, 0)
+            return self.getToken(StottrParser.IRIREF, 0)
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_base
+            return StottrParser.RULE_base
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterBase" ):
@@ -1955,16 +1955,16 @@ class stOTTRParser ( Parser ):
 
     def base(self):
 
-        localctx = stOTTRParser.BaseContext(self, self._ctx, self.state)
+        localctx = StottrParser.BaseContext(self, self._ctx, self.state)
         self.enterRule(localctx, 56, self.RULE_base)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 260
-            self.match(stOTTRParser.T__19)
+            self.match(StottrParser.T__19)
             self.state = 261
-            self.match(stOTTRParser.IRIREF)
+            self.match(StottrParser.IRIREF)
             self.state = 262
-            self.match(stOTTRParser.T__0)
+            self.match(StottrParser.T__0)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1982,10 +1982,10 @@ class stOTTRParser ( Parser ):
             self.parser = parser
 
         def IRIREF(self):
-            return self.getToken(stOTTRParser.IRIREF, 0)
+            return self.getToken(StottrParser.IRIREF, 0)
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_sparqlBase
+            return StottrParser.RULE_sparqlBase
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterSparqlBase" ):
@@ -2000,14 +2000,14 @@ class stOTTRParser ( Parser ):
 
     def sparqlBase(self):
 
-        localctx = stOTTRParser.SparqlBaseContext(self, self._ctx, self.state)
+        localctx = StottrParser.SparqlBaseContext(self, self._ctx, self.state)
         self.enterRule(localctx, 58, self.RULE_sparqlBase)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 264
-            self.match(stOTTRParser.T__7)
+            self.match(StottrParser.T__7)
             self.state = 265
-            self.match(stOTTRParser.IRIREF)
+            self.match(StottrParser.IRIREF)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -2025,13 +2025,13 @@ class stOTTRParser ( Parser ):
             self.parser = parser
 
         def PNAME_NS(self):
-            return self.getToken(stOTTRParser.PNAME_NS, 0)
+            return self.getToken(StottrParser.PNAME_NS, 0)
 
         def IRIREF(self):
-            return self.getToken(stOTTRParser.IRIREF, 0)
+            return self.getToken(StottrParser.IRIREF, 0)
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_sparqlPrefix
+            return StottrParser.RULE_sparqlPrefix
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterSparqlPrefix" ):
@@ -2046,16 +2046,16 @@ class stOTTRParser ( Parser ):
 
     def sparqlPrefix(self):
 
-        localctx = stOTTRParser.SparqlPrefixContext(self, self._ctx, self.state)
+        localctx = StottrParser.SparqlPrefixContext(self, self._ctx, self.state)
         self.enterRule(localctx, 60, self.RULE_sparqlPrefix)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 267
-            self.match(stOTTRParser.T__20)
+            self.match(StottrParser.T__20)
             self.state = 268
-            self.match(stOTTRParser.PNAME_NS)
+            self.match(StottrParser.PNAME_NS)
             self.state = 269
-            self.match(stOTTRParser.IRIREF)
+            self.match(StottrParser.IRIREF)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -2073,18 +2073,18 @@ class stOTTRParser ( Parser ):
             self.parser = parser
 
         def rdfLiteral(self):
-            return self.getTypedRuleContext(stOTTRParser.RdfLiteralContext,0)
+            return self.getTypedRuleContext(StottrParser.RdfLiteralContext,0)
 
 
         def numericLiteral(self):
-            return self.getTypedRuleContext(stOTTRParser.NumericLiteralContext,0)
+            return self.getTypedRuleContext(StottrParser.NumericLiteralContext,0)
 
 
         def BooleanLiteral(self):
-            return self.getToken(stOTTRParser.BooleanLiteral, 0)
+            return self.getToken(StottrParser.BooleanLiteral, 0)
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_literal
+            return StottrParser.RULE_literal
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterLiteral" ):
@@ -2099,7 +2099,7 @@ class stOTTRParser ( Parser ):
 
     def literal(self):
 
-        localctx = stOTTRParser.LiteralContext(self, self._ctx, self.state)
+        localctx = StottrParser.LiteralContext(self, self._ctx, self.state)
         self.enterRule(localctx, 62, self.RULE_literal)
         try:
             self.state = 274
@@ -2118,7 +2118,7 @@ class stOTTRParser ( Parser ):
             elif token in [29]:
                 self.enterOuterAlt(localctx, 3)
                 self.state = 273
-                self.match(stOTTRParser.BooleanLiteral)
+                self.match(StottrParser.BooleanLiteral)
                 pass
             else:
                 raise NoViableAltException(self)
@@ -2140,16 +2140,16 @@ class stOTTRParser ( Parser ):
             self.parser = parser
 
         def INTEGER(self):
-            return self.getToken(stOTTRParser.INTEGER, 0)
+            return self.getToken(StottrParser.INTEGER, 0)
 
         def DECIMAL(self):
-            return self.getToken(stOTTRParser.DECIMAL, 0)
+            return self.getToken(StottrParser.DECIMAL, 0)
 
         def DOUBLE(self):
-            return self.getToken(stOTTRParser.DOUBLE, 0)
+            return self.getToken(StottrParser.DOUBLE, 0)
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_numericLiteral
+            return StottrParser.RULE_numericLiteral
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterNumericLiteral" ):
@@ -2164,7 +2164,7 @@ class stOTTRParser ( Parser ):
 
     def numericLiteral(self):
 
-        localctx = stOTTRParser.NumericLiteralContext(self, self._ctx, self.state)
+        localctx = StottrParser.NumericLiteralContext(self, self._ctx, self.state)
         self.enterRule(localctx, 64, self.RULE_numericLiteral)
         self._la = 0 # Token type
         try:
@@ -2193,17 +2193,17 @@ class stOTTRParser ( Parser ):
             self.parser = parser
 
         def String(self):
-            return self.getToken(stOTTRParser.String, 0)
+            return self.getToken(StottrParser.String, 0)
 
         def LANGTAG(self):
-            return self.getToken(stOTTRParser.LANGTAG, 0)
+            return self.getToken(StottrParser.LANGTAG, 0)
 
         def iri(self):
-            return self.getTypedRuleContext(stOTTRParser.IriContext,0)
+            return self.getTypedRuleContext(StottrParser.IriContext,0)
 
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_rdfLiteral
+            return StottrParser.RULE_rdfLiteral
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterRdfLiteral" ):
@@ -2218,22 +2218,22 @@ class stOTTRParser ( Parser ):
 
     def rdfLiteral(self):
 
-        localctx = stOTTRParser.RdfLiteralContext(self, self._ctx, self.state)
+        localctx = StottrParser.RdfLiteralContext(self, self._ctx, self.state)
         self.enterRule(localctx, 66, self.RULE_rdfLiteral)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 278
-            self.match(stOTTRParser.String)
+            self.match(StottrParser.String)
             self.state = 282
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [35]:
                 self.state = 279
-                self.match(stOTTRParser.LANGTAG)
+                self.match(StottrParser.LANGTAG)
                 pass
             elif token in [22]:
                 self.state = 280
-                self.match(stOTTRParser.T__21)
+                self.match(StottrParser.T__21)
                 self.state = 281
                 self.iri()
                 pass
@@ -2258,14 +2258,14 @@ class stOTTRParser ( Parser ):
             self.parser = parser
 
         def IRIREF(self):
-            return self.getToken(stOTTRParser.IRIREF, 0)
+            return self.getToken(StottrParser.IRIREF, 0)
 
         def prefixedName(self):
-            return self.getTypedRuleContext(stOTTRParser.PrefixedNameContext,0)
+            return self.getTypedRuleContext(StottrParser.PrefixedNameContext,0)
 
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_iri
+            return StottrParser.RULE_iri
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterIri" ):
@@ -2280,7 +2280,7 @@ class stOTTRParser ( Parser ):
 
     def iri(self):
 
-        localctx = stOTTRParser.IriContext(self, self._ctx, self.state)
+        localctx = StottrParser.IriContext(self, self._ctx, self.state)
         self.enterRule(localctx, 68, self.RULE_iri)
         try:
             self.state = 286
@@ -2289,7 +2289,7 @@ class stOTTRParser ( Parser ):
             if token in [31]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 284
-                self.match(stOTTRParser.IRIREF)
+                self.match(StottrParser.IRIREF)
                 pass
             elif token in [32, 33]:
                 self.enterOuterAlt(localctx, 2)
@@ -2316,13 +2316,13 @@ class stOTTRParser ( Parser ):
             self.parser = parser
 
         def PNAME_LN(self):
-            return self.getToken(stOTTRParser.PNAME_LN, 0)
+            return self.getToken(StottrParser.PNAME_LN, 0)
 
         def PNAME_NS(self):
-            return self.getToken(stOTTRParser.PNAME_NS, 0)
+            return self.getToken(StottrParser.PNAME_NS, 0)
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_prefixedName
+            return StottrParser.RULE_prefixedName
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterPrefixedName" ):
@@ -2337,7 +2337,7 @@ class stOTTRParser ( Parser ):
 
     def prefixedName(self):
 
-        localctx = stOTTRParser.PrefixedNameContext(self, self._ctx, self.state)
+        localctx = StottrParser.PrefixedNameContext(self, self._ctx, self.state)
         self.enterRule(localctx, 70, self.RULE_prefixedName)
         self._la = 0 # Token type
         try:
@@ -2366,14 +2366,14 @@ class stOTTRParser ( Parser ):
             self.parser = parser
 
         def BLANK_NODE_LABEL(self):
-            return self.getToken(stOTTRParser.BLANK_NODE_LABEL, 0)
+            return self.getToken(StottrParser.BLANK_NODE_LABEL, 0)
 
         def anon(self):
-            return self.getTypedRuleContext(stOTTRParser.AnonContext,0)
+            return self.getTypedRuleContext(StottrParser.AnonContext,0)
 
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_blankNode
+            return StottrParser.RULE_blankNode
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterBlankNode" ):
@@ -2388,7 +2388,7 @@ class stOTTRParser ( Parser ):
 
     def blankNode(self):
 
-        localctx = stOTTRParser.BlankNodeContext(self, self._ctx, self.state)
+        localctx = StottrParser.BlankNodeContext(self, self._ctx, self.state)
         self.enterRule(localctx, 72, self.RULE_blankNode)
         try:
             self.state = 292
@@ -2397,7 +2397,7 @@ class stOTTRParser ( Parser ):
             if token in [34]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 290
-                self.match(stOTTRParser.BLANK_NODE_LABEL)
+                self.match(StottrParser.BLANK_NODE_LABEL)
                 pass
             elif token in [2]:
                 self.enterOuterAlt(localctx, 2)
@@ -2425,12 +2425,12 @@ class stOTTRParser ( Parser ):
 
         def WS(self, i:int=None):
             if i is None:
-                return self.getTokens(stOTTRParser.WS)
+                return self.getTokens(StottrParser.WS)
             else:
-                return self.getToken(stOTTRParser.WS, i)
+                return self.getToken(StottrParser.WS, i)
 
         def getRuleIndex(self):
-            return stOTTRParser.RULE_anon
+            return StottrParser.RULE_anon
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterAnon" ):
@@ -2445,25 +2445,25 @@ class stOTTRParser ( Parser ):
 
     def anon(self):
 
-        localctx = stOTTRParser.AnonContext(self, self._ctx, self.state)
+        localctx = StottrParser.AnonContext(self, self._ctx, self.state)
         self.enterRule(localctx, 74, self.RULE_anon)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 294
-            self.match(stOTTRParser.T__1)
+            self.match(StottrParser.T__1)
             self.state = 298
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==46:
                 self.state = 295
-                self.match(stOTTRParser.WS)
+                self.match(StottrParser.WS)
                 self.state = 300
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
             self.state = 301
-            self.match(stOTTRParser.T__3)
+            self.match(StottrParser.T__3)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
