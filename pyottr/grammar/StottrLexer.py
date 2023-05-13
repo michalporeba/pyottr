@@ -1,4 +1,4 @@
-# Generated from Stottr.g4 by ANTLR 4.12.0
+# Generated from stOTTR.g4 by ANTLR 4.12.0
 from antlr4 import *
 from io import StringIO
 import sys
@@ -227,7 +227,7 @@ def serializedATN():
         492,496,501,503,507,512,517,519,525,527,531,538,1,6,0,0
     ]
 
-class StottrLexer(Lexer):
+class stOTTRLexer(Lexer):
 
     atn = ATNDeserializer().deserialize(serializedATN())
 
@@ -321,7 +321,7 @@ class StottrLexer(Lexer):
                   "PN_CHARS", "PN_PREFIX", "PN_LOCAL", "PLX", "PERCENT", 
                   "HEX", "PN_LOCAL_ESC" ]
 
-    grammarFileName = "Stottr.g4"
+    grammarFileName = "stOTTR.g4"
 
     def __init__(self, input=None, output:TextIO = sys.stdout):
         super().__init__(input, output)

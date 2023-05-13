@@ -1,354 +1,354 @@
-# Generated from Stottr.g4 by ANTLR 4.12.0
+# Generated from stOTTR.g4 by ANTLR 4.12.0
 from antlr4 import *
 if __name__ is not None and "." in __name__:
-    from .StottrParser import StottrParser
+    from .stOTTRParser import stOTTRParser
 else:
-    from StottrParser import StottrParser
+    from stOTTRParser import stOTTRParser
 
-# This class defines a complete listener for a parse tree produced by StottrParser.
-class StottrListener(ParseTreeListener):
+# This class defines a complete listener for a parse tree produced by stOTTRParser.
+class stOTTRListener(ParseTreeListener):
 
-    # Enter a parse tree produced by StottrParser#stOTTRDoc.
-    def enterStOTTRDoc(self, ctx:StottrParser.StOTTRDocContext):
+    # Enter a parse tree produced by stOTTRParser#stOTTRDoc.
+    def enterStOTTRDoc(self, ctx:stOTTRParser.StOTTRDocContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#stOTTRDoc.
-    def exitStOTTRDoc(self, ctx:StottrParser.StOTTRDocContext):
+    # Exit a parse tree produced by stOTTRParser#stOTTRDoc.
+    def exitStOTTRDoc(self, ctx:stOTTRParser.StOTTRDocContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#statement.
-    def enterStatement(self, ctx:StottrParser.StatementContext):
+    # Enter a parse tree produced by stOTTRParser#statement.
+    def enterStatement(self, ctx:stOTTRParser.StatementContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#statement.
-    def exitStatement(self, ctx:StottrParser.StatementContext):
+    # Exit a parse tree produced by stOTTRParser#statement.
+    def exitStatement(self, ctx:stOTTRParser.StatementContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#signature.
-    def enterSignature(self, ctx:StottrParser.SignatureContext):
+    # Enter a parse tree produced by stOTTRParser#signature.
+    def enterSignature(self, ctx:stOTTRParser.SignatureContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#signature.
-    def exitSignature(self, ctx:StottrParser.SignatureContext):
+    # Exit a parse tree produced by stOTTRParser#signature.
+    def exitSignature(self, ctx:stOTTRParser.SignatureContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#templateName.
-    def enterTemplateName(self, ctx:StottrParser.TemplateNameContext):
+    # Enter a parse tree produced by stOTTRParser#templateName.
+    def enterTemplateName(self, ctx:stOTTRParser.TemplateNameContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#templateName.
-    def exitTemplateName(self, ctx:StottrParser.TemplateNameContext):
+    # Exit a parse tree produced by stOTTRParser#templateName.
+    def exitTemplateName(self, ctx:stOTTRParser.TemplateNameContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#parameterList.
-    def enterParameterList(self, ctx:StottrParser.ParameterListContext):
+    # Enter a parse tree produced by stOTTRParser#parameterList.
+    def enterParameterList(self, ctx:stOTTRParser.ParameterListContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#parameterList.
-    def exitParameterList(self, ctx:StottrParser.ParameterListContext):
+    # Exit a parse tree produced by stOTTRParser#parameterList.
+    def exitParameterList(self, ctx:stOTTRParser.ParameterListContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#parameter.
-    def enterParameter(self, ctx:StottrParser.ParameterContext):
+    # Enter a parse tree produced by stOTTRParser#parameter.
+    def enterParameter(self, ctx:stOTTRParser.ParameterContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#parameter.
-    def exitParameter(self, ctx:StottrParser.ParameterContext):
+    # Exit a parse tree produced by stOTTRParser#parameter.
+    def exitParameter(self, ctx:stOTTRParser.ParameterContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#defaultValue.
-    def enterDefaultValue(self, ctx:StottrParser.DefaultValueContext):
+    # Enter a parse tree produced by stOTTRParser#defaultValue.
+    def enterDefaultValue(self, ctx:stOTTRParser.DefaultValueContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#defaultValue.
-    def exitDefaultValue(self, ctx:StottrParser.DefaultValueContext):
+    # Exit a parse tree produced by stOTTRParser#defaultValue.
+    def exitDefaultValue(self, ctx:stOTTRParser.DefaultValueContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#annotationList.
-    def enterAnnotationList(self, ctx:StottrParser.AnnotationListContext):
+    # Enter a parse tree produced by stOTTRParser#annotationList.
+    def enterAnnotationList(self, ctx:stOTTRParser.AnnotationListContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#annotationList.
-    def exitAnnotationList(self, ctx:StottrParser.AnnotationListContext):
+    # Exit a parse tree produced by stOTTRParser#annotationList.
+    def exitAnnotationList(self, ctx:stOTTRParser.AnnotationListContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#annotation.
-    def enterAnnotation(self, ctx:StottrParser.AnnotationContext):
+    # Enter a parse tree produced by stOTTRParser#annotation.
+    def enterAnnotation(self, ctx:stOTTRParser.AnnotationContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#annotation.
-    def exitAnnotation(self, ctx:StottrParser.AnnotationContext):
+    # Exit a parse tree produced by stOTTRParser#annotation.
+    def exitAnnotation(self, ctx:stOTTRParser.AnnotationContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#baseTemplate.
-    def enterBaseTemplate(self, ctx:StottrParser.BaseTemplateContext):
+    # Enter a parse tree produced by stOTTRParser#baseTemplate.
+    def enterBaseTemplate(self, ctx:stOTTRParser.BaseTemplateContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#baseTemplate.
-    def exitBaseTemplate(self, ctx:StottrParser.BaseTemplateContext):
+    # Exit a parse tree produced by stOTTRParser#baseTemplate.
+    def exitBaseTemplate(self, ctx:stOTTRParser.BaseTemplateContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#template.
-    def enterTemplate(self, ctx:StottrParser.TemplateContext):
+    # Enter a parse tree produced by stOTTRParser#template.
+    def enterTemplate(self, ctx:stOTTRParser.TemplateContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#template.
-    def exitTemplate(self, ctx:StottrParser.TemplateContext):
+    # Exit a parse tree produced by stOTTRParser#template.
+    def exitTemplate(self, ctx:stOTTRParser.TemplateContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#patternList.
-    def enterPatternList(self, ctx:StottrParser.PatternListContext):
+    # Enter a parse tree produced by stOTTRParser#patternList.
+    def enterPatternList(self, ctx:stOTTRParser.PatternListContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#patternList.
-    def exitPatternList(self, ctx:StottrParser.PatternListContext):
+    # Exit a parse tree produced by stOTTRParser#patternList.
+    def exitPatternList(self, ctx:stOTTRParser.PatternListContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#instance.
-    def enterInstance(self, ctx:StottrParser.InstanceContext):
+    # Enter a parse tree produced by stOTTRParser#instance.
+    def enterInstance(self, ctx:stOTTRParser.InstanceContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#instance.
-    def exitInstance(self, ctx:StottrParser.InstanceContext):
+    # Exit a parse tree produced by stOTTRParser#instance.
+    def exitInstance(self, ctx:stOTTRParser.InstanceContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#argumentList.
-    def enterArgumentList(self, ctx:StottrParser.ArgumentListContext):
+    # Enter a parse tree produced by stOTTRParser#argumentList.
+    def enterArgumentList(self, ctx:stOTTRParser.ArgumentListContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#argumentList.
-    def exitArgumentList(self, ctx:StottrParser.ArgumentListContext):
+    # Exit a parse tree produced by stOTTRParser#argumentList.
+    def exitArgumentList(self, ctx:stOTTRParser.ArgumentListContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#argument.
-    def enterArgument(self, ctx:StottrParser.ArgumentContext):
+    # Enter a parse tree produced by stOTTRParser#argument.
+    def enterArgument(self, ctx:stOTTRParser.ArgumentContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#argument.
-    def exitArgument(self, ctx:StottrParser.ArgumentContext):
+    # Exit a parse tree produced by stOTTRParser#argument.
+    def exitArgument(self, ctx:stOTTRParser.ArgumentContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#type.
-    def enterType(self, ctx:StottrParser.TypeContext):
+    # Enter a parse tree produced by stOTTRParser#type.
+    def enterType(self, ctx:stOTTRParser.TypeContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#type.
-    def exitType(self, ctx:StottrParser.TypeContext):
+    # Exit a parse tree produced by stOTTRParser#type.
+    def exitType(self, ctx:stOTTRParser.TypeContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#listType.
-    def enterListType(self, ctx:StottrParser.ListTypeContext):
+    # Enter a parse tree produced by stOTTRParser#listType.
+    def enterListType(self, ctx:stOTTRParser.ListTypeContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#listType.
-    def exitListType(self, ctx:StottrParser.ListTypeContext):
+    # Exit a parse tree produced by stOTTRParser#listType.
+    def exitListType(self, ctx:stOTTRParser.ListTypeContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#neListType.
-    def enterNeListType(self, ctx:StottrParser.NeListTypeContext):
+    # Enter a parse tree produced by stOTTRParser#neListType.
+    def enterNeListType(self, ctx:stOTTRParser.NeListTypeContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#neListType.
-    def exitNeListType(self, ctx:StottrParser.NeListTypeContext):
+    # Exit a parse tree produced by stOTTRParser#neListType.
+    def exitNeListType(self, ctx:stOTTRParser.NeListTypeContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#lubType.
-    def enterLubType(self, ctx:StottrParser.LubTypeContext):
+    # Enter a parse tree produced by stOTTRParser#lubType.
+    def enterLubType(self, ctx:stOTTRParser.LubTypeContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#lubType.
-    def exitLubType(self, ctx:StottrParser.LubTypeContext):
+    # Exit a parse tree produced by stOTTRParser#lubType.
+    def exitLubType(self, ctx:stOTTRParser.LubTypeContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#basicType.
-    def enterBasicType(self, ctx:StottrParser.BasicTypeContext):
+    # Enter a parse tree produced by stOTTRParser#basicType.
+    def enterBasicType(self, ctx:stOTTRParser.BasicTypeContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#basicType.
-    def exitBasicType(self, ctx:StottrParser.BasicTypeContext):
+    # Exit a parse tree produced by stOTTRParser#basicType.
+    def exitBasicType(self, ctx:stOTTRParser.BasicTypeContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#term.
-    def enterTerm(self, ctx:StottrParser.TermContext):
+    # Enter a parse tree produced by stOTTRParser#term.
+    def enterTerm(self, ctx:stOTTRParser.TermContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#term.
-    def exitTerm(self, ctx:StottrParser.TermContext):
+    # Exit a parse tree produced by stOTTRParser#term.
+    def exitTerm(self, ctx:stOTTRParser.TermContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#constantTerm.
-    def enterConstantTerm(self, ctx:StottrParser.ConstantTermContext):
+    # Enter a parse tree produced by stOTTRParser#constantTerm.
+    def enterConstantTerm(self, ctx:stOTTRParser.ConstantTermContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#constantTerm.
-    def exitConstantTerm(self, ctx:StottrParser.ConstantTermContext):
+    # Exit a parse tree produced by stOTTRParser#constantTerm.
+    def exitConstantTerm(self, ctx:stOTTRParser.ConstantTermContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#constant.
-    def enterConstant(self, ctx:StottrParser.ConstantContext):
+    # Enter a parse tree produced by stOTTRParser#constant.
+    def enterConstant(self, ctx:stOTTRParser.ConstantContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#constant.
-    def exitConstant(self, ctx:StottrParser.ConstantContext):
+    # Exit a parse tree produced by stOTTRParser#constant.
+    def exitConstant(self, ctx:stOTTRParser.ConstantContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#none.
-    def enterNone(self, ctx:StottrParser.NoneContext):
+    # Enter a parse tree produced by stOTTRParser#none.
+    def enterNone(self, ctx:stOTTRParser.NoneContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#none.
-    def exitNone(self, ctx:StottrParser.NoneContext):
+    # Exit a parse tree produced by stOTTRParser#none.
+    def exitNone(self, ctx:stOTTRParser.NoneContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#termList.
-    def enterTermList(self, ctx:StottrParser.TermListContext):
+    # Enter a parse tree produced by stOTTRParser#termList.
+    def enterTermList(self, ctx:stOTTRParser.TermListContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#termList.
-    def exitTermList(self, ctx:StottrParser.TermListContext):
+    # Exit a parse tree produced by stOTTRParser#termList.
+    def exitTermList(self, ctx:stOTTRParser.TermListContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#constantList.
-    def enterConstantList(self, ctx:StottrParser.ConstantListContext):
+    # Enter a parse tree produced by stOTTRParser#constantList.
+    def enterConstantList(self, ctx:stOTTRParser.ConstantListContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#constantList.
-    def exitConstantList(self, ctx:StottrParser.ConstantListContext):
+    # Exit a parse tree produced by stOTTRParser#constantList.
+    def exitConstantList(self, ctx:stOTTRParser.ConstantListContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#directive.
-    def enterDirective(self, ctx:StottrParser.DirectiveContext):
+    # Enter a parse tree produced by stOTTRParser#directive.
+    def enterDirective(self, ctx:stOTTRParser.DirectiveContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#directive.
-    def exitDirective(self, ctx:StottrParser.DirectiveContext):
+    # Exit a parse tree produced by stOTTRParser#directive.
+    def exitDirective(self, ctx:stOTTRParser.DirectiveContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#prefixID.
-    def enterPrefixID(self, ctx:StottrParser.PrefixIDContext):
+    # Enter a parse tree produced by stOTTRParser#prefixID.
+    def enterPrefixID(self, ctx:stOTTRParser.PrefixIDContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#prefixID.
-    def exitPrefixID(self, ctx:StottrParser.PrefixIDContext):
+    # Exit a parse tree produced by stOTTRParser#prefixID.
+    def exitPrefixID(self, ctx:stOTTRParser.PrefixIDContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#base.
-    def enterBase(self, ctx:StottrParser.BaseContext):
+    # Enter a parse tree produced by stOTTRParser#base.
+    def enterBase(self, ctx:stOTTRParser.BaseContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#base.
-    def exitBase(self, ctx:StottrParser.BaseContext):
+    # Exit a parse tree produced by stOTTRParser#base.
+    def exitBase(self, ctx:stOTTRParser.BaseContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#sparqlBase.
-    def enterSparqlBase(self, ctx:StottrParser.SparqlBaseContext):
+    # Enter a parse tree produced by stOTTRParser#sparqlBase.
+    def enterSparqlBase(self, ctx:stOTTRParser.SparqlBaseContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#sparqlBase.
-    def exitSparqlBase(self, ctx:StottrParser.SparqlBaseContext):
+    # Exit a parse tree produced by stOTTRParser#sparqlBase.
+    def exitSparqlBase(self, ctx:stOTTRParser.SparqlBaseContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#sparqlPrefix.
-    def enterSparqlPrefix(self, ctx:StottrParser.SparqlPrefixContext):
+    # Enter a parse tree produced by stOTTRParser#sparqlPrefix.
+    def enterSparqlPrefix(self, ctx:stOTTRParser.SparqlPrefixContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#sparqlPrefix.
-    def exitSparqlPrefix(self, ctx:StottrParser.SparqlPrefixContext):
+    # Exit a parse tree produced by stOTTRParser#sparqlPrefix.
+    def exitSparqlPrefix(self, ctx:stOTTRParser.SparqlPrefixContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#literal.
-    def enterLiteral(self, ctx:StottrParser.LiteralContext):
+    # Enter a parse tree produced by stOTTRParser#literal.
+    def enterLiteral(self, ctx:stOTTRParser.LiteralContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#literal.
-    def exitLiteral(self, ctx:StottrParser.LiteralContext):
+    # Exit a parse tree produced by stOTTRParser#literal.
+    def exitLiteral(self, ctx:stOTTRParser.LiteralContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#numericLiteral.
-    def enterNumericLiteral(self, ctx:StottrParser.NumericLiteralContext):
+    # Enter a parse tree produced by stOTTRParser#numericLiteral.
+    def enterNumericLiteral(self, ctx:stOTTRParser.NumericLiteralContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#numericLiteral.
-    def exitNumericLiteral(self, ctx:StottrParser.NumericLiteralContext):
+    # Exit a parse tree produced by stOTTRParser#numericLiteral.
+    def exitNumericLiteral(self, ctx:stOTTRParser.NumericLiteralContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#rdfLiteral.
-    def enterRdfLiteral(self, ctx:StottrParser.RdfLiteralContext):
+    # Enter a parse tree produced by stOTTRParser#rdfLiteral.
+    def enterRdfLiteral(self, ctx:stOTTRParser.RdfLiteralContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#rdfLiteral.
-    def exitRdfLiteral(self, ctx:StottrParser.RdfLiteralContext):
+    # Exit a parse tree produced by stOTTRParser#rdfLiteral.
+    def exitRdfLiteral(self, ctx:stOTTRParser.RdfLiteralContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#iri.
-    def enterIri(self, ctx:StottrParser.IriContext):
+    # Enter a parse tree produced by stOTTRParser#iri.
+    def enterIri(self, ctx:stOTTRParser.IriContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#iri.
-    def exitIri(self, ctx:StottrParser.IriContext):
+    # Exit a parse tree produced by stOTTRParser#iri.
+    def exitIri(self, ctx:stOTTRParser.IriContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#prefixedName.
-    def enterPrefixedName(self, ctx:StottrParser.PrefixedNameContext):
+    # Enter a parse tree produced by stOTTRParser#prefixedName.
+    def enterPrefixedName(self, ctx:stOTTRParser.PrefixedNameContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#prefixedName.
-    def exitPrefixedName(self, ctx:StottrParser.PrefixedNameContext):
+    # Exit a parse tree produced by stOTTRParser#prefixedName.
+    def exitPrefixedName(self, ctx:stOTTRParser.PrefixedNameContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#blankNode.
-    def enterBlankNode(self, ctx:StottrParser.BlankNodeContext):
+    # Enter a parse tree produced by stOTTRParser#blankNode.
+    def enterBlankNode(self, ctx:stOTTRParser.BlankNodeContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#blankNode.
-    def exitBlankNode(self, ctx:StottrParser.BlankNodeContext):
+    # Exit a parse tree produced by stOTTRParser#blankNode.
+    def exitBlankNode(self, ctx:stOTTRParser.BlankNodeContext):
         pass
 
 
-    # Enter a parse tree produced by StottrParser#anon.
-    def enterAnon(self, ctx:StottrParser.AnonContext):
+    # Enter a parse tree produced by stOTTRParser#anon.
+    def enterAnon(self, ctx:stOTTRParser.AnonContext):
         pass
 
-    # Exit a parse tree produced by StottrParser#anon.
-    def exitAnon(self, ctx:StottrParser.AnonContext):
+    # Exit a parse tree produced by stOTTRParser#anon.
+    def exitAnon(self, ctx:stOTTRParser.AnonContext):
         pass
 
 
 
-del StottrParser
+del stOTTRParser

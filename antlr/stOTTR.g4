@@ -1,6 +1,6 @@
 /*** stOTTR grammar from https://dev.spec.ottr.xyz/stOTTR/index.html ***/
 
-grammar Stottr;
+grammar stOTTR;
 
 import Turtle;
 
