@@ -148,13 +148,11 @@ class TurtleParser ( Parser ):
         def getRuleIndex(self):
             return TurtleParser.RULE_directive
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterDirective" ):
-                listener.enterDirective(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitDirective" ):
-                listener.exitDirective(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitDirective" ):
+                return visitor.visitDirective(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -215,13 +213,11 @@ class TurtleParser ( Parser ):
         def getRuleIndex(self):
             return TurtleParser.RULE_prefixID
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterPrefixID" ):
-                listener.enterPrefixID(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitPrefixID" ):
-                listener.exitPrefixID(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPrefixID" ):
+                return visitor.visitPrefixID(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -262,13 +258,11 @@ class TurtleParser ( Parser ):
         def getRuleIndex(self):
             return TurtleParser.RULE_base
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterBase" ):
-                listener.enterBase(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitBase" ):
-                listener.exitBase(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitBase" ):
+                return visitor.visitBase(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -307,13 +301,11 @@ class TurtleParser ( Parser ):
         def getRuleIndex(self):
             return TurtleParser.RULE_sparqlBase
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterSparqlBase" ):
-                listener.enterSparqlBase(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitSparqlBase" ):
-                listener.exitSparqlBase(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitSparqlBase" ):
+                return visitor.visitSparqlBase(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -353,13 +345,11 @@ class TurtleParser ( Parser ):
         def getRuleIndex(self):
             return TurtleParser.RULE_sparqlPrefix
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterSparqlPrefix" ):
-                listener.enterSparqlPrefix(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitSparqlPrefix" ):
-                listener.exitSparqlPrefix(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitSparqlPrefix" ):
+                return visitor.visitSparqlPrefix(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -406,13 +396,11 @@ class TurtleParser ( Parser ):
         def getRuleIndex(self):
             return TurtleParser.RULE_literal
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLiteral" ):
-                listener.enterLiteral(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLiteral" ):
-                listener.exitLiteral(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitLiteral" ):
+                return visitor.visitLiteral(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -471,13 +459,11 @@ class TurtleParser ( Parser ):
         def getRuleIndex(self):
             return TurtleParser.RULE_numericLiteral
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterNumericLiteral" ):
-                listener.enterNumericLiteral(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitNumericLiteral" ):
-                listener.exitNumericLiteral(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitNumericLiteral" ):
+                return visitor.visitNumericLiteral(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -525,13 +511,11 @@ class TurtleParser ( Parser ):
         def getRuleIndex(self):
             return TurtleParser.RULE_rdfLiteral
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterRdfLiteral" ):
-                listener.enterRdfLiteral(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitRdfLiteral" ):
-                listener.exitRdfLiteral(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitRdfLiteral" ):
+                return visitor.visitRdfLiteral(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -587,13 +571,11 @@ class TurtleParser ( Parser ):
         def getRuleIndex(self):
             return TurtleParser.RULE_iri
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterIri" ):
-                listener.enterIri(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitIri" ):
-                listener.exitIri(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitIri" ):
+                return visitor.visitIri(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -644,13 +626,11 @@ class TurtleParser ( Parser ):
         def getRuleIndex(self):
             return TurtleParser.RULE_prefixedName
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterPrefixedName" ):
-                listener.enterPrefixedName(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitPrefixedName" ):
-                listener.exitPrefixedName(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPrefixedName" ):
+                return visitor.visitPrefixedName(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -695,13 +675,11 @@ class TurtleParser ( Parser ):
         def getRuleIndex(self):
             return TurtleParser.RULE_blankNode
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterBlankNode" ):
-                listener.enterBlankNode(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitBlankNode" ):
-                listener.exitBlankNode(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitBlankNode" ):
+                return visitor.visitBlankNode(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -752,13 +730,11 @@ class TurtleParser ( Parser ):
         def getRuleIndex(self):
             return TurtleParser.RULE_anon
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterAnon" ):
-                listener.enterAnon(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitAnon" ):
-                listener.exitAnon(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAnon" ):
+                return visitor.visitAnon(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 

@@ -290,13 +290,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_stOTTRDoc
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterStOTTRDoc" ):
-                listener.enterStOTTRDoc(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitStOTTRDoc" ):
-                listener.exitStOTTRDoc(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitStOTTRDoc" ):
+                return visitor.visitStOTTRDoc(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -367,13 +365,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_statement
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterStatement" ):
-                listener.enterStatement(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitStatement" ):
-                listener.exitStatement(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitStatement" ):
+                return visitor.visitStatement(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -441,13 +437,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_signature
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterSignature" ):
-                listener.enterSignature(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitSignature" ):
-                listener.exitSignature(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitSignature" ):
+                return visitor.visitSignature(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -493,13 +487,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_templateName
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTemplateName" ):
-                listener.enterTemplateName(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTemplateName" ):
-                listener.exitTemplateName(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitTemplateName" ):
+                return visitor.visitTemplateName(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -538,13 +530,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_parameterList
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterParameterList" ):
-                listener.enterParameterList(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitParameterList" ):
-                listener.exitParameterList(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitParameterList" ):
+                return visitor.visitParameterList(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -616,13 +606,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_parameter
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterParameter" ):
-                listener.enterParameter(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitParameter" ):
-                listener.exitParameter(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitParameter" ):
+                return visitor.visitParameter(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -685,13 +673,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_defaultValue
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterDefaultValue" ):
-                listener.enterDefaultValue(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitDefaultValue" ):
-                listener.exitDefaultValue(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitDefaultValue" ):
+                return visitor.visitDefaultValue(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -732,13 +718,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_annotationList
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterAnnotationList" ):
-                listener.enterAnnotationList(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitAnnotationList" ):
-                listener.exitAnnotationList(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAnnotationList" ):
+                return visitor.visitAnnotationList(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -791,13 +775,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_annotation
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterAnnotation" ):
-                listener.enterAnnotation(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitAnnotation" ):
-                listener.exitAnnotation(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAnnotation" ):
+                return visitor.visitAnnotation(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -835,13 +817,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_baseTemplate
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterBaseTemplate" ):
-                listener.enterBaseTemplate(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitBaseTemplate" ):
-                listener.exitBaseTemplate(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitBaseTemplate" ):
+                return visitor.visitBaseTemplate(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -885,13 +865,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_template
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTemplate" ):
-                listener.enterTemplate(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTemplate" ):
-                listener.exitTemplate(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitTemplate" ):
+                return visitor.visitTemplate(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -934,13 +912,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_patternList
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterPatternList" ):
-                listener.enterPatternList(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitPatternList" ):
-                listener.exitPatternList(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPatternList" ):
+                return visitor.visitPatternList(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -1004,13 +980,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_instance
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterInstance" ):
-                listener.enterInstance(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitInstance" ):
-                listener.exitInstance(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitInstance" ):
+                return visitor.visitInstance(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -1062,13 +1036,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_argumentList
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterArgumentList" ):
-                listener.enterArgumentList(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitArgumentList" ):
-                listener.exitArgumentList(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitArgumentList" ):
+                return visitor.visitArgumentList(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -1130,13 +1102,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_argument
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterArgument" ):
-                listener.enterArgument(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitArgument" ):
-                listener.exitArgument(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitArgument" ):
+                return visitor.visitArgument(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -1193,13 +1163,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_type
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterType" ):
-                listener.enterType(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitType" ):
-                listener.exitType(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitType" ):
+                return visitor.visitType(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -1258,13 +1226,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_listType
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterListType" ):
-                listener.enterListType(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitListType" ):
-                listener.exitListType(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitListType" ):
+                return visitor.visitListType(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -1304,13 +1270,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_neListType
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterNeListType" ):
-                listener.enterNeListType(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitNeListType" ):
-                listener.exitNeListType(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitNeListType" ):
+                return visitor.visitNeListType(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -1350,13 +1314,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_lubType
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLubType" ):
-                listener.enterLubType(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLubType" ):
-                listener.exitLubType(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitLubType" ):
+                return visitor.visitLubType(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -1396,13 +1358,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_basicType
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterBasicType" ):
-                listener.enterBasicType(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitBasicType" ):
-                listener.exitBasicType(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitBasicType" ):
+                return visitor.visitBasicType(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -1445,13 +1405,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_term
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTerm" ):
-                listener.enterTerm(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTerm" ):
-                listener.exitTerm(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitTerm" ):
+                return visitor.visitTerm(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -1509,13 +1467,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_constantTerm
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterConstantTerm" ):
-                listener.enterConstantTerm(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitConstantTerm" ):
-                listener.exitConstantTerm(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitConstantTerm" ):
+                return visitor.visitConstantTerm(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -1576,13 +1532,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_constant
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterConstant" ):
-                listener.enterConstant(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitConstant" ):
-                listener.exitConstant(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitConstant" ):
+                return visitor.visitConstant(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -1638,13 +1592,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_none
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterNone" ):
-                listener.enterNone(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitNone" ):
-                listener.exitNone(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitNone" ):
+                return visitor.visitNone(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -1683,13 +1635,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_termList
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTermList" ):
-                listener.enterTermList(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTermList" ):
-                listener.exitTermList(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitTermList" ):
+                return visitor.visitTermList(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -1751,13 +1701,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_constantList
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterConstantList" ):
-                listener.enterConstantList(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitConstantList" ):
-                listener.exitConstantList(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitConstantList" ):
+                return visitor.visitConstantList(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -1828,13 +1776,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_directive
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterDirective" ):
-                listener.enterDirective(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitDirective" ):
-                listener.exitDirective(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitDirective" ):
+                return visitor.visitDirective(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -1895,13 +1841,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_prefixID
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterPrefixID" ):
-                listener.enterPrefixID(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitPrefixID" ):
-                listener.exitPrefixID(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPrefixID" ):
+                return visitor.visitPrefixID(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -1942,13 +1886,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_base
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterBase" ):
-                listener.enterBase(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitBase" ):
-                listener.exitBase(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitBase" ):
+                return visitor.visitBase(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -1987,13 +1929,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_sparqlBase
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterSparqlBase" ):
-                listener.enterSparqlBase(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitSparqlBase" ):
-                listener.exitSparqlBase(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitSparqlBase" ):
+                return visitor.visitSparqlBase(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -2033,13 +1973,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_sparqlPrefix
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterSparqlPrefix" ):
-                listener.enterSparqlPrefix(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitSparqlPrefix" ):
-                listener.exitSparqlPrefix(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitSparqlPrefix" ):
+                return visitor.visitSparqlPrefix(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -2086,13 +2024,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_literal
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLiteral" ):
-                listener.enterLiteral(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLiteral" ):
-                listener.exitLiteral(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitLiteral" ):
+                return visitor.visitLiteral(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -2151,13 +2087,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_numericLiteral
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterNumericLiteral" ):
-                listener.enterNumericLiteral(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitNumericLiteral" ):
-                listener.exitNumericLiteral(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitNumericLiteral" ):
+                return visitor.visitNumericLiteral(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -2205,13 +2139,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_rdfLiteral
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterRdfLiteral" ):
-                listener.enterRdfLiteral(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitRdfLiteral" ):
-                listener.exitRdfLiteral(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitRdfLiteral" ):
+                return visitor.visitRdfLiteral(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -2267,13 +2199,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_iri
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterIri" ):
-                listener.enterIri(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitIri" ):
-                listener.exitIri(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitIri" ):
+                return visitor.visitIri(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -2324,13 +2254,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_prefixedName
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterPrefixedName" ):
-                listener.enterPrefixedName(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitPrefixedName" ):
-                listener.exitPrefixedName(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPrefixedName" ):
+                return visitor.visitPrefixedName(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -2375,13 +2303,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_blankNode
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterBlankNode" ):
-                listener.enterBlankNode(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitBlankNode" ):
-                listener.exitBlankNode(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitBlankNode" ):
+                return visitor.visitBlankNode(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -2432,13 +2358,11 @@ class stOTTRParser ( Parser ):
         def getRuleIndex(self):
             return stOTTRParser.RULE_anon
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterAnon" ):
-                listener.enterAnon(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitAnon" ):
-                listener.exitAnon(self)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAnon" ):
+                return visitor.visitAnon(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
