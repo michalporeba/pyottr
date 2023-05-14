@@ -10,111 +10,114 @@ else:
 
 def serializedATN():
     return [
-        4,1,55,304,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
+        4,1,55,312,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
         6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,
         2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,
         7,20,2,21,7,21,2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,
         2,27,7,27,2,28,7,28,2,29,7,29,2,30,7,30,2,31,7,31,2,32,7,32,2,33,
-        7,33,2,34,7,34,2,35,7,35,2,36,7,36,2,37,7,37,1,0,1,0,5,0,79,8,0,
-        10,0,12,0,82,9,0,1,0,1,0,1,1,1,1,1,1,1,1,3,1,90,8,1,1,1,1,1,1,2,
-        1,2,1,2,3,2,97,8,2,1,3,1,3,1,4,1,4,1,4,1,4,5,4,105,8,4,10,4,12,4,
-        108,9,4,3,4,110,8,4,1,4,1,4,1,5,5,5,115,8,5,10,5,12,5,118,9,5,1,
-        5,3,5,121,8,5,1,5,1,5,3,5,125,8,5,1,6,1,6,1,6,1,7,1,7,3,7,132,8,
-        7,5,7,134,8,7,10,7,12,7,137,9,7,1,8,1,8,1,8,1,9,1,9,1,9,1,9,1,10,
-        1,10,1,10,1,10,1,11,1,11,1,11,3,11,153,8,11,5,11,155,8,11,10,11,
-        12,11,158,9,11,1,11,1,11,1,12,1,12,3,12,164,8,12,1,12,1,12,1,12,
-        1,13,1,13,1,13,1,13,5,13,173,8,13,10,13,12,13,176,9,13,3,13,178,
-        8,13,1,13,1,13,1,14,3,14,183,8,14,1,14,1,14,1,15,1,15,1,15,1,15,
-        3,15,191,8,15,1,16,1,16,1,16,1,16,1,17,1,17,1,17,1,17,1,18,1,18,
-        1,18,1,18,1,19,1,19,1,20,1,20,1,20,3,20,210,8,20,1,21,1,21,3,21,
-        214,8,21,1,22,1,22,1,22,1,22,3,22,220,8,22,1,23,1,23,1,24,1,24,1,
-        24,1,24,5,24,228,8,24,10,24,12,24,231,9,24,3,24,233,8,24,1,24,1,
-        24,1,25,1,25,1,25,1,25,5,25,241,8,25,10,25,12,25,244,9,25,3,25,246,
-        8,25,1,25,1,25,1,26,1,26,1,26,1,26,3,26,254,8,26,1,27,1,27,1,27,
-        1,27,1,27,1,28,1,28,1,28,1,28,1,29,1,29,1,29,1,30,1,30,1,30,1,30,
-        1,31,1,31,1,31,3,31,275,8,31,1,32,1,32,1,33,1,33,1,33,1,33,3,33,
-        283,8,33,1,34,1,34,3,34,287,8,34,1,35,1,35,1,36,1,36,3,36,293,8,
-        36,1,37,1,37,5,37,297,8,37,10,37,12,37,300,9,37,1,37,1,37,1,37,0,
-        0,38,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,
-        44,46,48,50,52,54,56,58,60,62,64,66,68,70,72,74,0,2,1,0,36,38,1,
-        0,32,33,307,0,80,1,0,0,0,2,89,1,0,0,0,4,93,1,0,0,0,6,98,1,0,0,0,
-        8,100,1,0,0,0,10,116,1,0,0,0,12,126,1,0,0,0,14,135,1,0,0,0,16,138,
-        1,0,0,0,18,141,1,0,0,0,20,145,1,0,0,0,22,149,1,0,0,0,24,163,1,0,
-        0,0,26,168,1,0,0,0,28,182,1,0,0,0,30,190,1,0,0,0,32,192,1,0,0,0,
-        34,196,1,0,0,0,36,200,1,0,0,0,38,204,1,0,0,0,40,209,1,0,0,0,42,213,
-        1,0,0,0,44,219,1,0,0,0,46,221,1,0,0,0,48,223,1,0,0,0,50,236,1,0,
-        0,0,52,253,1,0,0,0,54,255,1,0,0,0,56,260,1,0,0,0,58,264,1,0,0,0,
-        60,267,1,0,0,0,62,274,1,0,0,0,64,276,1,0,0,0,66,278,1,0,0,0,68,286,
-        1,0,0,0,70,288,1,0,0,0,72,292,1,0,0,0,74,294,1,0,0,0,76,79,3,52,
-        26,0,77,79,3,2,1,0,78,76,1,0,0,0,78,77,1,0,0,0,79,82,1,0,0,0,80,
-        78,1,0,0,0,80,81,1,0,0,0,81,83,1,0,0,0,82,80,1,0,0,0,83,84,5,0,0,
-        1,84,1,1,0,0,0,85,90,3,4,2,0,86,90,3,20,10,0,87,90,3,18,9,0,88,90,
-        3,24,12,0,89,85,1,0,0,0,89,86,1,0,0,0,89,87,1,0,0,0,89,88,1,0,0,
-        0,90,91,1,0,0,0,91,92,5,1,0,0,92,3,1,0,0,0,93,94,3,6,3,0,94,96,3,
-        8,4,0,95,97,3,14,7,0,96,95,1,0,0,0,96,97,1,0,0,0,97,5,1,0,0,0,98,
-        99,3,68,34,0,99,7,1,0,0,0,100,109,5,2,0,0,101,106,3,10,5,0,102,103,
-        5,3,0,0,103,105,3,10,5,0,104,102,1,0,0,0,105,108,1,0,0,0,106,104,
-        1,0,0,0,106,107,1,0,0,0,107,110,1,0,0,0,108,106,1,0,0,0,109,101,
-        1,0,0,0,109,110,1,0,0,0,110,111,1,0,0,0,111,112,5,4,0,0,112,9,1,
-        0,0,0,113,115,5,25,0,0,114,113,1,0,0,0,115,118,1,0,0,0,116,114,1,
-        0,0,0,116,117,1,0,0,0,117,120,1,0,0,0,118,116,1,0,0,0,119,121,3,
-        30,15,0,120,119,1,0,0,0,120,121,1,0,0,0,121,122,1,0,0,0,122,124,
-        5,28,0,0,123,125,3,12,6,0,124,123,1,0,0,0,124,125,1,0,0,0,125,11,
-        1,0,0,0,126,127,5,5,0,0,127,128,3,42,21,0,128,13,1,0,0,0,129,131,
-        3,16,8,0,130,132,5,3,0,0,131,130,1,0,0,0,131,132,1,0,0,0,132,134,
-        1,0,0,0,133,129,1,0,0,0,134,137,1,0,0,0,135,133,1,0,0,0,135,136,
-        1,0,0,0,136,15,1,0,0,0,137,135,1,0,0,0,138,139,5,6,0,0,139,140,3,
-        24,12,0,140,17,1,0,0,0,141,142,3,4,2,0,142,143,5,7,0,0,143,144,5,
-        8,0,0,144,19,1,0,0,0,145,146,3,4,2,0,146,147,5,7,0,0,147,148,3,22,
-        11,0,148,21,1,0,0,0,149,156,5,9,0,0,150,152,3,24,12,0,151,153,5,
-        3,0,0,152,151,1,0,0,0,152,153,1,0,0,0,153,155,1,0,0,0,154,150,1,
-        0,0,0,155,158,1,0,0,0,156,154,1,0,0,0,156,157,1,0,0,0,157,159,1,
-        0,0,0,158,156,1,0,0,0,159,160,5,10,0,0,160,23,1,0,0,0,161,162,5,
-        26,0,0,162,164,5,11,0,0,163,161,1,0,0,0,163,164,1,0,0,0,164,165,
-        1,0,0,0,165,166,3,6,3,0,166,167,3,26,13,0,167,25,1,0,0,0,168,177,
-        5,12,0,0,169,174,3,28,14,0,170,171,5,3,0,0,171,173,3,28,14,0,172,
-        170,1,0,0,0,173,176,1,0,0,0,174,172,1,0,0,0,174,175,1,0,0,0,175,
-        178,1,0,0,0,176,174,1,0,0,0,177,169,1,0,0,0,177,178,1,0,0,0,178,
-        179,1,0,0,0,179,180,5,13,0,0,180,27,1,0,0,0,181,183,5,27,0,0,182,
-        181,1,0,0,0,182,183,1,0,0,0,183,184,1,0,0,0,184,185,3,40,20,0,185,
-        29,1,0,0,0,186,191,3,38,19,0,187,191,3,36,18,0,188,191,3,32,16,0,
-        189,191,3,34,17,0,190,186,1,0,0,0,190,187,1,0,0,0,190,188,1,0,0,
-        0,190,189,1,0,0,0,191,31,1,0,0,0,192,193,5,14,0,0,193,194,3,30,15,
-        0,194,195,5,15,0,0,195,33,1,0,0,0,196,197,5,16,0,0,197,198,3,30,
-        15,0,198,199,5,15,0,0,199,35,1,0,0,0,200,201,5,17,0,0,201,202,3,
-        38,19,0,202,203,5,15,0,0,203,37,1,0,0,0,204,205,3,70,35,0,205,39,
-        1,0,0,0,206,210,5,28,0,0,207,210,3,44,22,0,208,210,3,48,24,0,209,
-        206,1,0,0,0,209,207,1,0,0,0,209,208,1,0,0,0,210,41,1,0,0,0,211,214,
-        3,44,22,0,212,214,3,50,25,0,213,211,1,0,0,0,213,212,1,0,0,0,214,
-        43,1,0,0,0,215,220,3,68,34,0,216,220,3,72,36,0,217,220,3,62,31,0,
-        218,220,3,46,23,0,219,215,1,0,0,0,219,216,1,0,0,0,219,217,1,0,0,
-        0,219,218,1,0,0,0,220,45,1,0,0,0,221,222,5,18,0,0,222,47,1,0,0,0,
-        223,232,5,12,0,0,224,229,3,40,20,0,225,226,5,3,0,0,226,228,3,40,
-        20,0,227,225,1,0,0,0,228,231,1,0,0,0,229,227,1,0,0,0,229,230,1,0,
-        0,0,230,233,1,0,0,0,231,229,1,0,0,0,232,224,1,0,0,0,232,233,1,0,
-        0,0,233,234,1,0,0,0,234,235,5,13,0,0,235,49,1,0,0,0,236,245,5,12,
-        0,0,237,242,3,42,21,0,238,239,5,3,0,0,239,241,3,42,21,0,240,238,
-        1,0,0,0,241,244,1,0,0,0,242,240,1,0,0,0,242,243,1,0,0,0,243,246,
-        1,0,0,0,244,242,1,0,0,0,245,237,1,0,0,0,245,246,1,0,0,0,246,247,
-        1,0,0,0,247,248,5,13,0,0,248,51,1,0,0,0,249,254,3,54,27,0,250,254,
-        3,56,28,0,251,254,3,60,30,0,252,254,3,58,29,0,253,249,1,0,0,0,253,
-        250,1,0,0,0,253,251,1,0,0,0,253,252,1,0,0,0,254,53,1,0,0,0,255,256,
-        5,19,0,0,256,257,5,32,0,0,257,258,5,31,0,0,258,259,5,1,0,0,259,55,
-        1,0,0,0,260,261,5,20,0,0,261,262,5,31,0,0,262,263,5,1,0,0,263,57,
-        1,0,0,0,264,265,5,8,0,0,265,266,5,31,0,0,266,59,1,0,0,0,267,268,
-        5,21,0,0,268,269,5,32,0,0,269,270,5,31,0,0,270,61,1,0,0,0,271,275,
-        3,66,33,0,272,275,3,64,32,0,273,275,5,29,0,0,274,271,1,0,0,0,274,
-        272,1,0,0,0,274,273,1,0,0,0,275,63,1,0,0,0,276,277,7,0,0,0,277,65,
-        1,0,0,0,278,282,5,30,0,0,279,283,5,35,0,0,280,281,5,22,0,0,281,283,
-        3,68,34,0,282,279,1,0,0,0,282,280,1,0,0,0,282,283,1,0,0,0,283,67,
-        1,0,0,0,284,287,5,31,0,0,285,287,3,70,35,0,286,284,1,0,0,0,286,285,
-        1,0,0,0,287,69,1,0,0,0,288,289,7,1,0,0,289,71,1,0,0,0,290,293,5,
-        34,0,0,291,293,3,74,37,0,292,290,1,0,0,0,292,291,1,0,0,0,293,73,
-        1,0,0,0,294,298,5,2,0,0,295,297,5,46,0,0,296,295,1,0,0,0,297,300,
-        1,0,0,0,298,296,1,0,0,0,298,299,1,0,0,0,299,301,1,0,0,0,300,298,
-        1,0,0,0,301,302,5,4,0,0,302,75,1,0,0,0,31,78,80,89,96,106,109,116,
-        120,124,131,135,152,156,163,174,177,182,190,209,213,219,229,232,
-        242,245,253,274,282,286,292,298
+        7,33,2,34,7,34,2,35,7,35,2,36,7,36,2,37,7,37,2,38,7,38,1,0,1,0,5,
+        0,81,8,0,10,0,12,0,84,9,0,1,0,1,0,1,1,1,1,1,1,1,1,3,1,92,8,1,1,1,
+        1,1,1,2,1,2,1,2,3,2,99,8,2,1,3,1,3,1,4,1,4,1,4,1,4,5,4,107,8,4,10,
+        4,12,4,110,9,4,3,4,112,8,4,1,4,1,4,1,5,5,5,117,8,5,10,5,12,5,120,
+        9,5,1,5,3,5,123,8,5,1,5,1,5,3,5,127,8,5,1,6,1,6,1,6,1,7,1,7,3,7,
+        134,8,7,5,7,136,8,7,10,7,12,7,139,9,7,1,8,1,8,1,8,1,9,1,9,1,9,1,
+        9,1,10,1,10,1,10,1,10,1,11,1,11,1,11,3,11,155,8,11,5,11,157,8,11,
+        10,11,12,11,160,9,11,1,11,1,11,1,12,1,12,3,12,166,8,12,1,12,1,12,
+        1,12,1,13,1,13,1,13,1,13,5,13,175,8,13,10,13,12,13,178,9,13,3,13,
+        180,8,13,1,13,1,13,1,14,3,14,185,8,14,1,14,1,14,1,15,1,15,1,15,1,
+        15,3,15,193,8,15,1,16,1,16,1,16,1,16,1,17,1,17,1,17,1,17,1,18,1,
+        18,1,18,1,18,1,19,1,19,1,20,1,20,1,20,3,20,212,8,20,1,21,1,21,3,
+        21,216,8,21,1,22,1,22,1,22,1,22,3,22,222,8,22,1,23,1,23,1,24,1,24,
+        1,24,1,24,5,24,230,8,24,10,24,12,24,233,9,24,3,24,235,8,24,1,24,
+        1,24,1,25,1,25,1,25,1,25,5,25,243,8,25,10,25,12,25,246,9,25,3,25,
+        248,8,25,1,25,1,25,1,26,5,26,253,8,26,10,26,12,26,256,9,26,1,27,
+        1,27,1,27,1,27,3,27,262,8,27,1,28,1,28,1,28,1,28,1,28,1,29,1,29,
+        1,29,1,29,1,30,1,30,1,30,1,31,1,31,1,31,1,31,1,32,1,32,1,32,3,32,
+        283,8,32,1,33,1,33,1,34,1,34,1,34,1,34,3,34,291,8,34,1,35,1,35,3,
+        35,295,8,35,1,36,1,36,1,37,1,37,3,37,301,8,37,1,38,1,38,5,38,305,
+        8,38,10,38,12,38,308,9,38,1,38,1,38,1,38,0,0,39,0,2,4,6,8,10,12,
+        14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,
+        58,60,62,64,66,68,70,72,74,76,0,2,1,0,36,38,1,0,32,33,315,0,82,1,
+        0,0,0,2,91,1,0,0,0,4,95,1,0,0,0,6,100,1,0,0,0,8,102,1,0,0,0,10,118,
+        1,0,0,0,12,128,1,0,0,0,14,137,1,0,0,0,16,140,1,0,0,0,18,143,1,0,
+        0,0,20,147,1,0,0,0,22,151,1,0,0,0,24,165,1,0,0,0,26,170,1,0,0,0,
+        28,184,1,0,0,0,30,192,1,0,0,0,32,194,1,0,0,0,34,198,1,0,0,0,36,202,
+        1,0,0,0,38,206,1,0,0,0,40,211,1,0,0,0,42,215,1,0,0,0,44,221,1,0,
+        0,0,46,223,1,0,0,0,48,225,1,0,0,0,50,238,1,0,0,0,52,254,1,0,0,0,
+        54,261,1,0,0,0,56,263,1,0,0,0,58,268,1,0,0,0,60,272,1,0,0,0,62,275,
+        1,0,0,0,64,282,1,0,0,0,66,284,1,0,0,0,68,286,1,0,0,0,70,294,1,0,
+        0,0,72,296,1,0,0,0,74,300,1,0,0,0,76,302,1,0,0,0,78,81,3,54,27,0,
+        79,81,3,2,1,0,80,78,1,0,0,0,80,79,1,0,0,0,81,84,1,0,0,0,82,80,1,
+        0,0,0,82,83,1,0,0,0,83,85,1,0,0,0,84,82,1,0,0,0,85,86,5,0,0,1,86,
+        1,1,0,0,0,87,92,3,4,2,0,88,92,3,20,10,0,89,92,3,18,9,0,90,92,3,24,
+        12,0,91,87,1,0,0,0,91,88,1,0,0,0,91,89,1,0,0,0,91,90,1,0,0,0,92,
+        93,1,0,0,0,93,94,5,1,0,0,94,3,1,0,0,0,95,96,3,6,3,0,96,98,3,8,4,
+        0,97,99,3,14,7,0,98,97,1,0,0,0,98,99,1,0,0,0,99,5,1,0,0,0,100,101,
+        3,70,35,0,101,7,1,0,0,0,102,111,5,2,0,0,103,108,3,10,5,0,104,105,
+        5,3,0,0,105,107,3,10,5,0,106,104,1,0,0,0,107,110,1,0,0,0,108,106,
+        1,0,0,0,108,109,1,0,0,0,109,112,1,0,0,0,110,108,1,0,0,0,111,103,
+        1,0,0,0,111,112,1,0,0,0,112,113,1,0,0,0,113,114,5,4,0,0,114,9,1,
+        0,0,0,115,117,5,25,0,0,116,115,1,0,0,0,117,120,1,0,0,0,118,116,1,
+        0,0,0,118,119,1,0,0,0,119,122,1,0,0,0,120,118,1,0,0,0,121,123,3,
+        30,15,0,122,121,1,0,0,0,122,123,1,0,0,0,123,124,1,0,0,0,124,126,
+        5,28,0,0,125,127,3,12,6,0,126,125,1,0,0,0,126,127,1,0,0,0,127,11,
+        1,0,0,0,128,129,5,5,0,0,129,130,3,42,21,0,130,13,1,0,0,0,131,133,
+        3,16,8,0,132,134,5,3,0,0,133,132,1,0,0,0,133,134,1,0,0,0,134,136,
+        1,0,0,0,135,131,1,0,0,0,136,139,1,0,0,0,137,135,1,0,0,0,137,138,
+        1,0,0,0,138,15,1,0,0,0,139,137,1,0,0,0,140,141,5,6,0,0,141,142,3,
+        24,12,0,142,17,1,0,0,0,143,144,3,4,2,0,144,145,5,7,0,0,145,146,5,
+        8,0,0,146,19,1,0,0,0,147,148,3,4,2,0,148,149,5,7,0,0,149,150,3,22,
+        11,0,150,21,1,0,0,0,151,158,5,9,0,0,152,154,3,24,12,0,153,155,5,
+        3,0,0,154,153,1,0,0,0,154,155,1,0,0,0,155,157,1,0,0,0,156,152,1,
+        0,0,0,157,160,1,0,0,0,158,156,1,0,0,0,158,159,1,0,0,0,159,161,1,
+        0,0,0,160,158,1,0,0,0,161,162,5,10,0,0,162,23,1,0,0,0,163,164,5,
+        26,0,0,164,166,5,11,0,0,165,163,1,0,0,0,165,166,1,0,0,0,166,167,
+        1,0,0,0,167,168,3,6,3,0,168,169,3,26,13,0,169,25,1,0,0,0,170,179,
+        5,12,0,0,171,176,3,28,14,0,172,173,5,3,0,0,173,175,3,28,14,0,174,
+        172,1,0,0,0,175,178,1,0,0,0,176,174,1,0,0,0,176,177,1,0,0,0,177,
+        180,1,0,0,0,178,176,1,0,0,0,179,171,1,0,0,0,179,180,1,0,0,0,180,
+        181,1,0,0,0,181,182,5,13,0,0,182,27,1,0,0,0,183,185,5,27,0,0,184,
+        183,1,0,0,0,184,185,1,0,0,0,185,186,1,0,0,0,186,187,3,40,20,0,187,
+        29,1,0,0,0,188,193,3,38,19,0,189,193,3,36,18,0,190,193,3,32,16,0,
+        191,193,3,34,17,0,192,188,1,0,0,0,192,189,1,0,0,0,192,190,1,0,0,
+        0,192,191,1,0,0,0,193,31,1,0,0,0,194,195,5,14,0,0,195,196,3,30,15,
+        0,196,197,5,15,0,0,197,33,1,0,0,0,198,199,5,16,0,0,199,200,3,30,
+        15,0,200,201,5,15,0,0,201,35,1,0,0,0,202,203,5,17,0,0,203,204,3,
+        38,19,0,204,205,5,15,0,0,205,37,1,0,0,0,206,207,3,72,36,0,207,39,
+        1,0,0,0,208,212,5,28,0,0,209,212,3,44,22,0,210,212,3,48,24,0,211,
+        208,1,0,0,0,211,209,1,0,0,0,211,210,1,0,0,0,212,41,1,0,0,0,213,216,
+        3,44,22,0,214,216,3,50,25,0,215,213,1,0,0,0,215,214,1,0,0,0,216,
+        43,1,0,0,0,217,222,3,70,35,0,218,222,3,74,37,0,219,222,3,64,32,0,
+        220,222,3,46,23,0,221,217,1,0,0,0,221,218,1,0,0,0,221,219,1,0,0,
+        0,221,220,1,0,0,0,222,45,1,0,0,0,223,224,5,18,0,0,224,47,1,0,0,0,
+        225,234,5,12,0,0,226,231,3,40,20,0,227,228,5,3,0,0,228,230,3,40,
+        20,0,229,227,1,0,0,0,230,233,1,0,0,0,231,229,1,0,0,0,231,232,1,0,
+        0,0,232,235,1,0,0,0,233,231,1,0,0,0,234,226,1,0,0,0,234,235,1,0,
+        0,0,235,236,1,0,0,0,236,237,5,13,0,0,237,49,1,0,0,0,238,247,5,12,
+        0,0,239,244,3,42,21,0,240,241,5,3,0,0,241,243,3,42,21,0,242,240,
+        1,0,0,0,243,246,1,0,0,0,244,242,1,0,0,0,244,245,1,0,0,0,245,248,
+        1,0,0,0,246,244,1,0,0,0,247,239,1,0,0,0,247,248,1,0,0,0,248,249,
+        1,0,0,0,249,250,5,13,0,0,250,51,1,0,0,0,251,253,3,54,27,0,252,251,
+        1,0,0,0,253,256,1,0,0,0,254,252,1,0,0,0,254,255,1,0,0,0,255,53,1,
+        0,0,0,256,254,1,0,0,0,257,262,3,56,28,0,258,262,3,58,29,0,259,262,
+        3,62,31,0,260,262,3,60,30,0,261,257,1,0,0,0,261,258,1,0,0,0,261,
+        259,1,0,0,0,261,260,1,0,0,0,262,55,1,0,0,0,263,264,5,19,0,0,264,
+        265,5,32,0,0,265,266,5,31,0,0,266,267,5,1,0,0,267,57,1,0,0,0,268,
+        269,5,20,0,0,269,270,5,31,0,0,270,271,5,1,0,0,271,59,1,0,0,0,272,
+        273,5,8,0,0,273,274,5,31,0,0,274,61,1,0,0,0,275,276,5,21,0,0,276,
+        277,5,32,0,0,277,278,5,31,0,0,278,63,1,0,0,0,279,283,3,68,34,0,280,
+        283,3,66,33,0,281,283,5,29,0,0,282,279,1,0,0,0,282,280,1,0,0,0,282,
+        281,1,0,0,0,283,65,1,0,0,0,284,285,7,0,0,0,285,67,1,0,0,0,286,290,
+        5,30,0,0,287,291,5,35,0,0,288,289,5,22,0,0,289,291,3,70,35,0,290,
+        287,1,0,0,0,290,288,1,0,0,0,290,291,1,0,0,0,291,69,1,0,0,0,292,295,
+        5,31,0,0,293,295,3,72,36,0,294,292,1,0,0,0,294,293,1,0,0,0,295,71,
+        1,0,0,0,296,297,7,1,0,0,297,73,1,0,0,0,298,301,5,34,0,0,299,301,
+        3,76,38,0,300,298,1,0,0,0,300,299,1,0,0,0,301,75,1,0,0,0,302,306,
+        5,2,0,0,303,305,5,46,0,0,304,303,1,0,0,0,305,308,1,0,0,0,306,304,
+        1,0,0,0,306,307,1,0,0,0,307,309,1,0,0,0,308,306,1,0,0,0,309,310,
+        5,4,0,0,310,77,1,0,0,0,32,80,82,91,98,108,111,118,122,126,133,137,
+        154,158,165,176,179,184,192,211,215,221,231,234,244,247,254,261,
+        282,290,294,300,306
     ]
 
 class stOTTRParser ( Parser ):
@@ -174,27 +177,28 @@ class stOTTRParser ( Parser ):
     RULE_none = 23
     RULE_termList = 24
     RULE_constantList = 25
-    RULE_directive = 26
-    RULE_prefixID = 27
-    RULE_base = 28
-    RULE_sparqlBase = 29
-    RULE_sparqlPrefix = 30
-    RULE_literal = 31
-    RULE_numericLiteral = 32
-    RULE_rdfLiteral = 33
-    RULE_iri = 34
-    RULE_prefixedName = 35
-    RULE_blankNode = 36
-    RULE_anon = 37
+    RULE_turtleDoc = 26
+    RULE_directive = 27
+    RULE_prefixID = 28
+    RULE_base = 29
+    RULE_sparqlBase = 30
+    RULE_sparqlPrefix = 31
+    RULE_literal = 32
+    RULE_numericLiteral = 33
+    RULE_rdfLiteral = 34
+    RULE_iri = 35
+    RULE_prefixedName = 36
+    RULE_blankNode = 37
+    RULE_anon = 38
 
     ruleNames =  [ "stOTTRDoc", "statement", "signature", "templateName", 
                    "parameterList", "parameter", "defaultValue", "annotationList", 
                    "annotation", "baseTemplate", "template", "patternList", 
                    "instance", "argumentList", "argument", "type", "listType", 
                    "neListType", "lubType", "basicType", "term", "constantTerm", 
-                   "constant", "none", "termList", "constantList", "directive", 
-                   "prefixID", "base", "sparqlBase", "sparqlPrefix", "literal", 
-                   "numericLiteral", "rdfLiteral", "iri", "prefixedName", 
+                   "constant", "none", "termList", "constantList", "turtleDoc", 
+                   "directive", "prefixID", "base", "sparqlBase", "sparqlPrefix", 
+                   "literal", "numericLiteral", "rdfLiteral", "iri", "prefixedName", 
                    "blankNode", "anon" ]
 
     EOF = Token.EOF
@@ -306,29 +310,29 @@ class stOTTRParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 80
+            self.state = 82
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while (((_la) & ~0x3f) == 0 and ((1 << _la) & 15103164672) != 0):
-                self.state = 78
+                self.state = 80
                 self._errHandler.sync(self)
                 token = self._input.LA(1)
                 if token in [8, 19, 20, 21]:
-                    self.state = 76
+                    self.state = 78
                     self.directive()
                     pass
                 elif token in [26, 31, 32, 33]:
-                    self.state = 77
+                    self.state = 79
                     self.statement()
                     pass
                 else:
                     raise NoViableAltException(self)
 
-                self.state = 82
+                self.state = 84
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 83
+            self.state = 85
             self.match(stOTTRParser.EOF)
         except RecognitionException as re:
             localctx.exception = re
@@ -380,31 +384,31 @@ class stOTTRParser ( Parser ):
         self.enterRule(localctx, 2, self.RULE_statement)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 89
+            self.state = 91
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,2,self._ctx)
             if la_ == 1:
-                self.state = 85
+                self.state = 87
                 self.signature()
                 pass
 
             elif la_ == 2:
-                self.state = 86
+                self.state = 88
                 self.template()
                 pass
 
             elif la_ == 3:
-                self.state = 87
+                self.state = 89
                 self.baseTemplate()
                 pass
 
             elif la_ == 4:
-                self.state = 88
+                self.state = 90
                 self.instance()
                 pass
 
 
-            self.state = 91
+            self.state = 93
             self.match(stOTTRParser.T__0)
         except RecognitionException as re:
             localctx.exception = re
@@ -452,15 +456,15 @@ class stOTTRParser ( Parser ):
         self.enterRule(localctx, 4, self.RULE_signature)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 93
+            self.state = 95
             self.templateName()
-            self.state = 94
-            self.parameterList()
             self.state = 96
+            self.parameterList()
+            self.state = 98
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,3,self._ctx)
             if la_ == 1:
-                self.state = 95
+                self.state = 97
                 self.annotationList()
 
 
@@ -502,7 +506,7 @@ class stOTTRParser ( Parser ):
         self.enterRule(localctx, 6, self.RULE_templateName)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 98
+            self.state = 100
             self.iri()
         except RecognitionException as re:
             localctx.exception = re
@@ -546,29 +550,29 @@ class stOTTRParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 100
+            self.state = 102
             self.match(stOTTRParser.T__1)
-            self.state = 109
+            self.state = 111
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & 13187104768) != 0):
-                self.state = 101
+                self.state = 103
                 self.parameter()
-                self.state = 106
+                self.state = 108
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while _la==3:
-                    self.state = 102
+                    self.state = 104
                     self.match(stOTTRParser.T__2)
-                    self.state = 103
+                    self.state = 105
                     self.parameter()
-                    self.state = 108
+                    self.state = 110
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
 
 
-            self.state = 111
+            self.state = 113
             self.match(stOTTRParser.T__3)
         except RecognitionException as re:
             localctx.exception = re
@@ -622,31 +626,31 @@ class stOTTRParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 116
+            self.state = 118
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==25:
-                self.state = 113
+                self.state = 115
                 self.match(stOTTRParser.ParameterMode)
-                self.state = 118
+                self.state = 120
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 120
+            self.state = 122
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & 12885114880) != 0):
-                self.state = 119
+                self.state = 121
                 self.type_()
 
 
-            self.state = 122
-            self.match(stOTTRParser.Variable)
             self.state = 124
+            self.match(stOTTRParser.Variable)
+            self.state = 126
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==5:
-                self.state = 123
+                self.state = 125
                 self.defaultValue()
 
 
@@ -688,9 +692,9 @@ class stOTTRParser ( Parser ):
         self.enterRule(localctx, 12, self.RULE_defaultValue)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 126
+            self.state = 128
             self.match(stOTTRParser.T__4)
-            self.state = 127
+            self.state = 129
             self.constantTerm()
         except RecognitionException as re:
             localctx.exception = re
@@ -734,21 +738,21 @@ class stOTTRParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 135
+            self.state = 137
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==6:
-                self.state = 129
-                self.annotation()
                 self.state = 131
+                self.annotation()
+                self.state = 133
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==3:
-                    self.state = 130
+                    self.state = 132
                     self.match(stOTTRParser.T__2)
 
 
-                self.state = 137
+                self.state = 139
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
@@ -790,9 +794,9 @@ class stOTTRParser ( Parser ):
         self.enterRule(localctx, 16, self.RULE_annotation)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 138
+            self.state = 140
             self.match(stOTTRParser.T__5)
-            self.state = 139
+            self.state = 141
             self.instance()
         except RecognitionException as re:
             localctx.exception = re
@@ -832,11 +836,11 @@ class stOTTRParser ( Parser ):
         self.enterRule(localctx, 18, self.RULE_baseTemplate)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 141
-            self.signature()
-            self.state = 142
-            self.match(stOTTRParser.T__6)
             self.state = 143
+            self.signature()
+            self.state = 144
+            self.match(stOTTRParser.T__6)
+            self.state = 145
             self.match(stOTTRParser.T__7)
         except RecognitionException as re:
             localctx.exception = re
@@ -880,11 +884,11 @@ class stOTTRParser ( Parser ):
         self.enterRule(localctx, 20, self.RULE_template)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 145
-            self.signature()
-            self.state = 146
-            self.match(stOTTRParser.T__6)
             self.state = 147
+            self.signature()
+            self.state = 148
+            self.match(stOTTRParser.T__6)
+            self.state = 149
             self.patternList()
         except RecognitionException as re:
             localctx.exception = re
@@ -928,27 +932,27 @@ class stOTTRParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 149
+            self.state = 151
             self.match(stOTTRParser.T__8)
-            self.state = 156
+            self.state = 158
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while (((_la) & ~0x3f) == 0 and ((1 << _la) & 15099494400) != 0):
-                self.state = 150
-                self.instance()
                 self.state = 152
+                self.instance()
+                self.state = 154
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==3:
-                    self.state = 151
+                    self.state = 153
                     self.match(stOTTRParser.T__2)
 
 
-                self.state = 158
+                self.state = 160
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 159
+            self.state = 161
             self.match(stOTTRParser.T__9)
         except RecognitionException as re:
             localctx.exception = re
@@ -996,19 +1000,19 @@ class stOTTRParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 163
+            self.state = 165
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==26:
-                self.state = 161
+                self.state = 163
                 self.match(stOTTRParser.ListExpander)
-                self.state = 162
+                self.state = 164
                 self.match(stOTTRParser.T__10)
 
 
-            self.state = 165
+            self.state = 167
             self.templateName()
-            self.state = 166
+            self.state = 168
             self.argumentList()
         except RecognitionException as re:
             localctx.exception = re
@@ -1052,29 +1056,29 @@ class stOTTRParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 168
+            self.state = 170
             self.match(stOTTRParser.T__11)
-            self.state = 177
+            self.state = 179
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & 515262124036) != 0):
-                self.state = 169
+                self.state = 171
                 self.argument()
-                self.state = 174
+                self.state = 176
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while _la==3:
-                    self.state = 170
+                    self.state = 172
                     self.match(stOTTRParser.T__2)
-                    self.state = 171
+                    self.state = 173
                     self.argument()
-                    self.state = 176
+                    self.state = 178
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
 
 
-            self.state = 179
+            self.state = 181
             self.match(stOTTRParser.T__12)
         except RecognitionException as re:
             localctx.exception = re
@@ -1118,15 +1122,15 @@ class stOTTRParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 182
+            self.state = 184
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==27:
-                self.state = 181
+                self.state = 183
                 self.match(stOTTRParser.ListExpand)
 
 
-            self.state = 184
+            self.state = 186
             self.term()
         except RecognitionException as re:
             localctx.exception = re
@@ -1177,27 +1181,27 @@ class stOTTRParser ( Parser ):
         localctx = stOTTRParser.TypeContext(self, self._ctx, self.state)
         self.enterRule(localctx, 30, self.RULE_type)
         try:
-            self.state = 190
+            self.state = 192
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [32, 33]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 186
+                self.state = 188
                 self.basicType()
                 pass
             elif token in [17]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 187
+                self.state = 189
                 self.lubType()
                 pass
             elif token in [14]:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 188
+                self.state = 190
                 self.listType()
                 pass
             elif token in [16]:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 189
+                self.state = 191
                 self.neListType()
                 pass
             else:
@@ -1241,11 +1245,11 @@ class stOTTRParser ( Parser ):
         self.enterRule(localctx, 32, self.RULE_listType)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 192
-            self.match(stOTTRParser.T__13)
-            self.state = 193
-            self.type_()
             self.state = 194
+            self.match(stOTTRParser.T__13)
+            self.state = 195
+            self.type_()
+            self.state = 196
             self.match(stOTTRParser.T__14)
         except RecognitionException as re:
             localctx.exception = re
@@ -1285,11 +1289,11 @@ class stOTTRParser ( Parser ):
         self.enterRule(localctx, 34, self.RULE_neListType)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 196
-            self.match(stOTTRParser.T__15)
-            self.state = 197
-            self.type_()
             self.state = 198
+            self.match(stOTTRParser.T__15)
+            self.state = 199
+            self.type_()
+            self.state = 200
             self.match(stOTTRParser.T__14)
         except RecognitionException as re:
             localctx.exception = re
@@ -1329,11 +1333,11 @@ class stOTTRParser ( Parser ):
         self.enterRule(localctx, 36, self.RULE_lubType)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 200
-            self.match(stOTTRParser.T__16)
-            self.state = 201
-            self.basicType()
             self.state = 202
+            self.match(stOTTRParser.T__16)
+            self.state = 203
+            self.basicType()
+            self.state = 204
             self.match(stOTTRParser.T__14)
         except RecognitionException as re:
             localctx.exception = re
@@ -1373,7 +1377,7 @@ class stOTTRParser ( Parser ):
         self.enterRule(localctx, 38, self.RULE_basicType)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 204
+            self.state = 206
             self.prefixedName()
         except RecognitionException as re:
             localctx.exception = re
@@ -1419,22 +1423,22 @@ class stOTTRParser ( Parser ):
         localctx = stOTTRParser.TermContext(self, self._ctx, self.state)
         self.enterRule(localctx, 40, self.RULE_term)
         try:
-            self.state = 209
+            self.state = 211
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [28]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 206
+                self.state = 208
                 self.match(stOTTRParser.Variable)
                 pass
             elif token in [2, 18, 29, 30, 31, 32, 33, 34, 36, 37, 38]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 207
+                self.state = 209
                 self.constant()
                 pass
             elif token in [12]:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 208
+                self.state = 210
                 self.termList()
                 pass
             else:
@@ -1481,17 +1485,17 @@ class stOTTRParser ( Parser ):
         localctx = stOTTRParser.ConstantTermContext(self, self._ctx, self.state)
         self.enterRule(localctx, 42, self.RULE_constantTerm)
         try:
-            self.state = 213
+            self.state = 215
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [2, 18, 29, 30, 31, 32, 33, 34, 36, 37, 38]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 211
+                self.state = 213
                 self.constant()
                 pass
             elif token in [12]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 212
+                self.state = 214
                 self.constantList()
                 pass
             else:
@@ -1546,27 +1550,27 @@ class stOTTRParser ( Parser ):
         localctx = stOTTRParser.ConstantContext(self, self._ctx, self.state)
         self.enterRule(localctx, 44, self.RULE_constant)
         try:
-            self.state = 219
+            self.state = 221
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [31, 32, 33]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 215
+                self.state = 217
                 self.iri()
                 pass
             elif token in [2, 34]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 216
+                self.state = 218
                 self.blankNode()
                 pass
             elif token in [29, 30, 36, 37, 38]:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 217
+                self.state = 219
                 self.literal()
                 pass
             elif token in [18]:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 218
+                self.state = 220
                 self.none()
                 pass
             else:
@@ -1607,7 +1611,7 @@ class stOTTRParser ( Parser ):
         self.enterRule(localctx, 46, self.RULE_none)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 221
+            self.state = 223
             self.match(stOTTRParser.T__17)
         except RecognitionException as re:
             localctx.exception = re
@@ -1651,29 +1655,29 @@ class stOTTRParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 223
+            self.state = 225
             self.match(stOTTRParser.T__11)
-            self.state = 232
+            self.state = 234
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & 515127906308) != 0):
-                self.state = 224
+                self.state = 226
                 self.term()
-                self.state = 229
+                self.state = 231
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while _la==3:
-                    self.state = 225
+                    self.state = 227
                     self.match(stOTTRParser.T__2)
-                    self.state = 226
+                    self.state = 228
                     self.term()
-                    self.state = 231
+                    self.state = 233
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
 
 
-            self.state = 234
+            self.state = 236
             self.match(stOTTRParser.T__12)
         except RecognitionException as re:
             localctx.exception = re
@@ -1717,30 +1721,82 @@ class stOTTRParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 236
+            self.state = 238
             self.match(stOTTRParser.T__11)
-            self.state = 245
+            self.state = 247
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & 514859470852) != 0):
-                self.state = 237
+                self.state = 239
                 self.constantTerm()
-                self.state = 242
+                self.state = 244
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while _la==3:
-                    self.state = 238
+                    self.state = 240
                     self.match(stOTTRParser.T__2)
-                    self.state = 239
+                    self.state = 241
                     self.constantTerm()
-                    self.state = 244
+                    self.state = 246
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
 
 
-            self.state = 247
+            self.state = 249
             self.match(stOTTRParser.T__12)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class TurtleDocContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def directive(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(stOTTRParser.DirectiveContext)
+            else:
+                return self.getTypedRuleContext(stOTTRParser.DirectiveContext,i)
+
+
+        def getRuleIndex(self):
+            return stOTTRParser.RULE_turtleDoc
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitTurtleDoc" ):
+                return visitor.visitTurtleDoc(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def turtleDoc(self):
+
+        localctx = stOTTRParser.TurtleDocContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 52, self.RULE_turtleDoc)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 254
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & 3670272) != 0):
+                self.state = 251
+                self.directive()
+                self.state = 256
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1788,29 +1844,29 @@ class stOTTRParser ( Parser ):
     def directive(self):
 
         localctx = stOTTRParser.DirectiveContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 52, self.RULE_directive)
+        self.enterRule(localctx, 54, self.RULE_directive)
         try:
-            self.state = 253
+            self.state = 261
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [19]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 249
+                self.state = 257
                 self.prefixID()
                 pass
             elif token in [20]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 250
+                self.state = 258
                 self.base()
                 pass
             elif token in [21]:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 251
+                self.state = 259
                 self.sparqlPrefix()
                 pass
             elif token in [8]:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 252
+                self.state = 260
                 self.sparqlBase()
                 pass
             else:
@@ -1853,16 +1909,16 @@ class stOTTRParser ( Parser ):
     def prefixID(self):
 
         localctx = stOTTRParser.PrefixIDContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 54, self.RULE_prefixID)
+        self.enterRule(localctx, 56, self.RULE_prefixID)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 255
+            self.state = 263
             self.match(stOTTRParser.T__18)
-            self.state = 256
+            self.state = 264
             self.match(stOTTRParser.PNAME_NS)
-            self.state = 257
+            self.state = 265
             self.match(stOTTRParser.IRIREF)
-            self.state = 258
+            self.state = 266
             self.match(stOTTRParser.T__0)
         except RecognitionException as re:
             localctx.exception = re
@@ -1898,14 +1954,14 @@ class stOTTRParser ( Parser ):
     def base(self):
 
         localctx = stOTTRParser.BaseContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 56, self.RULE_base)
+        self.enterRule(localctx, 58, self.RULE_base)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 260
+            self.state = 268
             self.match(stOTTRParser.T__19)
-            self.state = 261
+            self.state = 269
             self.match(stOTTRParser.IRIREF)
-            self.state = 262
+            self.state = 270
             self.match(stOTTRParser.T__0)
         except RecognitionException as re:
             localctx.exception = re
@@ -1941,12 +1997,12 @@ class stOTTRParser ( Parser ):
     def sparqlBase(self):
 
         localctx = stOTTRParser.SparqlBaseContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 58, self.RULE_sparqlBase)
+        self.enterRule(localctx, 60, self.RULE_sparqlBase)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 264
+            self.state = 272
             self.match(stOTTRParser.T__7)
-            self.state = 265
+            self.state = 273
             self.match(stOTTRParser.IRIREF)
         except RecognitionException as re:
             localctx.exception = re
@@ -1985,14 +2041,14 @@ class stOTTRParser ( Parser ):
     def sparqlPrefix(self):
 
         localctx = stOTTRParser.SparqlPrefixContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 60, self.RULE_sparqlPrefix)
+        self.enterRule(localctx, 62, self.RULE_sparqlPrefix)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 267
+            self.state = 275
             self.match(stOTTRParser.T__20)
-            self.state = 268
+            self.state = 276
             self.match(stOTTRParser.PNAME_NS)
-            self.state = 269
+            self.state = 277
             self.match(stOTTRParser.IRIREF)
         except RecognitionException as re:
             localctx.exception = re
@@ -2036,24 +2092,24 @@ class stOTTRParser ( Parser ):
     def literal(self):
 
         localctx = stOTTRParser.LiteralContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 62, self.RULE_literal)
+        self.enterRule(localctx, 64, self.RULE_literal)
         try:
-            self.state = 274
+            self.state = 282
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [30]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 271
+                self.state = 279
                 self.rdfLiteral()
                 pass
             elif token in [36, 37, 38]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 272
+                self.state = 280
                 self.numericLiteral()
                 pass
             elif token in [29]:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 273
+                self.state = 281
                 self.match(stOTTRParser.BooleanLiteral)
                 pass
             else:
@@ -2099,11 +2155,11 @@ class stOTTRParser ( Parser ):
     def numericLiteral(self):
 
         localctx = stOTTRParser.NumericLiteralContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 64, self.RULE_numericLiteral)
+        self.enterRule(localctx, 66, self.RULE_numericLiteral)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 276
+            self.state = 284
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 481036337152) != 0)):
                 self._errHandler.recoverInline(self)
@@ -2151,22 +2207,22 @@ class stOTTRParser ( Parser ):
     def rdfLiteral(self):
 
         localctx = stOTTRParser.RdfLiteralContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 66, self.RULE_rdfLiteral)
+        self.enterRule(localctx, 68, self.RULE_rdfLiteral)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 278
+            self.state = 286
             self.match(stOTTRParser.String)
-            self.state = 282
+            self.state = 290
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [35]:
-                self.state = 279
+                self.state = 287
                 self.match(stOTTRParser.LANGTAG)
                 pass
             elif token in [22]:
-                self.state = 280
+                self.state = 288
                 self.match(stOTTRParser.T__21)
-                self.state = 281
+                self.state = 289
                 self.iri()
                 pass
             elif token in [3, 4, 13]:
@@ -2211,19 +2267,19 @@ class stOTTRParser ( Parser ):
     def iri(self):
 
         localctx = stOTTRParser.IriContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 68, self.RULE_iri)
+        self.enterRule(localctx, 70, self.RULE_iri)
         try:
-            self.state = 286
+            self.state = 294
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [31]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 284
+                self.state = 292
                 self.match(stOTTRParser.IRIREF)
                 pass
             elif token in [32, 33]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 285
+                self.state = 293
                 self.prefixedName()
                 pass
             else:
@@ -2266,11 +2322,11 @@ class stOTTRParser ( Parser ):
     def prefixedName(self):
 
         localctx = stOTTRParser.PrefixedNameContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 70, self.RULE_prefixedName)
+        self.enterRule(localctx, 72, self.RULE_prefixedName)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 288
+            self.state = 296
             _la = self._input.LA(1)
             if not(_la==32 or _la==33):
                 self._errHandler.recoverInline(self)
@@ -2315,19 +2371,19 @@ class stOTTRParser ( Parser ):
     def blankNode(self):
 
         localctx = stOTTRParser.BlankNodeContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 72, self.RULE_blankNode)
+        self.enterRule(localctx, 74, self.RULE_blankNode)
         try:
-            self.state = 292
+            self.state = 300
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [34]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 290
+                self.state = 298
                 self.match(stOTTRParser.BLANK_NODE_LABEL)
                 pass
             elif token in [2]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 291
+                self.state = 299
                 self.anon()
                 pass
             else:
@@ -2370,23 +2426,23 @@ class stOTTRParser ( Parser ):
     def anon(self):
 
         localctx = stOTTRParser.AnonContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 74, self.RULE_anon)
+        self.enterRule(localctx, 76, self.RULE_anon)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 294
+            self.state = 302
             self.match(stOTTRParser.T__1)
-            self.state = 298
+            self.state = 306
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==46:
-                self.state = 295
+                self.state = 303
                 self.match(stOTTRParser.WS)
-                self.state = 300
+                self.state = 308
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 301
+            self.state = 309
             self.match(stOTTRParser.T__3)
         except RecognitionException as re:
             localctx.exception = re

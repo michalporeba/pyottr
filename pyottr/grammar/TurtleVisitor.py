@@ -9,6 +9,11 @@ else:
 
 class TurtleVisitor(ParseTreeVisitor):
 
+    # Visit a parse tree produced by TurtleParser#turtleDoc.
+    def visitTurtleDoc(self, ctx:TurtleParser.TurtleDocContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by TurtleParser#directive.
     def visitDirective(self, ctx:TurtleParser.DirectiveContext):
         return self.visitChildren(ctx)

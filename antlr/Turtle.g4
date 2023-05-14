@@ -7,6 +7,7 @@ grammar Turtle;
 
 // [1] 
 // turtleDoc : statement*;
+turtleDoc : directive*;
 
 // [2] 
 // statement : directive | triples '.';

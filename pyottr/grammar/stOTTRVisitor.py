@@ -139,6 +139,11 @@ class stOTTRVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by stOTTRParser#turtleDoc.
+    def visitTurtleDoc(self, ctx:stOTTRParser.TurtleDocContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by stOTTRParser#directive.
     def visitDirective(self, ctx:stOTTRParser.DirectiveContext):
         return self.visitChildren(ctx)
