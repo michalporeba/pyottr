@@ -5,9 +5,26 @@ from .model import Template
 class stOTTRVisitor(BaseVisitor):
     def __init__(self):
         self.templates = {}
+    
+    def aggregateResult(self, aggregate, nextResult):
+        # This method is called by visitChildren to combine results
+
+        # If this is the first child, return its result
+        if aggregate is None:
+            return nextResult
+
+        # If this is not the first child, combine its result with the previous ones
+        # Here we're just making a list of results, but you can do anything you want
+        if isinstance(aggregate, list):
+            return aggregate + [nextResult]
+        else:
+            return [aggregate, nextResult]
 
     def visitStOTTRDoc(self, ctx:stOTTRParser.StOTTRDocContext):
-        self.visitChildren(ctx)
+        result = self.visitChildren(ctx)
+        print ("Result: ")
+        print(result)
+        print("-----")
         return { 'templates': self.templates }
 
     def visitStatement(self, ctx):
@@ -16,12 +33,16 @@ class stOTTRVisitor(BaseVisitor):
 
     def visitSignature(self, ctx:stOTTRParser.SignatureContext):
         print(f"Visited signature: {ctx.getText()}")
-        return self.visitChildren(ctx)
+        result = self.visitChildren(ctx)
+        print(f'RESULT SIG: {result}')
+        return result
 
     def visitTemplateName(self, ctx:stOTTRParser.TemplateNameContext):
         print(f"Visited template name: {ctx.getText()}")
         self.templates[ctx.getText()] = Template(ctx.getText())
-        return self.visitChildren(ctx)
+        result = self.visitChildren(ctx)
+        print(f"RESULT: {result}")
+        return result
     
 
     # Visit a parse tree produced by stOTTRParser#parameterList.
@@ -208,7 +229,8 @@ class stOTTRVisitor(BaseVisitor):
     # Visit a parse tree produced by stOTTRParser#iri.
     def visitIri(self, ctx:stOTTRParser.IriContext):
         print(f"Visited iri: {ctx.getText()}")
-        return self.visitChildren(ctx)
+        # this would be a good place to expand iri if this is required
+        return ctx.getText()
 
 
     # Visit a parse tree produced by stOTTRParser#prefixedName.

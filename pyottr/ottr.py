@@ -11,9 +11,9 @@ def tryit():
 
     # modifiers
     ex:NamedPizzaA [ ??pizza  ] .
-    ex:NamedPizzaB [ !?pizza ] .
-    ex:NamedPizzaC [ ?!?pizza ] .
-    ex:NamedPizzaD [ !??pizza ] .
+    #ex:NamedPizzaB [ !?pizza ] .
+    #ex:NamedPizzaC [ ?!?pizza ] .
+    #ex:NamedPizzaD [ !??pizza ] .
     """
     input_stream = InputStream(stottr_input)
     lexer = stOTTRLexer(input_stream)
