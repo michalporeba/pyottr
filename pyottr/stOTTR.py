@@ -1,7 +1,21 @@
+from antlr4 import InputStream, CommonTokenStream
+from .grammar.stOTTRLexer import stOTTRLexer
+from .grammar.stOTTRParser import stOTTRParser
+from .stOTTRVisitor import stOTTRVisitor
+
 class stOTTR:
     def __init__(self):
         self.templates = {}
 
     def process(self, definition :str) -> None: 
-        pass
+        input_stream = InputStream(definition)
+        lexer = stOTTRLexer(input_stream)
+        token_stream = CommonTokenStream(lexer)
+        parser = stOTTRParser(token_stream)
+        parse_tree = parser.stOTTRDoc()
 
+        visitor = stOTTRVisitor()
+        results = visitor.visit(parse_tree)
+
+        print("RESULTS")    
+        self.templates = self.templates | results['templates']

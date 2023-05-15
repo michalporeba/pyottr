@@ -3,8 +3,8 @@ from pyottr.stOTTR import stOTTR
 
 class StottrShould(TestCase):
 
-    def test_empty_definition_has_no_effect(self):
+    def test_single_minimal_template(self):
         stottr = stOTTR()
-        stottr.process("")
-        assert 0 == len(stottr.templates)
-        
+        stottr.process("ex:EmptyTemplate [ ] .")
+        assert 1 == len(stottr.templates)
+        assert None != stottr.templates['ex:EmptyTemplate']
