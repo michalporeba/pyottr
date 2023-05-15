@@ -1,5 +1,6 @@
 from .grammar.stOTTRParser import stOTTRParser
 from .grammar.stOTTRVisitor import stOTTRVisitor as BaseVisitor
+from .model import Template
 
 class stOTTRVisitor(BaseVisitor):
     def __init__(self):
@@ -19,5 +20,5 @@ class stOTTRVisitor(BaseVisitor):
 
     def visitTemplateName(self, ctx:stOTTRParser.TemplateNameContext):
         print(f"Visited template name: {ctx.getText()}")
-        self.templates[ctx.getText()] = {}
+        self.templates[ctx.getText()] = Template(ctx.getText())
         return self.visitChildren(ctx)
