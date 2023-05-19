@@ -40,7 +40,7 @@ ex:NamedPizza [
   } .
 """
 
-class StottrShould(TestCase):
+class StottrShould():
 
     def test_single_minimal_template(self):
         stottr = stOTTR()

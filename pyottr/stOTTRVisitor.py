@@ -1,6 +1,6 @@
 from .grammar.stOTTRParser import stOTTRParser
 from .grammar.stOTTRVisitor import stOTTRVisitor as BaseVisitor
-from .model import Template, Prefix
+from .model import Parameter, Prefix, Template
 
 class stOTTRVisitor(BaseVisitor):
     def __init__(self):
@@ -22,7 +22,7 @@ class stOTTRVisitor(BaseVisitor):
 
 
     def visitStOTTRDoc(self, ctx:stOTTRParser.StOTTRDocContext):
-        data = { 'templates': [], 'prefixes': [], 'other': [] }
+        data = { 'prefixes': [], 'templates': [], 'other': [] }
         for c in ctx.children:
             node = self.visit(c)
             if isinstance(node, Template):
@@ -35,8 +35,6 @@ class stOTTRVisitor(BaseVisitor):
             print(f'  statement type: {type(node)}')
             data['other'] += [node]
 
-        print('DATA from the TOP')
-        print(data)
         return data
 
 
@@ -53,7 +51,9 @@ class stOTTRVisitor(BaseVisitor):
             if isinstance(c, stOTTRParser.TemplateNameContext):
                 template.iri =  self.visit(c)
                 continue
-            
+            if isinstance(c, stOTTRParser.ParameterListContext):
+                template.parameters = self.visit(c)
+
             node = self.visit(c)
             print(f' c({type(c)}), node({type(node)}) = {node}')
             
@@ -73,7 +73,14 @@ class stOTTRVisitor(BaseVisitor):
     # Visit a parse tree produced by stOTTRParser#parameter.
     def visitParameter(self, ctx:stOTTRParser.ParameterContext):
         print(f"Visited parameter: {ctx.getText()}")
-        return self.visitChildren(ctx)
+        print(f' variable = {ctx.Variable()}')
+        print(f' parameter mode = {"".join([str(p) for p in ctx.ParameterMode()])}')
+        print(f' type = {ctx.type_()}')
+        print(f' default = {ctx.defaultValue()}')
+        p = Parameter(ctx.Variable())
+        p.variable = ctx.Variable()
+        p.defaultValue = ctx.defaultValue()
+        return p
 
 
     # Visit a parse tree produced by stOTTRParser#defaultValue.
