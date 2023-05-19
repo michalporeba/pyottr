@@ -6,6 +6,7 @@ class stOTTRVisitor(BaseVisitor):
     def __init__(self):
         self.templates = {}
     
+
     def aggregateResult(self, aggregate, nextResult):
         # This method is called by visitChildren to combine results
         if nextResult is None:
@@ -18,6 +19,7 @@ class stOTTRVisitor(BaseVisitor):
             return aggregate + [nextResult]
         
         return [aggregate, nextResult]
+
 
     def visitStOTTRDoc(self, ctx:stOTTRParser.StOTTRDocContext):
         data = { 'templates': [], 'prefixes': [], 'other': [] }
@@ -37,39 +39,40 @@ class stOTTRVisitor(BaseVisitor):
         print(data)
         return data
 
+
     def visitStatement(self, ctx):
         print(f"Visited statement: {ctx.getText()}")
         result = self.visitChildren(ctx)
         return result
 
+
     def visitSignature(self, ctx:stOTTRParser.SignatureContext):
         print(f"Visited signature: {ctx.getText()}")
         template = Template()
         for c in ctx.children:
-            print(f'c = {c}')
+            if isinstance(c, stOTTRParser.TemplateNameContext):
+                template.iri =  self.visit(c)
+                continue
+            
             node = self.visit(c)
-            print(type(node))
-            print(f' node = {node}')
-            if isinstance(node, stOTTRParser.TemplateNameContext):
-                template.iri =  self.visit(node)
-
+            print(f' c({type(c)}), node({type(node)}) = {node}')
+            
         return template
 
+
     def visitTemplateName(self, ctx:stOTTRParser.TemplateNameContext):
-        print(f'Visited template name {ctx.getText()}')
-        return 'TemplateTestIRI'
-        #return self.visitChildren(ctx)
+        return self.visitChildren(ctx)
         
 
     # Visit a parse tree produced by stOTTRParser#parameterList.
     def visitParameterList(self, ctx:stOTTRParser.ParameterListContext):
-        #print(f"Visited parameter list: {ctx.getText()}")
+        print(f"Visited parameter list: {ctx.getText()}")
         return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by stOTTRParser#parameter.
     def visitParameter(self, ctx:stOTTRParser.ParameterContext):
-        #print(f"Visited parameter: {ctx.getText()}")
+        print(f"Visited parameter: {ctx.getText()}")
         return self.visitChildren(ctx)
 
 
