@@ -1,6 +1,6 @@
 from .grammar.stOTTRParser import stOTTRParser
 from .grammar.stOTTRVisitor import stOTTRVisitor as BaseVisitor
-from .model import Template
+from .model import Template, Prefix
 
 class stOTTRVisitor(BaseVisitor):
     def __init__(self):
@@ -8,82 +8,98 @@ class stOTTRVisitor(BaseVisitor):
     
     def aggregateResult(self, aggregate, nextResult):
         # This method is called by visitChildren to combine results
-
-        # If this is the first child, return its result
+        if nextResult is None:
+            return aggregate
+        
         if aggregate is None:
             return nextResult
 
-        # If this is not the first child, combine its result with the previous ones
-        # Here we're just making a list of results, but you can do anything you want
         if isinstance(aggregate, list):
             return aggregate + [nextResult]
-        else:
-            return [aggregate, nextResult]
+        
+        return [aggregate, nextResult]
 
     def visitStOTTRDoc(self, ctx:stOTTRParser.StOTTRDocContext):
-        result = self.visitChildren(ctx)
-        print ("Result: ")
-        print(result)
-        print("-----")
-        return { 'templates': self.templates }
+        data = { 'templates': [], 'prefixes': [], 'other': [] }
+        for c in ctx.children:
+            node = self.visit(c)
+            if isinstance(node, Template):
+                data['templates'] += [node]
+                continue
+            if isinstance(node, Prefix):
+                data['prefixes'] += [node]
+                continue
+
+            print(f'  statement type: {type(node)}')
+            data['other'] += [node]
+
+        print('DATA from the TOP')
+        print(data)
+        return data
 
     def visitStatement(self, ctx):
         print(f"Visited statement: {ctx.getText()}")
-        return super().visitStatement(ctx)
+        result = self.visitChildren(ctx)
+        return result
 
     def visitSignature(self, ctx:stOTTRParser.SignatureContext):
         print(f"Visited signature: {ctx.getText()}")
-        result = self.visitChildren(ctx)
-        print(f'RESULT SIG: {result}')
-        return result
+        template = Template()
+        for c in ctx.children:
+            print(f'c = {c}')
+            node = self.visit(c)
+            print(type(node))
+            print(f' node = {node}')
+            if isinstance(node, stOTTRParser.TemplateNameContext):
+                template.iri =  self.visit(node)
+
+        return template
 
     def visitTemplateName(self, ctx:stOTTRParser.TemplateNameContext):
-        print(f"Visited template name: {ctx.getText()}")
-        self.templates[ctx.getText()] = Template(ctx.getText())
-        result = self.visitChildren(ctx)
-        print(f"RESULT: {result}")
-        return result
-    
+        print(f'Visited template name {ctx.getText()}')
+        return 'TemplateTestIRI'
+        #return self.visitChildren(ctx)
+        
 
     # Visit a parse tree produced by stOTTRParser#parameterList.
     def visitParameterList(self, ctx:stOTTRParser.ParameterListContext):
-        print(f"Visited parameter list: {ctx.getText()}")
+        #print(f"Visited parameter list: {ctx.getText()}")
         return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by stOTTRParser#parameter.
     def visitParameter(self, ctx:stOTTRParser.ParameterContext):
-        print(f"Visited parameter: {ctx.getText()}")
+        #print(f"Visited parameter: {ctx.getText()}")
         return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by stOTTRParser#defaultValue.
     def visitDefaultValue(self, ctx:stOTTRParser.DefaultValueContext):
-        print(f"Visited default value: {ctx.getText()}")
+        #print(f"Visited default value: {ctx.getText()}")
         return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by stOTTRParser#annotationList.
     def visitAnnotationList(self, ctx:stOTTRParser.AnnotationListContext):
-        print(f"Visited annotation list: {ctx.getText()}")
+        #print(f"Visited annotation list: {ctx.getText()}")
         return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by stOTTRParser#annotation.
     def visitAnnotation(self, ctx:stOTTRParser.AnnotationContext):
-        print(f"Visited annotation: {ctx.getText()}")
+        #print(f"Visited annotation: {ctx.getText()}")
         return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by stOTTRParser#baseTemplate.
     def visitBaseTemplate(self, ctx:stOTTRParser.BaseTemplateContext):
-        print(f"Visited base template : {ctx.getText()}")
+        #print(f"Visited base template : {ctx.getText()}")
         return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by stOTTRParser#template.
     def visitTemplate(self, ctx:stOTTRParser.TemplateContext):
-        print(f"Visited template: {ctx.getText()}")
+        #print(f"Visited template: {ctx.getText()}")
         return self.visitChildren(ctx)
 
 
@@ -186,8 +202,7 @@ class stOTTRVisitor(BaseVisitor):
 
     # Visit a parse tree produced by stOTTRParser#prefixID.
     def visitPrefixID(self, ctx:stOTTRParser.PrefixIDContext):
-        print(f"Visited prefix ID: {ctx.getText()}")
-        return self.visitChildren(ctx)
+        return Prefix(ctx.PNAME_NS(), ctx.IRIREF())
 
 
     # Visit a parse tree produced by stOTTRParser#base.

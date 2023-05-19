@@ -1,10 +1,20 @@
 class Template:
-    def __init__(self, iri:str) -> None:
-        self.iri = iri
-        
-#private Template(String iri, List<Parameter> parameters, Set<Instance> annotations, Set<Instance> instances) {
-#        super(iri, parameters, annotations);
-#        this.pattern = instances;
-#        updatePatternVariables();
-#    }
+    def __init__(self) -> None:
+        self.iri = None
 
+    def __str__(self) -> str:
+        return f'T(iri:{self.iri})'
+    
+    def __repr__(self) -> str:
+        return self.__str__()
+    
+class Prefix:
+    def __init__(self, namespace:str, iri:str) -> None:
+        self.namespace = namespace
+        self.iri = iri
+
+    def __str__(self) -> str:
+        return f'P({self.namespace} -> {self.iri})'
+    
+    def __repr__(self) -> str:
+        return self.__str__()

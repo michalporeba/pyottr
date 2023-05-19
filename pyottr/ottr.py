@@ -24,5 +24,5 @@ def tryit():
     visitor = stOTTRVisitor()
     result = visitor.visit(parse_tree)
 
+    print('WHAT COMES OUT OF VISITOR')
     print(result)
-
