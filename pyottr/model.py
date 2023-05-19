@@ -23,8 +23,10 @@ class Parameter:
         repr += [self.variable]
         if self.default_value:
             repr += [' = ', f'"{self.default_value}"']
+        if len(repr) == 0:
+            return ''
         return ''.join(repr)
-
+        
 
 class Prefix:
     def __init__(self, namespace:str, iri:str) -> None:

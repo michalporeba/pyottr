@@ -5,7 +5,7 @@ from .stOTTRVisitor import stOTTRVisitor
 
 class stOTTR:
     def __init__(self):
-        self.templates = {}
+        self._templates = {}
 
     def process(self, definition :str) -> None: 
         input_stream = InputStream(definition)
@@ -17,5 +17,4 @@ class stOTTR:
         visitor = stOTTRVisitor()
         results = visitor.visit(parse_tree)
 
-        print("RESULTS")    
-        self.templates = self.templates | results['templates']
+        self._templates = self._templates | results['templates']

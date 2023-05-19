@@ -53,6 +53,7 @@ class stOTTRVisitor(BaseVisitor):
                 continue
             if isinstance(c, stOTTRParser.ParameterListContext):
                 template.parameters = self.visit(c)
+                continue 
 
             node = self.visit(c)
             print(f' c({type(c)}), node({type(node)}) = {node}')
@@ -249,6 +250,8 @@ class stOTTRVisitor(BaseVisitor):
     # Visit a parse tree produced by stOTTRParser#iri.
     def visitIri(self, ctx:stOTTRParser.IriContext):
         print(f"Visited iri: {ctx.getText()}")
+        print(f'  IRIREF = {ctx.IRIREF()}')
+        print(f'  prefixed name = {ctx.prefixedName}')
         # this would be a good place to expand iri if this is required
         return ctx.getText()
 
