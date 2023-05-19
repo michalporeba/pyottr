@@ -194,13 +194,10 @@ class stOTTRVisitor(BaseVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by stOTTRParser#directive.
     def visitDirective(self, ctx:stOTTRParser.DirectiveContext):
-        print(f"Visited directive: {ctx.getText()}")
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by stOTTRParser#prefixID.
     def visitPrefixID(self, ctx:stOTTRParser.PrefixIDContext):
         return Prefix(ctx.PNAME_NS(), ctx.IRIREF())
 
@@ -217,10 +214,8 @@ class stOTTRVisitor(BaseVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by stOTTRParser#sparqlPrefix.
     def visitSparqlPrefix(self, ctx:stOTTRParser.SparqlPrefixContext):
-        print(f"Visited SPARQL prefix: {ctx.getText()}")
-        return self.visitChildren(ctx)
+        return Prefix(ctx.PNAME_NS(), ctx.IRIREF())
 
 
     # Visit a parse tree produced by stOTTRParser#literal.
