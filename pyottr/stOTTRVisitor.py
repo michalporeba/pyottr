@@ -4,9 +4,8 @@ from .model import Parameter, Prefix, Template
 
 class stOTTRVisitor(BaseVisitor):
     def __init__(self):
-        self.templates = {}
+        pass
     
-
     def aggregateResult(self, aggregate, nextResult):
         # This method is called by visitChildren to combine results
         if nextResult is None:
@@ -52,7 +51,7 @@ class stOTTRVisitor(BaseVisitor):
                 template.iri =  self.visit(c)
                 continue
             if isinstance(c, stOTTRParser.ParameterListContext):
-                template.parameters = self.visit(c)
+                template.add_parameter(self.visit(c))
                 continue 
 
             node = self.visit(c)

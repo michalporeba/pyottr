@@ -5,17 +5,18 @@ from .stOTTRVisitor import stOTTRVisitor
 
 def tryit():
     stottr_input = """
-    @prefix : <http://example.xyz/ns> .
-    @prefix ex: <http://example.net/ns> .
-    PREFIX ex2: <http://example.com/ns>
+    #@prefix : <http://example.xyz/ns> .
+    #@prefix ex: <http://example.net/ns> .
+    #PREFIX ex2: <http://example.com/ns>
 
     # modifiers
-    ex:NamedPizzaA [ ??pizza  ] .
+    ex:NamedPizza [ owl:Class ?pizza ] .
+    #ex:NamedPizzaA [ ??pizza  ] .
     #ex:NamedPizzaB [ !?pizza ] .
     #ex:NamedPizzaC [ ?!?pizza ] .
     #ex:NamedPizzaD [ !??pizza ] .
     """
-    input_stream = InputStream(stottr_input)
+    input_stream = InputStream('ex:NamedPizza [ owl:Class ?pizza ] .')
     lexer = stOTTRLexer(input_stream)
     token_stream = CommonTokenStream(lexer)
     parser = stOTTRParser(token_stream)
@@ -25,4 +26,4 @@ def tryit():
     result = visitor.visit(parse_tree)
 
     print('WHAT COMES OUT OF VISITOR')
-    print(result)
+    #print(result)

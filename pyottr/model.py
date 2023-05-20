@@ -25,6 +25,7 @@ class Parameter:
             repr += [' = ', f'"{self.default_value}"']
         if len(repr) == 0:
             return ''
+        print(repr[0])
         return ''.join(repr)
         
 
@@ -41,12 +42,26 @@ class Prefix:
 
 
 class Template:
-    def __init__(self) -> None:
-        self.iri = None
+    def __init__(self, iri:str=None) -> None:
+        self.iri = iri
         self.parameters = []
 
+    def add_parameter(self, parameter:Parameter) -> None:
+        print(f' type(parameter) == {type(parameter)}')
+        self.parameters.append(parameter)
+
+    def get_parameter(self, variable:str) -> Parameter:
+        return [p for p in self.parameters if p.variable == variable][0]
+
     def __str__(self) -> str:
-        return f'T(iri:{self.iri})'
+        repr = [self.iri, ' [']
+        if len(self.parameters) > 0:
+            repr.append(' ')
+            repr.append(', '.join([str(p) for p in self.parameters]))
+            repr.append(' ')
+
+        repr += ['] ', '.']
+        return ''.join(repr)
     
     def __repr__(self) -> str:
         return self.__str__()
