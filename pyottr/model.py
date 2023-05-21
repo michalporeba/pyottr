@@ -25,7 +25,6 @@ class Parameter:
             repr += [' = ', f'"{self.default_value}"']
         if len(repr) == 0:
             return ''
-        print(repr[0])
         return ''.join(repr)
         
 

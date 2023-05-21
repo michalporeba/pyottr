@@ -51,7 +51,10 @@ class stOTTRVisitor(BaseVisitor):
                 template.iri =  self.visit(c)
                 continue
             if isinstance(c, stOTTRParser.ParameterListContext):
-                template.add_parameter(self.visit(c))
+                results = self.visit(c)
+                print('.......')
+                print(results)
+                template.add_parameter(results)
                 continue 
 
             node = self.visit(c)
@@ -75,9 +78,10 @@ class stOTTRVisitor(BaseVisitor):
         print(f"Visited parameter: {ctx.getText()}")
         print(f' variable = {ctx.Variable()}')
         print(f' parameter mode = {"".join([str(p) for p in ctx.ParameterMode()])}')
-        print(f' type = {ctx.type_()}')
+        print(f' type = {self.visit(ctx.type_())}')
         print(f' default = {ctx.defaultValue()}')
         p = Parameter(ctx.Variable())
+        print(p)
         p.variable = ctx.Variable()
         p.defaultValue = ctx.defaultValue()
         return p

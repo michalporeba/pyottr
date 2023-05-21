@@ -50,7 +50,7 @@ class StottrShould():
 
     def test_with_spec_example_01(self):
         stottr = stOTTR()
-        stottr.process('ex:NamedPizza [ ??pizza  ] .')
+        stottr.parse('ex:NamedPizza [ ??pizza  ] .')
         template = stottr.get_template('ex:NamedPizza')
         assert len(template.parameters) == 1
         pizza = template.get_parameter('?pizza')
@@ -61,7 +61,7 @@ class StottrShould():
 
     def test_with_spec_example_02(self):
         stottr = stOTTR()
-        stottr.process('ex:NamedPizza [ !?pizza ] .')
+        stottr.parse('ex:NamedPizza [ !?pizza ] .')
         template = stottr.get_template('ex:NamedPizza')
         pizza = template.get_parameter('?pizza')
         assert pizza.variable == '?pizza'
@@ -71,7 +71,7 @@ class StottrShould():
 
     def test_with_spec_example_03(self):
         stottr = stOTTR()
-        stottr.process('ex:NamedPizza [ ?!?pizza ] .')
+        stottr.parse('ex:NamedPizza [ ?!?pizza ] .')
         template = stottr.get_template('ex:NamedPizza')
         pizza = template.get_parameter('?pizza')
         assert pizza.variable == '?pizza'
@@ -81,8 +81,9 @@ class StottrShould():
 
     def test_with_spec_example_04(self):
         stottr = stOTTR()
-        stottr.process('ex:NamedPizza [ !??pizza ] .')
+        stottr.parse('ex:NamedPizza [ !??pizza ] .')
         template = stottr.get_template('ex:NamedPizza')
+        assert str(template) == 'ex:NamedPizza [ !??pizza ] .'
         pizza = template.get_parameter('?pizza')
         assert pizza.variable == '?pizza'
         assert pizza.optional == True
@@ -91,8 +92,9 @@ class StottrShould():
 
     def test_with_spec_example_05(self):
         stottr = stOTTR()
-        stottr.process('ex:NamedPizza [ owl:Class ?pizza ] .')
+        stottr.parse('ex:NamedPizza [ owl:Class ?pizza ] .')
         template = stottr.get_template('ex:NamedPizza')
+        assert str(template) == 'ex:NamedPizza [ owl:Class ?pizza ] .'
         pizza = template.get_parameter('?pizza')
         assert pizza.variable == '?pizza'
         assert pizza.optional == False

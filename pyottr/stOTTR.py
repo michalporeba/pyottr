@@ -7,7 +7,7 @@ class stOTTR:
     def __init__(self):
         self._templates = {}
 
-    def process(self, definition :str) -> None: 
+    def parse(self, definition :str) -> None: 
         input_stream = InputStream(definition)
         lexer = stOTTRLexer(input_stream)
         token_stream = CommonTokenStream(lexer)
