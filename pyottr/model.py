@@ -44,18 +44,25 @@ class Prefix(Directive):
 
 
 class Term:
-    def __init__(self, value):
+    def __init__(self, value) -> None:
         self.value = value
 
-    def __eq__(self, other):
+    def __str__(self):
+        return str(self.value)
+
+    def __eq__(self, other) -> bool:
         if isinstance(other, type(self)):
             return self.value == other.value
 
 
 class Iri(Term):
-    def __init__(self, value):
+    def __init__(self, value:str) -> None:
         super().__init__(value)
 
+    def __eq__(self, other) -> bool:
+        if isinstance(other, str):
+            return self.value == other 
+        return super().__eq__(other)
 
 class Statement:
     pass
@@ -63,7 +70,13 @@ class Statement:
 
 class Template(Statement):
     def __init__(self, name:Iri=None) -> None:
-        self.name = name
+        if isinstance(name, str):
+            self.name = Iri(name)
+        elif isinstance(name, Iri):
+            self.name = name
+        else: 
+            raise Exception("Templates name has to be a str or an Iri!")    
+        
         self.parameters = []
 
     def add_parameter(self, parameter:Parameter) -> None:
@@ -73,7 +86,7 @@ class Template(Statement):
         return [p for p in self.parameters if p.variable == variable][0]
 
     def __str__(self) -> str:
-        repr = [self.name, ' [']
+        repr = [str(self.name), ' [']
         if len(self.parameters) > 0:
             repr.append(' ')
             repr.append(', '.join([str(p) for p in self.parameters]))

@@ -40,6 +40,7 @@ class PrefixShould(TestCase):
 class StatementsShould(TestCase):
     def test_template_with_no_parameters(self):
         sut = Template('ex:example')
+        assert isinstance(sut.name, Iri)
         assert sut.name == 'ex:example'
         assert len(sut.parameters) == 0
         assert str(sut) == 'ex:example [] .'
@@ -47,6 +48,7 @@ class StatementsShould(TestCase):
     def test_template_with_single_parameter(self):
         sut = Template('ex:test')
         sut.add_parameter(Parameter('?pizza'))
+        assert isinstance(sut.name, Iri)
         assert sut.name == 'ex:test'
         assert len(sut.parameters) == 1
         assert str(sut) == 'ex:test [ ?pizza ] .'
