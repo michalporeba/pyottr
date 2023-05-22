@@ -75,7 +75,7 @@ class Template(Statement):
         elif isinstance(name, Iri):
             self.name = name
         else: 
-            raise Exception("Templates name has to be a str or an Iri!")    
+            raise Exception(f'Templates name has to be a str or an Iri! It was {type(name)}')    
         
         self.parameters = []
 

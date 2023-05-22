@@ -41,12 +41,11 @@ ex:NamedPizza [
 """
 
 class StottrShould(TestCase):
-    pass
-    # def test_single_minimal_template(self):
-    #     stottr = stOTTR()
-    #     assert stottr.get_template('ex:EmptyTemplate') is None
-    #     stottr.parse('ex:EmptyTemplate [ ] .')
-    #     assert stottr.get_template('ex:EmptyTemplate') is not None
+    def test_single_minimal_template(self):
+        stottr = stOTTR()
+        assert stottr.get_template('ex:EmptyTemplate') is None
+        stottr.parse('ex:EmptyTemplate [ ] .')
+        assert stottr.get_template('ex:EmptyTemplate') is not None
 
     # def test_with_spec_example_01(self):
     #     stottr = stOTTR()

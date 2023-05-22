@@ -1,6 +1,6 @@
 from .grammar.stOTTRParser import stOTTRParser
 from .grammar.stOTTRVisitor import stOTTRVisitor as BaseVisitor
-from .model import Parameter, Prefix, Template
+from .model import Iri, Parameter, Prefix, Template
 
 class stOTTRVisitor(BaseVisitor):
     def __init__(self):
@@ -21,20 +21,20 @@ class stOTTRVisitor(BaseVisitor):
 
 
     def visitStOTTRDoc(self, ctx:stOTTRParser.StOTTRDocContext):
-        data = { 'prefixes': [], 'templates': [], 'other': [] }
+        prefixes = []
+        templates = []
         for c in ctx.children:
             node = self.visit(c)
             if isinstance(node, Template):
-                data['templates'] += [node]
+                templates += [node]
                 continue
             if isinstance(node, Prefix):
-                data['prefixes'] += [node]
+                prefixes += [node]
                 continue
 
-            print(f'  statement type: {type(node)}')
-            data['other'] += [node]
-
-        return data
+            print(f' WARNING: unknown statement type: {type(node)}')
+            
+        return (prefixes, templates)
 
 
     def visitStatement(self, ctx):
@@ -45,10 +45,10 @@ class stOTTRVisitor(BaseVisitor):
 
     def visitSignature(self, ctx:stOTTRParser.SignatureContext):
         print(f"Visited signature: {ctx.getText()}")
-        template = Template()
+        template = None
         for c in ctx.children:
             if isinstance(c, stOTTRParser.TemplateNameContext):
-                template.iri =  self.visit(c)
+                template = Template(self.visit(c))
                 continue
             if isinstance(c, stOTTRParser.ParameterListContext):
                 results = self.visit(c)
@@ -252,11 +252,7 @@ class stOTTRVisitor(BaseVisitor):
 
     # Visit a parse tree produced by stOTTRParser#iri.
     def visitIri(self, ctx:stOTTRParser.IriContext):
-        print(f"Visited iri: {ctx.getText()}")
-        print(f'  IRIREF = {ctx.IRIREF()}')
-        print(f'  prefixed name = {ctx.prefixedName}')
-        # this would be a good place to expand iri if this is required
-        return ctx.getText()
+        return Iri(ctx.getText())
 
 
     # Visit a parse tree produced by stOTTRParser#prefixedName.

@@ -2,14 +2,14 @@ from antlr4 import InputStream, CommonTokenStream
 from .grammar.stOTTRLexer import stOTTRLexer
 from .grammar.stOTTRParser import stOTTRParser
 from .stOTTRVisitor import stOTTRVisitor
-from .model import Template
+from .model import Iri, Template
 
 class stOTTR:
     def __init__(self):
-        self._templates = {}
+        self._templates = []
 
-    def get_template(self, iri:str) -> Template:
-        results = [t for t in self._templates if t.iri == iri]
+    def get_template(self, name:str|Iri) -> Template:
+        results = [t for t in self._templates if t.name == name]
         if len(results) == 0:
             return None
         return results[0]
@@ -23,8 +23,8 @@ class stOTTR:
         parse_tree = parser.stOTTRDoc()
 
         visitor = stOTTRVisitor()
-        results = visitor.visit(parse_tree)
+        (_, templates) = visitor.visit(parse_tree)
 
-        self._templates = self._templates | results['templates']
+        self._templates += templates
 
         return (None, self._templates)
