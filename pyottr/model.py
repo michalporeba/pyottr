@@ -7,6 +7,7 @@ class Parameter:
         self.default_value = None
         self.optional = False 
         self.nonblank = False
+        self.type_ = None
 
     def set_default_value(self, default_value:str) -> None: 
         self.default_value = default_value
@@ -23,6 +24,10 @@ class Parameter:
             repr += ['?']
         if self.nonblank:
             repr += ['!']
+        if self.type_:
+            if self.optional or self.nonblank:
+                repr += [' ']
+            repr += [str(self.type_), ' ']
         repr += [self.variable]
         if self.default_value:
             repr += [' = ', f'"{self.default_value}"']
@@ -98,3 +103,26 @@ class Template(Statement):
     def __repr__(self) -> str:
         return self.__str__()
     
+
+class Type: 
+    pass
+
+
+class Basic(Type):
+    def __init__(self, iri:str) -> None:
+        self.iri = iri 
+
+    def __str__(self):
+        return self.iri
+
+
+class List(Type):
+    pass
+
+
+class LowestUpperBound(Type):
+    pass 
+
+
+class NonEmptyList(Type):
+    pass

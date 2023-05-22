@@ -58,68 +58,68 @@ class StottrShould(TestCase):
         assert pizza.nonblank == False 
         assert pizza.default_value == None
 
-    # def test_with_spec_example_02(self):
-    #     stottr = stOTTR()
-    #     stottr.parse('ex:NamedPizza [ !?pizza ] .')
-    #     template = stottr.get_template('ex:NamedPizza')
-    #     pizza = template.get_parameter('?pizza')
-    #     assert pizza.variable == '?pizza'
-    #     assert pizza.optional == False
-    #     assert pizza.nonblank == True
-    #     assert pizza.default_value == None
+    def test_with_spec_example_02(self):
+        stottr = stOTTR()
+        stottr.parse('ex:NamedPizza [ !?pizza ] .')
+        template = stottr.get_template('ex:NamedPizza')
+        pizza = template.get_parameter('?pizza')
+        assert pizza.variable == '?pizza'
+        assert pizza.optional == False
+        assert pizza.nonblank == True
+        assert pizza.default_value == None
 
-    # def test_with_spec_example_03(self):
-    #     stottr = stOTTR()
-    #     stottr.parse('ex:NamedPizza [ ?!?pizza ] .')
-    #     template = stottr.get_template('ex:NamedPizza')
-    #     pizza = template.get_parameter('?pizza')
-    #     assert pizza.variable == '?pizza'
-    #     assert pizza.optional == True
-    #     assert pizza.nonblank == True
-    #     assert pizza.default_value == None
+    def test_with_spec_example_03(self):
+        stottr = stOTTR()
+        stottr.parse('ex:NamedPizza [ ?!?pizza ] .')
+        template = stottr.get_template('ex:NamedPizza')
+        pizza = template.get_parameter('?pizza')
+        assert pizza.variable == '?pizza'
+        assert pizza.optional == True
+        assert pizza.nonblank == True
+        assert pizza.default_value == None
 
-    # def test_with_spec_example_04(self):
-    #     stottr = stOTTR()
-    #     stottr.parse('ex:NamedPizza [ !??pizza ] .')
-    #     template = stottr.get_template('ex:NamedPizza')
-    #     assert str(template) == 'ex:NamedPizza [ !??pizza ] .'
-    #     pizza = template.get_parameter('?pizza')
-    #     assert pizza.variable == '?pizza'
-    #     assert pizza.optional == True
-    #     assert pizza.nonblank == True
-    #     assert pizza.default_value == None
+    def test_with_spec_example_04(self):
+        stottr = stOTTR()
+        stottr.parse('ex:NamedPizza [ !??pizza ] .')
+        template = stottr.get_template('ex:NamedPizza')
+        assert str(template) == 'ex:NamedPizza [ ?!?pizza ] .'
+        pizza = template.get_parameter('?pizza')
+        assert pizza.variable == '?pizza'
+        assert pizza.optional == True
+        assert pizza.nonblank == True
+        assert pizza.default_value == None
 
-    # def test_with_spec_example_05(self):
-    #     stottr = stOTTR()
-    #     stottr.parse('ex:NamedPizza [ owl:Class ?pizza ] .')
-    #     template = stottr.get_template('ex:NamedPizza')
-    #     assert str(template) == 'ex:NamedPizza [ owl:Class ?pizza ] .'
-    #     pizza = template.get_parameter('?pizza')
-    #     assert pizza.variable == '?pizza'
-    #     assert pizza.optional == False
-    #     assert pizza.nonblank == False
-    #     assert pizza.default_value == None
+    def test_with_spec_example_05(self):
+        stottr = stOTTR()
+        stottr.parse('ex:NamedPizza [ owl:Class ?pizza ] .')
+        template = stottr.get_template('ex:NamedPizza')
+        assert str(template) == 'ex:NamedPizza [ owl:Class ?pizza ] .'
+        pizza = template.get_parameter('?pizza')
+        assert pizza.variable == '?pizza'
+        assert pizza.optional == False
+        assert pizza.nonblank == False
+        assert pizza.default_value == None
 
-    # def test_error(self):
-    #     stottr_input = """
-    #     #@prefix : <http://example.xyz/ns> .
-    #     #@prefix ex: <http://example.net/ns> .
-    #     #PREFIX ex2: <http://example.com/ns>
+    def test_with_spec_example_06(self):
+        stottr = stOTTR()
+        stottr.parse('ex:NamedPizza [ ? owl:Class ?pizza ] .')
+        template = stottr.get_template('ex:NamedPizza')
+        print(str(template))
+        assert str(template) == 'ex:NamedPizza [ ? owl:Class ?pizza ] .'
+        pizza = template.get_parameter('?pizza')
+        assert pizza.variable == '?pizza'
+        assert pizza.optional == True
+        assert pizza.nonblank == False
+        assert pizza.default_value == None
 
-    #     # modifiers
-    #     ex:NamedPizza [ owl:Class ?pizza ] .
-    #     #ex:NamedPizzaA [ ??pizza  ] .
-    #     #ex:NamedPizzaB [ !?pizza ] .
-    #     #ex:NamedPizzaC [ ?!?pizza ] .
-    #     #ex:NamedPizzaD [ !??pizza ] .
-    #     """
-    #     stottr = stOTTR()
-    #     (prefixes, templates) = stottr.parse(stottr_input)
-    #     print('templates')
-    #     print(templates)
-    #     assert ''==str(templates)
-    #     assert 1 == 0
-        
-
-#ex:NamedPizza [ ? owl:Class ?pizza ] .
-#ex:NamedPizza [ ?! owl:Class ?pizza ] .
+    def test_with_spec_example_06(self):
+        stottr = stOTTR()
+        stottr.parse('ex:NamedPizza [ ?! owl:Class ?pizza ] .')
+        template = stottr.get_template('ex:NamedPizza')
+        print(str(template))
+        assert str(template) == 'ex:NamedPizza [ ?! owl:Class ?pizza ] .'
+        pizza = template.get_parameter('?pizza')
+        assert pizza.variable == '?pizza'
+        assert pizza.optional == True
+        assert pizza.nonblank == True
+        assert pizza.default_value == None

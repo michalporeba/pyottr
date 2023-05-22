@@ -1,6 +1,6 @@
 from .grammar.stOTTRParser import stOTTRParser
 from .grammar.stOTTRVisitor import stOTTRVisitor as BaseVisitor
-from .model import Iri, Parameter, Prefix, Template
+from .model import *
 
 class stOTTRVisitor(BaseVisitor):
     def __init__(self):
@@ -79,7 +79,10 @@ class stOTTRVisitor(BaseVisitor):
         modifiers = [str(x) for x in ctx.ParameterMode()]
         p.optional = '?' in modifiers
         p.nonblank = '!' in modifiers
+        print('mmmmm')
+        p.type_ = self.visitChildren(ctx)
         p.defaultValue = ctx.defaultValue()
+        self.visitChildren(ctx)
         return p
 
 
@@ -160,7 +163,7 @@ class stOTTRVisitor(BaseVisitor):
     # Visit a parse tree produced by stOTTRParser#basicType.
     def visitBasicType(self, ctx:stOTTRParser.BasicTypeContext):
         print(f"Visited basic type: {ctx.getText()}")
-        return self.visitChildren(ctx)
+        return Basic(ctx.getText())
 
 
     # Visit a parse tree produced by stOTTRParser#term.
