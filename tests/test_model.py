@@ -1,7 +1,7 @@
 from unittest import TestCase
 from pyottr.model import Parameter, Template
 
-class ModelShould(TestCase):
+class ParameterShould(TestCase):
     def test_simple_parameter_name(self):
         assert str(Parameter('?a')) == '?a'
         assert str(Parameter('?b')) == '?b'
@@ -29,6 +29,8 @@ class ModelShould(TestCase):
         sut.set_default_value('xyz')
         assert str(sut) == '?withDefault = "xyz"'
 
+
+class StatementsShould(TestCase):
     def test_template_with_no_parameters(self):
         sut = Template('ex:example')
         assert sut.iri == 'ex:example'
@@ -41,3 +43,7 @@ class ModelShould(TestCase):
         assert sut.iri == 'ex:test'
         assert len(sut.parameters) == 1
         assert str(sut) == 'ex:test [ ?pizza ] .'
+
+
+class TermsShould(TestCase):
+    pass

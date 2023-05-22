@@ -1,3 +1,6 @@
+class Directive:
+    pass
+
 class Parameter:
     def __init__(self, variable):
         self.variable = variable
@@ -28,7 +31,7 @@ class Parameter:
         return ''.join(repr)
         
 
-class Prefix:
+class Prefix(Directive):
     def __init__(self, namespace:str, iri:str) -> None:
         self.namespace = namespace
         self.iri = iri
@@ -40,7 +43,11 @@ class Prefix:
         return self.__str__()
 
 
-class Template:
+class Statement:
+    pass
+
+
+class Template(Statement):
     def __init__(self, iri:str=None) -> None:
         self.iri = iri
         self.parameters = []
@@ -65,3 +72,5 @@ class Template:
     def __repr__(self) -> str:
         return self.__str__()
     
+
+
