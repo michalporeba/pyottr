@@ -32,12 +32,12 @@ class Parameter:
         
 
 class Prefix(Directive):
-    def __init__(self, namespace:str, iri:str) -> None:
-        self.namespace = namespace
+    def __init__(self, label:str, iri:str) -> None:
+        self.label = label
         self.iri = iri
 
     def __str__(self) -> str:
-        return f'P({self.namespace} -> {self.iri})'
+        return f'P({self.label} -> {self.iri})'
     
     def __repr__(self) -> str:
         return self.__str__()
@@ -73,4 +73,16 @@ class Template(Statement):
         return self.__str__()
     
 
+class Term:
+    def __init__(self, value):
+        self.value = value
+
+    def __eq__(self, other):
+        if isinstance(other, type(self)):
+            return self.value == other.value
+
+
+class Iri(Term):
+    def __init__(self, value):
+        super().__init__(value)
 

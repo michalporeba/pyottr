@@ -1,5 +1,5 @@
 from unittest import TestCase
-from pyottr.model import Parameter, Template
+from pyottr.model import *
 
 class ParameterShould(TestCase):
     def test_simple_parameter_name(self):
@@ -30,6 +30,13 @@ class ParameterShould(TestCase):
         assert str(sut) == '?withDefault = "xyz"'
 
 
+class PrefixShould(TestCase):
+    def test_instantiation(self):
+        sut = Prefix('l:', 'hello')
+        assert sut.label == 'l:'
+        assert sut.iri == 'hello'
+
+
 class StatementsShould(TestCase):
     def test_template_with_no_parameters(self):
         sut = Template('ex:example')
@@ -46,4 +53,13 @@ class StatementsShould(TestCase):
 
 
 class TermsShould(TestCase):
-    pass
+    def test_term_equality(self):
+        assert Term(1) == Term(1)
+        assert Term('a') == Term('a')
+        assert Iri('ex:Pizza') == Iri('ex:Pizza')
+
+    def test_term_inequality(self):
+        assert Term(1) != Term(2)
+        assert Term('a') != Term('b')
+        assert Term('abc') != Term(123)
+        assert Iri(':Pizza') != Iri('ex:Pizza')
