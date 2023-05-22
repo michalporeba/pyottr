@@ -75,14 +75,10 @@ class stOTTRVisitor(BaseVisitor):
 
     # Visit a parse tree produced by stOTTRParser#parameter.
     def visitParameter(self, ctx:stOTTRParser.ParameterContext):
-        print(f"Visited parameter: {ctx.getText()}")
-        print(f' variable = {ctx.Variable()}')
-        print(f' parameter mode = {"".join([str(p) for p in ctx.ParameterMode()])}')
-        print(f' type = {self.visit(ctx.type_())}')
-        print(f' default = {ctx.defaultValue()}')
-        p = Parameter(ctx.Variable())
-        print(p)
-        p.variable = ctx.Variable()
+        p = Parameter(str(ctx.Variable()))
+        modifiers = [str(x) for x in ctx.ParameterMode()]
+        p.optional = '?' in modifiers
+        p.nonblank = '!' in modifiers
         p.defaultValue = ctx.defaultValue()
         return p
 

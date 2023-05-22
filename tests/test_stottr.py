@@ -47,16 +47,16 @@ class StottrShould(TestCase):
         stottr.parse('ex:EmptyTemplate [ ] .')
         assert stottr.get_template('ex:EmptyTemplate') is not None
 
-    # def test_with_spec_example_01(self):
-    #     stottr = stOTTR()
-    #     stottr.parse('ex:NamedPizza [ ??pizza  ] .')
-    #     template = stottr.get_template('ex:NamedPizza')
-    #     assert len(template.parameters) == 1
-    #     pizza = template.get_parameter('?pizza')
-    #     assert pizza.variable == '?pizza'
-    #     assert pizza.optional == True 
-    #     assert pizza.nonblank == False 
-    #     assert pizza.default_value == None
+    def test_with_spec_example_01(self):
+        stottr = stOTTR()
+        stottr.parse('ex:NamedPizza [ ??pizza  ] .')
+        template = stottr.get_template('ex:NamedPizza')
+        assert len(template.parameters) == 1
+        pizza = template.get_parameter('?pizza')
+        assert pizza.variable == '?pizza'
+        assert pizza.optional == True 
+        assert pizza.nonblank == False 
+        assert pizza.default_value == None
 
     # def test_with_spec_example_02(self):
     #     stottr = stOTTR()

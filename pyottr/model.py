@@ -2,7 +2,7 @@ class Directive:
     pass
 
 class Parameter:
-    def __init__(self, variable):
+    def __init__(self, variable:str) -> None:
         self.variable = variable
         self.default_value = None
         self.optional = False 
