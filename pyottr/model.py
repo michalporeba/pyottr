@@ -43,36 +43,6 @@ class Prefix(Directive):
         return self.__str__()
 
 
-class Statement:
-    pass
-
-
-class Template(Statement):
-    def __init__(self, iri:str=None) -> None:
-        self.iri = iri
-        self.parameters = []
-
-    def add_parameter(self, parameter:Parameter) -> None:
-        print(f' type(parameter) == {type(parameter)}')
-        self.parameters.append(parameter)
-
-    def get_parameter(self, variable:str) -> Parameter:
-        return [p for p in self.parameters if p.variable == variable][0]
-
-    def __str__(self) -> str:
-        repr = [self.iri, ' [']
-        if len(self.parameters) > 0:
-            repr.append(' ')
-            repr.append(', '.join([str(p) for p in self.parameters]))
-            repr.append(' ')
-
-        repr += ['] ', '.']
-        return ''.join(repr)
-    
-    def __repr__(self) -> str:
-        return self.__str__()
-    
-
 class Term:
     def __init__(self, value):
         self.value = value
@@ -86,3 +56,32 @@ class Iri(Term):
     def __init__(self, value):
         super().__init__(value)
 
+
+class Statement:
+    pass
+
+
+class Template(Statement):
+    def __init__(self, name:Iri=None) -> None:
+        self.name = name
+        self.parameters = []
+
+    def add_parameter(self, parameter:Parameter) -> None:
+        self.parameters.append(parameter)
+
+    def get_parameter(self, variable:str) -> Parameter:
+        return [p for p in self.parameters if p.variable == variable][0]
+
+    def __str__(self) -> str:
+        repr = [self.name, ' [']
+        if len(self.parameters) > 0:
+            repr.append(' ')
+            repr.append(', '.join([str(p) for p in self.parameters]))
+            repr.append(' ')
+
+        repr += ['] ', '.']
+        return ''.join(repr)
+    
+    def __repr__(self) -> str:
+        return self.__str__()
+    
