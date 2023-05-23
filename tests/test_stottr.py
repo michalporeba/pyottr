@@ -1,8 +1,9 @@
 from unittest import TestCase
-from pyottr.stOTTR import stOTTR
-import pytest
-from pyottr.model import Basic
 
+import pytest
+
+from pyottr.model import Basic
+from pyottr.stOTTR import stOTTR
 
 TEMPLATE_SIGNATURES = """
 ex:Template1 [ ?a , ?b ] .

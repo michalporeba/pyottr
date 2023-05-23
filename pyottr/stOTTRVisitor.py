@@ -2,6 +2,7 @@ from .grammar.stOTTRParser import stOTTRParser
 from .grammar.stOTTRVisitor import stOTTRVisitor as BaseVisitor
 from .model import *
 
+
 class stOTTRVisitor(BaseVisitor):
     def __init__(self):
         pass

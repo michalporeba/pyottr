@@ -1,8 +1,10 @@
-from antlr4 import InputStream, CommonTokenStream
+from antlr4 import CommonTokenStream, InputStream
+
 from .grammar.stOTTRLexer import stOTTRLexer
 from .grammar.stOTTRParser import stOTTRParser
-from .stOTTRVisitor import stOTTRVisitor
 from .model import Iri, Template
+from .stOTTRVisitor import stOTTRVisitor
+
 
 class stOTTR:
     def __init__(self):

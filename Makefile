@@ -9,3 +9,9 @@ grammar:
 
 try:
 	python3 -m pyottr
+	
+
+style:
+	isort --multi-line 3 --profile black --skip ./pyottr/grammar ./pyottr	
+	isort --multi-line 3 --profile black ./tests 
+	

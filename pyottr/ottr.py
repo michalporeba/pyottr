@@ -1,7 +1,9 @@
-from antlr4 import InputStream, CommonTokenStream
+from antlr4 import CommonTokenStream, InputStream
+
 from .grammar.stOTTRLexer import stOTTRLexer
 from .grammar.stOTTRParser import stOTTRParser
 from .stOTTRVisitor import stOTTRVisitor
+
 
 def tryit():
     stottr_input = """
