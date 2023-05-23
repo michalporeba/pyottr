@@ -1,6 +1,4 @@
-from unittest import TestCase
-
-from pyottr.model import *
+from pyottr.model import Iri, Parameter, Prefix, Template, Term
 
 
 def test_simple_parameter_name():

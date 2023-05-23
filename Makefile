@@ -16,4 +16,5 @@ style:
 	isort --multi-line 3 --profile black ./tests 
 	black --exclude /grammar/ ./pyottr
 	black ./tests
-	
+	flake8 --max-line-length=88 --select=C,E,F,W,B,B950 --extend-ignore=E203,E501 --extend-exclude=*/grammar/* ./pyottr
+	flake8 --max-line-length=88 --select=C,E,F,W,B,B950 --extend-ignore=E203,E501 ./tests

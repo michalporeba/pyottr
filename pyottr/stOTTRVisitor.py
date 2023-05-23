@@ -1,6 +1,6 @@
 from .grammar.stOTTRParser import stOTTRParser
 from .grammar.stOTTRVisitor import stOTTRVisitor as BaseVisitor
-from .model import *
+from .model import Basic, Iri, Parameter, Prefix, Template
 
 
 class stOTTRVisitor(BaseVisitor):

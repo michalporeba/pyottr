@@ -1,5 +1,3 @@
-from unittest import TestCase
-
 import pytest
 
 from pyottr.model import Basic
@@ -17,14 +15,14 @@ ex:Template1 [ ?a, ?b ] :: BASE .
 
 # This is a template with a pattern containing three instances:
 ex:Template2 [ ?a = "String", ?b ] :: {
-  ex:Template1 ( "arg1", "arg2" ), 
-  ex:Template1 ( "arg3", "arg4" ), 
+  ex:Template1 ( "arg1", "arg2" ),
+  ex:Template1 ( "arg3", "arg4" ),
   ex:Template1 ( "arg5", "arg6" ) } .
 
 # This is a template, which has one annotation, and a pattern containing one instance.
-ex:Template [ ?a, ?b ] 
-  @@ex:Template2 (ottt:none, 23) 
-  :: 
+ex:Template [ ?a, ?b ]
+  @@ex:Template2 (ottt:none, 23)
+  ::
   { ex:Template3 ( true, ex:A ) } .
 """
 
@@ -37,7 +35,7 @@ ex:NamedPizza [
   :: {
      cross | ex:Template1 (?pizza, ++?toppings) ,
      ex:Template2 (1, 2, 4, 5) ,
-     <http://Template2.com> ("asdf"^^xsd:string) ,	
+     <http://Template2.com> ("asdf"^^xsd:string) ,
      zipMax | ex:Template4 ("asdf"^^xsd:string, ?pizza, ++( "a", "B" )),
      zipMax | ex:Template4 ([], [], [], ++([], []))
   } .
@@ -180,10 +178,10 @@ def test_templates_with_parameters(representation, expected):
         ), f"invalid variable name {actual.variable}"
         assert (
             actual.optional == expected_parameter["optional"]
-        ), f"invalid optional value"
+        ), "invalid optional value"
         assert (
             actual.nonblank == expected_parameter["nonblank"]
-        ), f"invalid nonblank value"
+        ), "invalid nonblank value"
         assert (
             actual.default_value == expected_parameter["default"]
         ), f'invalid default value {expected_parameter["default"]}'
