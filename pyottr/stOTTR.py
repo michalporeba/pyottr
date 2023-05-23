@@ -10,14 +10,13 @@ class stOTTR:
     def __init__(self):
         self._templates = []
 
-    def get_template(self, name:str|Iri) -> Template:
+    def get_template(self, name: str | Iri) -> Template:
         results = [t for t in self._templates if t.name == name]
         if len(results) == 0:
             return None
         return results[0]
 
-
-    def parse(self, definition :str) -> None: 
+    def parse(self, definition: str) -> None:
         input_stream = InputStream(definition)
         lexer = stOTTRLexer(input_stream)
         token_stream = CommonTokenStream(lexer)

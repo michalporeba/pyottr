@@ -18,7 +18,7 @@ def tryit():
     #ex:NamedPizzaC [ ?!?pizza ] .
     #ex:NamedPizzaD [ !??pizza ] .
     """
-    input_stream = InputStream('ex:NamedPizza [ owl:Class ?pizza ] .')
+    input_stream = InputStream("ex:NamedPizza [ owl:Class ?pizza ] .")
     lexer = stOTTRLexer(input_stream)
     token_stream = CommonTokenStream(lexer)
     parser = stOTTRParser(token_stream)

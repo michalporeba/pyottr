@@ -14,4 +14,6 @@ try:
 style:
 	isort --multi-line 3 --profile black --skip ./pyottr/grammar ./pyottr	
 	isort --multi-line 3 --profile black ./tests 
+	black --exclude /grammar/ ./pyottr
+	black ./tests
 	
