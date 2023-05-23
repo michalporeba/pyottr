@@ -112,6 +112,11 @@ class Basic(Type):
     def __init__(self, iri:str) -> None:
         self.iri = iri 
 
+    def __eq__(self, other) -> bool:
+        if isinstance(other, str):
+            return self.iri == other 
+        return super().__eq__(other)
+    
     def __str__(self):
         return self.iri
 

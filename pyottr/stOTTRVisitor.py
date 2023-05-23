@@ -160,9 +160,7 @@ class stOTTRVisitor(BaseVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by stOTTRParser#basicType.
     def visitBasicType(self, ctx:stOTTRParser.BasicTypeContext):
-        print(f"Visited basic type: {ctx.getText()}")
         return Basic(ctx.getText())
 
 

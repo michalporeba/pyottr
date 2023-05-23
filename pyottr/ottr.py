@@ -23,9 +23,6 @@ def tryit():
     parse_tree = parser.stOTTRDoc()
 
     visitor = stOTTRVisitor()
-    result = visitor.visit(parse_tree)
+    (prefixes, templates) = visitor.visit(parse_tree)
 
-    print('WHAT COMES OUT OF VISITOR')
-    print(f'prefixes  = {result["prefixes"]}')
-    print(f'templates = {result["templates"]}')
-    print(f'other     = {result["other"]}')
+    print(templates)
