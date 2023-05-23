@@ -5,5 +5,7 @@ grammar:
 		-Dlanguage=Python3 -visitor -no-listener -o ../pyottr/grammar/ \
 		Turtle.g4 stOTTR.g4 
 
+	touch ./pyottr/grammar/__init__.py
+
 try:
 	python3 -m pyottr

@@ -11,8 +11,7 @@ class stOTTRVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by stOTTRParser#stOTTRDoc.
     def visitStOTTRDoc(self, ctx:stOTTRParser.StOTTRDocContext):
-        result = self.visitChildren(ctx)
-        return result
+        return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by stOTTRParser#statement.
