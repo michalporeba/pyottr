@@ -18,3 +18,7 @@ style:
 	black ./tests
 	flake8 --max-line-length=88 --select=C,E,F,W,B,B950 --extend-ignore=E203,E501 --extend-exclude=*/grammar/* ./pyottr
 	flake8 --max-line-length=88 --select=C,E,F,W,B,B950 --extend-ignore=E203,E501 ./tests
+
+
+upgrade: 
+	pip list --outdated | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install --upgrade   
