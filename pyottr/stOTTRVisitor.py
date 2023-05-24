@@ -49,10 +49,7 @@ class stOTTRVisitor(BaseVisitor):
                 template = Template(self.visit(c))
                 continue
             if isinstance(c, stOTTRParser.ParameterListContext):
-                results = self.visit(c)
-                print(".......")
-                print(results)
-                template.add_parameter(results)
+                template.add_parameters(self.visit(c))
                 continue
 
             node = self.visit(c)
@@ -63,10 +60,8 @@ class stOTTRVisitor(BaseVisitor):
     def visitTemplateName(self, ctx: stOTTRParser.TemplateNameContext):
         return self.visitChildren(ctx)
 
-    # Visit a parse tree produced by stOTTRParser#parameterList.
     def visitParameterList(self, ctx: stOTTRParser.ParameterListContext):
-        print(f"Visited parameter list: {ctx.getText()}")
-        return self.visitChildren(ctx)
+        return (self.visitChildren(ctx))
 
     # Visit a parse tree produced by stOTTRParser#parameter.
     def visitParameter(self, ctx: stOTTRParser.ParameterContext):
@@ -74,7 +69,6 @@ class stOTTRVisitor(BaseVisitor):
         modifiers = [str(x) for x in ctx.ParameterMode()]
         p.optional = "?" in modifiers
         p.nonblank = "!" in modifiers
-        print("mmmmm")
         p.type_ = self.visitChildren(ctx)
         p.defaultValue = ctx.defaultValue()
         self.visitChildren(ctx)

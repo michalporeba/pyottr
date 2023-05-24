@@ -49,7 +49,7 @@ def test_template_with_no_parameters():
 
 def test_template_with_single_parameter():
     sut = Template("ex:test")
-    sut.add_parameter(Parameter("?pizza"))
+    sut.add_parameters(Parameter("?pizza"))
     assert isinstance(sut.name, Iri)
     assert sut.name == "ex:test"
     assert len(sut.parameters) == 1

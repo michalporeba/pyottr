@@ -150,6 +150,30 @@ TEMPLATES_WITH_PARAMETERS_TEST_DATA = [
             ],
         },
     ),
+    (
+        "ex:Template1 [ ?a , ?b ] .",
+        {
+            "name": "ex:Template1",
+            "parameters": [
+                {
+                    "variable": "?a",
+                    "types_type": None,
+                    "type": None,
+                    "optional": False,
+                    "nonblank": False,
+                    "default": None,
+                },
+                {
+                    "variable": "?b",
+                    "types_type": None,
+                    "type": None,
+                    "optional": False,
+                    "nonblank": False,
+                    "default": None,
+                },
+            ],
+        },
+    ),
 ]
 
 
