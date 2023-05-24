@@ -61,7 +61,7 @@ class stOTTRVisitor(BaseVisitor):
         return self.visitChildren(ctx)
 
     def visitParameterList(self, ctx: stOTTRParser.ParameterListContext):
-        return (self.visitChildren(ctx))
+        return self.visitChildren(ctx)
 
     # Visit a parse tree produced by stOTTRParser#parameter.
     def visitParameter(self, ctx: stOTTRParser.ParameterContext):

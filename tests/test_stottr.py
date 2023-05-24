@@ -49,10 +49,8 @@ TEMPLATES_WITH_PARAMETERS_TEST_DATA = [
             "parameters": [
                 {
                     "variable": "?pizza",
-                    "type": None,
                     "optional": True,
                     "nonblank": False,
-                    "default": None,
                 }
             ],
         },
@@ -64,10 +62,8 @@ TEMPLATES_WITH_PARAMETERS_TEST_DATA = [
             "parameters": [
                 {
                     "variable": "?pizza",
-                    "type": None,
                     "optional": False,
                     "nonblank": True,
-                    "default": None,
                 }
             ],
         },
@@ -79,10 +75,8 @@ TEMPLATES_WITH_PARAMETERS_TEST_DATA = [
             "parameters": [
                 {
                     "variable": "?pizza",
-                    "type": None,
                     "optional": True,
                     "nonblank": True,
-                    "default": None,
                 }
             ],
         },
@@ -94,10 +88,8 @@ TEMPLATES_WITH_PARAMETERS_TEST_DATA = [
             "parameters": [
                 {
                     "variable": "?pizza",
-                    "type": None,
                     "optional": True,
                     "nonblank": True,
-                    "default": None,
                 }
             ],
         },
@@ -111,9 +103,6 @@ TEMPLATES_WITH_PARAMETERS_TEST_DATA = [
                     "variable": "?pizza",
                     "types_type": Basic,
                     "type": "owl:Class",
-                    "optional": False,
-                    "nonblank": False,
-                    "default": None,
                 }
             ],
         },
@@ -128,8 +117,6 @@ TEMPLATES_WITH_PARAMETERS_TEST_DATA = [
                     "types_type": Basic,
                     "type": "owl:Class",
                     "optional": True,
-                    "nonblank": False,
-                    "default": None,
                 }
             ],
         },
@@ -145,7 +132,6 @@ TEMPLATES_WITH_PARAMETERS_TEST_DATA = [
                     "type": "owl:Class",
                     "optional": True,
                     "nonblank": True,
-                    "default": None,
                 }
             ],
         },
@@ -155,22 +141,8 @@ TEMPLATES_WITH_PARAMETERS_TEST_DATA = [
         {
             "name": "ex:Template1",
             "parameters": [
-                {
-                    "variable": "?a",
-                    "types_type": None,
-                    "type": None,
-                    "optional": False,
-                    "nonblank": False,
-                    "default": None,
-                },
-                {
-                    "variable": "?b",
-                    "types_type": None,
-                    "type": None,
-                    "optional": False,
-                    "nonblank": False,
-                    "default": None,
-                },
+                {"variable": "?a"},
+                {"variable": "?b"},
             ],
         },
     ),
@@ -200,19 +172,19 @@ def test_templates_with_parameters(representation, expected):
         assert (
             actual.variable == expected_parameter["variable"]
         ), f"invalid variable name {actual.variable}"
-        assert (
-            actual.optional == expected_parameter["optional"]
+        assert actual.optional == expected_parameter.get(
+            "optional", False
         ), "invalid optional value"
-        assert (
-            actual.nonblank == expected_parameter["nonblank"]
+        assert actual.nonblank == expected_parameter.get(
+            "nonblank", False
         ), "invalid nonblank value"
-        assert (
-            actual.default_value == expected_parameter["default"]
-        ), f'invalid default value {expected_parameter["default"]}'
-        assert (
-            actual.type_ == expected_parameter["type"]
-        ), f'invalid type {expected_parameter["type"]}'
+        assert actual.default_value == expected_parameter.get(
+            "default", None
+        ), f'invalid default value {expected_parameter.get("default", None)}'
+        assert actual.type_ == expected_parameter.get(
+            "type", None
+        ), f'invalid type {expected_parameter.get("type", None)}'
         if expected_parameter.get("types_type", None):
             assert isinstance(
-                actual.type_, expected_parameter["types_type"]
-            ), f'invalid type of type {expected_parameter["types_type"]}'
+                actual.type_, expected_parameter.get("types_type", None)
+            ), f'invalid type of type {expected_parameter.get("types_type")}'

@@ -1,5 +1,6 @@
 from typing import List, Union
 
+
 class Directive:
     pass
 
@@ -92,11 +93,11 @@ class Template(Statement):
 
     def add_parameters(self, parameters: Union[Parameter, List[Parameter]]) -> None:
         print(f"parameters = {parameters}")
-        if isinstance(parameters, list):    
+        if isinstance(parameters, list):
             for parameter in parameters:
                 print(f"parameter = {parameter}")
                 self.parameters.append(parameter)
-        else: 
+        else:
             self.parameters.append(parameters)
 
     def get_parameter(self, variable: str) -> Parameter:
