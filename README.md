@@ -10,7 +10,7 @@ It provides a method of tranforming tabular data into [Resource Description Fram
 ## There are a few things you can do here
 
 * To understand why, read [the presentation by OTTR creators](https://www.uio.no/studier/emner/matnat/ifi/IN3060/v19/undervisningsmateriale/ottr-part1.pdf) from the University of Oslo.
-* To make it work add `turtleDoc : directive*;` as a first rule in `Turtle.g4`.
+* To make it work fater updating the grammar specification, add `turtleDoc : directive*;` as a first rule in `Turtle.g4`.
 * To build the grammar lexers and parsers do `make grammar`.
 * To test do `pytest` on the command line.
 * To learn about ANTLR, see [the mega tutorial](https://tomassetti.me/antlr-mega-tutorial) by Gabriele Tomassetti.
