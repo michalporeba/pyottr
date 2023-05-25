@@ -1,6 +1,6 @@
 from .grammar.stOTTRParser import stOTTRParser
 from .grammar.stOTTRVisitor import stOTTRVisitor as BaseVisitor
-from .model import Basic, Iri, Parameter, Prefix, Template
+from .model import Basic, Iri, Parameter, Prefix, Template, Type
 
 
 class stOTTRVisitor(BaseVisitor):
@@ -69,8 +69,15 @@ class stOTTRVisitor(BaseVisitor):
         modifiers = [str(x) for x in ctx.ParameterMode()]
         p.optional = "?" in modifiers
         p.nonblank = "!" in modifiers
-        p.type_ = self.visitChildren(ctx)
-        p.defaultValue = ctx.defaultValue()
+        children = self.visitChildren(ctx)
+        if not isinstance(children, list):
+            children = [children]
+        for c in children:
+            if isinstance(c, Type):
+                p.type_ = c
+                continue
+            p.default_value = c
+
         self.visitChildren(ctx)
         return p
 
@@ -191,15 +198,15 @@ class stOTTRVisitor(BaseVisitor):
     def visitSparqlPrefix(self, ctx: stOTTRParser.SparqlPrefixContext):
         return Prefix(ctx.PNAME_NS(), ctx.IRIREF())
 
-    # Visit a parse tree produced by stOTTRParser#literal.
     def visitLiteral(self, ctx: stOTTRParser.LiteralContext):
-        print(f"Visited literal: {ctx.getText()}")
-        return self.visitChildren(ctx)
+        return ctx.getText()
 
-    # Visit a parse tree produced by stOTTRParser#numericLiteral.
     def visitNumericLiteral(self, ctx: stOTTRParser.NumericLiteralContext):
-        print(f"Visited numeric literal: {ctx.getText()}")
-        return self.visitChildren(ctx)
+        number = ctx.getText()
+        if number.isdigit():
+            return int(number)
+        else:
+            return float(number)
 
     # Visit a parse tree produced by stOTTRParser#rdfLiteral.
     def visitRdfLiteral(self, ctx: stOTTRParser.RdfLiteralContext):

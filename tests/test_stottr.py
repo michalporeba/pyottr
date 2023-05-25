@@ -146,6 +146,27 @@ TEMPLATES_WITH_PARAMETERS_TEST_DATA = [
             ],
         },
     ),
+    (
+        "ex:Template2 [ ! owl:Class ?a, ? xsd:int ?b = 5 ] .",
+        {
+            "name": "ex:Template2",
+            "parameters": [
+                {
+                    "variable": "?a",
+                    "types_type": Basic,
+                    "type": "owl:Class",
+                    "nonblank": True,
+                },
+                {
+                    "variable": "?b",
+                    "types_type": Basic,
+                    "type": "xsd:int",
+                    "optional": True,
+                    "default_value": "5",
+                },
+            ],
+        },
+    ),
 ]
 
 
@@ -156,35 +177,38 @@ def test_single_minimal_template():
     assert stottr.get_template("ex:EmptyTemplate") is not None
 
 
-@pytest.mark.parametrize("representation,expected", TEMPLATES_WITH_PARAMETERS_TEST_DATA)
-def test_templates_with_parameters(representation, expected):
+@pytest.mark.parametrize(
+    "representation,description", TEMPLATES_WITH_PARAMETERS_TEST_DATA
+)
+def test_templates_with_parameters(representation, description):
     print(f"parsing {representation}")
-    print(f"expecting {expected}")
+    print(f"expecting {description}")
     stottr = stOTTR()
     stottr.parse(representation)
-    template = stottr.get_template(expected["name"])
-    assert template is not None, f'template {expected["name"]} should be found'
+    template = stottr.get_template(description["name"])
+    assert template is not None, f'template {description["name"]} should be found'
     assert len(template.parameters) == len(
-        expected["parameters"]
-    ), f'template should have {len(expected["parameters"])} parameters'
-    for expected_parameter in expected["parameters"]:
-        actual = template.get_parameter(expected_parameter["variable"])
+        description["parameters"]
+    ), f'template should have {len(description["parameters"])} parameters'
+    for expected in description["parameters"]:
+        actual = template.get_parameter(expected["variable"])
         assert (
-            actual.variable == expected_parameter["variable"]
+            actual.variable == expected["variable"]
         ), f"invalid variable name {actual.variable}"
-        assert actual.optional == expected_parameter.get(
+        assert actual.optional == expected.get(
             "optional", False
         ), "invalid optional value"
-        assert actual.nonblank == expected_parameter.get(
+        assert actual.nonblank == expected.get(
             "nonblank", False
         ), "invalid nonblank value"
-        assert actual.default_value == expected_parameter.get(
-            "default", None
-        ), f'invalid default value {expected_parameter.get("default", None)}'
-        assert actual.type_ == expected_parameter.get(
+        assert actual.type_ == expected.get(
             "type", None
-        ), f'invalid type {expected_parameter.get("type", None)}'
-        if expected_parameter.get("types_type", None):
+        ), f'invalid type {expected.get("type", None)}'
+        if expected.get("types_type", None):
             assert isinstance(
-                actual.type_, expected_parameter.get("types_type", None)
-            ), f'invalid type of type {expected_parameter.get("types_type")}'
+                actual.type_, expected.get("types_type", None)
+            ), f'invalid type of type {expected.get("types_type")}'
+        if expected.get("default_value", None):
+            assert actual.default_value == expected.get(
+                "default_value", None
+            ), f"default value should be {expected.get('default_value')}"
