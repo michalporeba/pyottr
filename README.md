@@ -5,6 +5,7 @@ A Python module to help you convert your tabular data, like CSV, or Excel files,
 You can [skip ahead](#usage) if you already know what RDF and OTTR are. 
 But if you are unsure, let me give you some context before I tell you more about the project itself.  
 
+&nbsp;
 ## Introduction
 
 The [Resource Description Framework (RDF)](https://www.w3.org/RDF/) is one of the [W3C Open Web Standards](https://www.w3.org/standards/). 
@@ -30,7 +31,76 @@ If writing RDF by hand is like [assemby programming](https://en.wikipedia.org/wi
 
 Terse Syntax for Reasonable Ontology Templates (stOTTR)](https://dev.spec.ottr.xyz/stOTTR/) allows us to define templates which can then be used to reliably translate it to RDF. If you want to know about the motivation behind it, to really understand why, read [the presentation by OTTR creators](https://www.uio.no/studier/emner/matnat/ifi/IN3060/v19/undervisningsmateriale/ottr-part1.pdf) from the University of Oslo, or at watch the [Motivation and Overview presentation](https://ottr.xyz/#Presentation:_Motivation_and_Overview).
 
+&nbsp;
+## Example
 
+Probably the most common example in the world of ontologies is that of a named pizza!. 
+I will copy here the example from the [OTTR page](https://ottr.xyz/#Presentation:_Motivation_and_Overview).
+We can represent named pizzas in a CSV file named `pizzas.csv` like so: 
+
+```csv
+name
+Margherita
+Hawaii
+Grandiosa
+```
+
+We know that Margherita, Hawaii and Grandiosa are pizza names, because the first piece of information is `name` and the file is called `pizzas`. We can econde the same information in an RDF file `my.rdf` like so:
+
+```rdf
+p:Margherita rdf:type owl:Class .
+p:Margherita rdfs:subClassOf p:Pizza .
+p:Margherita rdfs:label "Margherita" .
+
+p:Hawaii rdf:type owl:Class .
+p:Hawaii rdfs:subClassOf p:Pizza .
+p:Hawaii rdfs:label "Hawaii" .
+
+p:Grandiosa rdf:type owl:Class .
+p:Grandiosa rdfs:subClassOf p:Pizza .
+p:Grandiosa rdfs:label "Grandiosa" .
+```
+
+But with just a few instances it is a lot of typing, many opportunities for errors. So instead, we can wrte two stOTTR templates in a `pizzas.stottr`.
+
+```stottr
+ax:SubClassOf [ ?sub, ?super ] :: {
+    ottr:Triple(?sub, rdfs:subClassOf, ?super)
+} .
+
+pz:Pizza [ ?identifier, ?label ] :: {
+    ottr:Triple(?identifier, rdf:type, owl:Class),
+    ax:SubClassOf(?identifier, p:Pizza),
+    ottr:Triple(?identifier, rdfs:label, ?label)
+} .
+```
+
+With this definition we can invoke instances of the `pz:Pizza` templates, perhaps further down in the file. 
+
+```stottr
+pz:Pizza(p:Margherita, "Margherita") .
+pz:Pizza(p:Hawaii, "Hawaii") .
+pz:Pizza(p:Grandiosa, "Grandiosa") .
+```
+
+The above will produce the exact RDF example as above with less chance of a typo or other mistake. 
+
+But we want to take it a step further. We already have the information in `pizzas.csv` and the stottr template in `pizzeria.stottr`. Now, let's use python to generate the RDF. 
+
+```python
+ottr = PyOTTR("pizzeria.stottr")
+
+with open("pizzas.csv", "r") as data:
+    for pizza in csv.DictReader(data):
+        name = pizza["name"].strip()
+        print(ottr.expand("pz:Pizza", f"p:{name}", name))
+```
+
+Or even simpler, if the column names and variable names are aligned:
+
+```python
+PyOTTR("pizzeria.stottr").expand("pizzas.csv").into("pz:Pizza")
+```
 &nbsp;
 ## Usage
 
@@ -42,6 +112,7 @@ Currently, the work is focused on `stOTTR` implementation. The `tabOTTR` is like
 
 If you cannot wait, you can always help to get it done. It's an open-source project after all!
 
+&nbsp;
 ## Contributing
 
 Starts and pull requests are welcomed as are any ideas and comments. 
