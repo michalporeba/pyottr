@@ -1,8 +1,8 @@
-# pyOTTR - Reasonable Ontology Templates for Python Users
+# pyOTTR - Reasonable Ontology Templates in Python
 
 A Python module to help you convert your tabular data, like CSV, or Excel files, into [Resource Description Framework (RDF)](https://en.wikipedia.org/wiki/Resource_Description_Framework) triples. 
 
-You can [skip ahead](#usage) if you already know what RDF and OTTR are. 
+You can skip ahead to [an example](#example) or [usage instructions](#usage) if you already know what RDF and OTTR are. 
 But if you are unsure, let me give you some context before I tell you more about the project itself.  
 
 &nbsp;
