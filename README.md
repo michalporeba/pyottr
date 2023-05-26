@@ -1,14 +1,37 @@
-# A Python version of stOTTR
+# pyOTTR - Reasonable Ontology Templates for Python Users
 
-Any data, especially open data, is better served in a triple form. 
+A Python module to help you convert your tabular data, like CSV, or Excel files, into [Resource Description Framework (RDF)](https://en.wikipedia.org/wiki/Resource_Description_Framework) triples. 
 
-But a lot of it is locked in tabular format: relational databases, CSV files and so on. The [stOTTR - Terse Syntax for Reasonable Ontology Templates](https://dev.spec.ottr.xyz/stOTTR/) tries to help with this problem. 
-It provides a method of tranforming tabular data into [Resource Description Framework (RDF)](https://www.w3.org/RDF/). It is part of OTTR which is:
+You can [skip ahead](#usage) if you already know what RDF and OTTR are. 
+But if you are unsure, let me give you some context before I tell you more about the project itself.  
 
->Reasonable Ontology Templates (OTTR) is a language with supporting tools for representing and instantiating RDF graph and OWL ontology modelling patterns. It is designed to improve the efficiency and quality of building, using, and maintaining knowledge bases.
+## Introduction
 
-To understand why, read [the presentation by OTTR creators](https://www.uio.no/studier/emner/matnat/ifi/IN3060/v19/undervisningsmateriale/ottr-part1.pdf) from the University of Oslo.
+The [Resource Description Framework (RDF)](https://www.w3.org/RDF/) is one of the [W3C Open Web Standards](https://www.w3.org/standards/). 
+It is a flexible data model underpinning the [Semantic Web](https://www.w3.org/standards/semanticweb/). From [w3.org/RDF]:
 
+>RDF is a standard model for data interchange on the Web. RDF has features that facilitate data merging even if the underlying schemas differ, and it specifically supports the evolution of schemas over time without requiring all the data consumers to be changed.
+>
+>RDF extends the linking structure of the Web to use URIs to name the relationship between things as well as the two ends of the link (this is usually referred to as a "triple"). Using this simple model, it allows structured and semi-structured data to be mixed, exposed, and shared across different applications.
+
+[Linke Data](https://www.w3.org/standards/semanticweb/data) is information on the Web expressed as a graph, in a common standard, like the RDF. 
+It promotes data interoperability and integration since it uses globally unique identifiers (URIs) and shared vocabularies to denote concepts, enabling different datasets to "speak the same language". 
+It makes data more meaningful, opening up new possibilities for interoperability, discovery, reusability, and [collaboration without coordination](https://www.youtube.com/watch?v=ytedBJUx6bA). 
+
+RDF offers several compelling advantages compared to data locked in tabular formats like CSV, spreadsheets or tables in relational database systems. 
+I am convinced, but why would you trust me? 
+What if you wanted to try it yourself on data that makes sense to you?
+
+Here is the problem. 
+Most of our information is locked in simple tabular forms, and converting it to RDF statements is cumbersome and error-prone at best. 
+
+[Reasonable Ontology Templates (OTTR)](https://ottr.xyz/) offers a solution. 
+If writing RDF by hand is like [assemby programming](https://en.wikipedia.org/wiki/Assembly_language), OTTR is like switching to [Python](https://en.wikipedia.org/wiki/Python_(programming_language)), but for ontology modelling. (At least according to OTTR creators). 
+
+Terse Syntax for Reasonable Ontology Templates (stOTTR)](https://dev.spec.ottr.xyz/stOTTR/) allows us to define templates which can then be used to reliably translate it to RDF. If you want to know about the motivation behind it, to really understand why, read [the presentation by OTTR creators](https://www.uio.no/studier/emner/matnat/ifi/IN3060/v19/undervisningsmateriale/ottr-part1.pdf) from the University of Oslo, or at watch the [Motivation and Overview presentation](https://ottr.xyz/#Presentation:_Motivation_and_Overview).
+
+
+&nbsp;
 ## Usage
 
 At the moment the project is in early stages of development, so you cannot use it just yet. 
