@@ -5,6 +5,17 @@ class Directive:
     pass
 
 
+class Instance:
+    def __init__(self, template_name):
+        self._template_name = template_name
+
+    def get_template_name(self):
+        return self._template_name
+
+    def is_part_of_a_template(self):
+        return self._template_name is not None
+
+
 class Parameter:
     def __init__(self, variable: str) -> None:
         self.variable = variable
@@ -38,6 +49,11 @@ class Parameter:
         if len(repr) == 0:
             return ""
         return "".join(repr)
+
+
+class Patterns:
+    def __init__(self, patterns):
+        self.patterns = patterns
 
 
 class Prefix(Directive):

@@ -9,6 +9,7 @@ from .stOTTRVisitor import stOTTRVisitor
 class stOTTR:
     def __init__(self):
         self._templates = []
+        self._instances = []
 
     def get_template(self, name: str | Iri) -> Template:
         results = [t for t in self._templates if t.name == name]
@@ -24,8 +25,9 @@ class stOTTR:
         parse_tree = parser.stOTTRDoc()
 
         visitor = stOTTRVisitor()
-        (_, templates) = visitor.visit(parse_tree)
+        (_, templates, instances) = visitor.visit(parse_tree)
 
         self._templates += templates
+        self._instances += instances
 
-        return (None, self._templates)
+        return {"templates": len(self._templates), "instances": len(self._instances)}

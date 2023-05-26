@@ -1,6 +1,18 @@
+from diogi.functions import always_a_list
+
 from .grammar.stOTTRParser import stOTTRParser
 from .grammar.stOTTRVisitor import stOTTRVisitor as BaseVisitor
-from .model import Basic, Iri, Parameter, Prefix, Template, Type, TypedList
+from .model import (
+    Basic,
+    Instance,
+    Iri,
+    Parameter,
+    Patterns,
+    Prefix,
+    Template,
+    Type,
+    TypedList,
+)
 
 
 class stOTTRVisitor(BaseVisitor):
@@ -8,7 +20,6 @@ class stOTTRVisitor(BaseVisitor):
         pass
 
     def aggregateResult(self, aggregate, nextResult):
-        # This method is called by visitChildren to combine results
         if nextResult is None:
             return aggregate
 
@@ -23,18 +34,22 @@ class stOTTRVisitor(BaseVisitor):
     def visitStOTTRDoc(self, ctx: stOTTRParser.StOTTRDocContext):
         prefixes = []
         templates = []
+        instances = []
         for c in ctx.children:
-            node = self.visit(c)
-            if isinstance(node, Template):
-                templates += [node]
-                continue
-            if isinstance(node, Prefix):
-                prefixes += [node]
-                continue
+            for node in always_a_list(self.visit(c)):
+                if isinstance(node, Template):
+                    templates += [node]
+                    continue
+                if isinstance(node, Prefix):
+                    prefixes += [node]
+                    continue
+                if isinstance(node, Instance):
+                    if node.is_part_of_a_template():
+                        instances += [node]
+                    continue
+                print(f" WARNING: unknown statement type: {type(node)}")
 
-            print(f" WARNING: unknown statement type: {type(node)}")
-
-        return (prefixes, templates)
+        return (prefixes, templates, instances)
 
     def visitStatement(self, ctx):
         print(f"Visited statement: {ctx.getText()}")
@@ -50,6 +65,8 @@ class stOTTRVisitor(BaseVisitor):
             if isinstance(c, stOTTRParser.ParameterListContext):
                 template.add_parameters(self.visit(c))
                 continue
+            if isinstance(c, stOTTRParser.PatternListContext):
+                pass
 
         return template
 
@@ -66,9 +83,7 @@ class stOTTRVisitor(BaseVisitor):
         p.optional = "?" in modifiers
         p.nonblank = "!" in modifiers
         children = self.visitChildren(ctx)
-        if not isinstance(children, list):
-            children = [children]
-        for c in children:
+        for c in always_a_list(children):
             if isinstance(c, Type):
                 p.type_ = c
                 continue
@@ -83,12 +98,12 @@ class stOTTRVisitor(BaseVisitor):
 
     # Visit a parse tree produced by stOTTRParser#annotationList.
     def visitAnnotationList(self, ctx: stOTTRParser.AnnotationListContext):
-        # print(f"Visited annotation list: {ctx.getText()}")
+        print(f"Visited annotation list: {ctx.getText()}")
         return self.visitChildren(ctx)
 
     # Visit a parse tree produced by stOTTRParser#annotation.
     def visitAnnotation(self, ctx: stOTTRParser.AnnotationContext):
-        # print(f"Visited annotation: {ctx.getText()}")
+        print(f"Visited annotation: {ctx.getText()}")
         return self.visitChildren(ctx)
 
     # Visit a parse tree produced by stOTTRParser#baseTemplate.
@@ -98,23 +113,30 @@ class stOTTRVisitor(BaseVisitor):
 
     # Visit a parse tree produced by stOTTRParser#template.
     def visitTemplate(self, ctx: stOTTRParser.TemplateContext):
-        # print(f"Visited template: {ctx.getText()}")
+        print(f"Visited template: {ctx.getText()}")
         return self.visitChildren(ctx)
 
     # Visit a parse tree produced by stOTTRParser#patternList.
     def visitPatternList(self, ctx: stOTTRParser.PatternListContext):
-        return self.visitChildren(ctx)
+        print(f"Visited pattern list: {ctx.getText()}")
+        result = self.visitChildren(ctx)
+        print(result)
+        return Patterns(result)
 
     # Visit a parse tree produced by stOTTRParser#instance.
     def visitInstance(self, ctx: stOTTRParser.InstanceContext):
+        print(f"Visited instance: {ctx.getText()}")
+        return Instance(self.visit(ctx.templateName()))
         return self.visitChildren(ctx)
 
     # Visit a parse tree produced by stOTTRParser#argumentList.
     def visitArgumentList(self, ctx: stOTTRParser.ArgumentListContext):
+        print(f"Visited argument list: {ctx.getText()}")
         return self.visitChildren(ctx)
 
     # Visit a parse tree produced by stOTTRParser#argument.
     def visitArgument(self, ctx: stOTTRParser.ArgumentContext):
+        print(f"Visited argument: {ctx.getText()}")
         return self.visitChildren(ctx)
 
     # Visit a parse tree produced by stOTTRParser#type.
