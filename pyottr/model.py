@@ -11,7 +11,7 @@ class Parameter:
         self.default_value = None
         self.optional = False
         self.nonblank = False
-        self.type_ = None
+        self.type_ = Top()
 
     def set_default_value(self, default_value: str) -> None:
         self.default_value = default_value
@@ -28,7 +28,7 @@ class Parameter:
             repr += ["?"]
         if self.nonblank:
             repr += ["!"]
-        if self.type_:
+        if self.type_ and not isinstance(self.type_, Top):
             if self.optional or self.nonblank:
                 repr += [" "]
             repr += [str(self.type_), " "]
@@ -121,6 +121,11 @@ class Type:
     pass
 
 
+class Top(Type):
+    def __eq__(self, other):
+        return isinstance(other, Top)
+
+
 class Basic(Type):
     def __init__(self, iri: str) -> None:
         self.iri = iri
@@ -128,14 +133,25 @@ class Basic(Type):
     def __eq__(self, other) -> bool:
         if isinstance(other, str):
             return self.iri == other
-        return super().__eq__(other)
+        if isinstance(other, Basic):
+            return self.iri == other.iri
+        return NotImplementedError(f"Basic type cannot be compared to {type(other)}!")
 
     def __str__(self):
         return self.iri
 
 
-class List(Type):
-    pass
+class TypedList(Type):
+    def __init__(self, type_: Basic) -> None:
+        self.type_ = type_
+
+    def __str__(self):
+        return f"List<{self.type_}>"
+
+    def __eq__(self, other):
+        if not isinstance(other, TypedList):
+            return False
+        return self.type_ == other.type_
 
 
 class LowestUpperBound(Type):

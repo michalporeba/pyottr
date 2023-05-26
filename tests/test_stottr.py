@@ -1,13 +1,7 @@
 import pytest
 
-from pyottr.model import Basic
+from pyottr.model import Basic, Top, TypedList
 from pyottr.stOTTR import stOTTR
-
-TEMPLATE_SIGNATURES = """
-ex:Template1 [ ?a , ?b ] .
-ex:Template2 [ ! owl:Class ?a, ? xsd:int ?b = 5 ] .
-ex:Template3 [ !??a ] .
-"""
 
 TEMPLATES = """
 # This is a base template:
@@ -101,8 +95,7 @@ TEMPLATES_WITH_PARAMETERS_TEST_DATA = [
             "parameters": [
                 {
                     "variable": "?pizza",
-                    "types_type": Basic,
-                    "type": "owl:Class",
+                    "type": Basic("owl:Class"),
                 }
             ],
         },
@@ -114,8 +107,7 @@ TEMPLATES_WITH_PARAMETERS_TEST_DATA = [
             "parameters": [
                 {
                     "variable": "?pizza",
-                    "types_type": Basic,
-                    "type": "owl:Class",
+                    "type": Basic("owl:Class"),
                     "optional": True,
                 }
             ],
@@ -128,8 +120,7 @@ TEMPLATES_WITH_PARAMETERS_TEST_DATA = [
             "parameters": [
                 {
                     "variable": "?pizza",
-                    "types_type": Basic,
-                    "type": "owl:Class",
+                    "type": Basic("owl:Class"),
                     "optional": True,
                     "nonblank": True,
                 }
@@ -153,16 +144,27 @@ TEMPLATES_WITH_PARAMETERS_TEST_DATA = [
             "parameters": [
                 {
                     "variable": "?a",
-                    "types_type": Basic,
-                    "type": "owl:Class",
+                    "type": Basic("owl:Class"),
                     "nonblank": True,
                 },
                 {
                     "variable": "?b",
-                    "types_type": Basic,
-                    "type": "xsd:int",
+                    "type": Basic("xsd:int"),
                     "optional": True,
                     "default_value": "5",
+                },
+            ],
+        },
+    ),
+    (
+        "ex:Types [ ! List<xsd:int> ?numbers] .",
+        {
+            "name": "ex:Types",
+            "parameters": [
+                {
+                    "variable": "?numbers",
+                    "type": TypedList(Basic("xsd:int")),
+                    "nonblank": True,
                 },
             ],
         },
@@ -201,13 +203,10 @@ def test_templates_with_parameters(representation, description):
         assert actual.nonblank == expected.get(
             "nonblank", False
         ), "invalid nonblank value"
-        assert actual.type_ == expected.get(
-            "type", None
-        ), f'invalid type {expected.get("type", None)}'
-        if expected.get("types_type", None):
-            assert isinstance(
-                actual.type_, expected.get("types_type", None)
-            ), f'invalid type of type {expected.get("types_type")}'
+        if expected.get("type", Top()):
+            assert actual.type_ == expected.get(
+                "type", Top()
+            ), f'invalid type of type {expected.get("type")}'
         if expected.get("default_value", None):
             assert actual.default_value == expected.get(
                 "default_value", None

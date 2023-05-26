@@ -1,6 +1,6 @@
 from .grammar.stOTTRParser import stOTTRParser
 from .grammar.stOTTRVisitor import stOTTRVisitor as BaseVisitor
-from .model import Basic, Iri, Parameter, Prefix, Template, Type
+from .model import Basic, Iri, Parameter, Prefix, Template, Type, TypedList
 
 
 class stOTTRVisitor(BaseVisitor):
@@ -38,8 +38,7 @@ class stOTTRVisitor(BaseVisitor):
 
     def visitStatement(self, ctx):
         print(f"Visited statement: {ctx.getText()}")
-        result = self.visitChildren(ctx)
-        return result
+        return self.visitChildren(ctx)
 
     def visitSignature(self, ctx: stOTTRParser.SignatureContext):
         print(f"Visited signature: {ctx.getText()}")
@@ -51,9 +50,6 @@ class stOTTRVisitor(BaseVisitor):
             if isinstance(c, stOTTRParser.ParameterListContext):
                 template.add_parameters(self.visit(c))
                 continue
-
-            node = self.visit(c)
-            print(f" c({type(c)}), node({type(node)}) = {node}")
 
         return template
 
@@ -78,7 +74,6 @@ class stOTTRVisitor(BaseVisitor):
                 continue
             p.default_value = c
 
-        self.visitChildren(ctx)
         return p
 
     # Visit a parse tree produced by stOTTRParser#defaultValue.
@@ -127,10 +122,8 @@ class stOTTRVisitor(BaseVisitor):
         print(f"Visited type: {ctx.getText()}")
         return self.visitChildren(ctx)
 
-    # Visit a parse tree produced by stOTTRParser#listType.
     def visitListType(self, ctx: stOTTRParser.ListTypeContext):
-        print(f"Visited list type: {ctx.getText()}")
-        return self.visitChildren(ctx)
+        return TypedList(self.visit(ctx.type_()))
 
     # Visit a parse tree produced by stOTTRParser#neListType.
     def visitNeListType(self, ctx: stOTTRParser.NeListTypeContext):
