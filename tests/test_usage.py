@@ -15,6 +15,7 @@ def test_parse_scenario_01():
     assert stats["templates"] == 1
     assert stats["instances"] == 2
 
+
 def process_scenario_01():
     stottr = stOTTR()
     triples = stottr.process(
@@ -31,7 +32,7 @@ def process_scenario_01():
     expected = [
         'p:Margherita rdfs:label "Margherita"',
         'p:Hawaii rdfs:label "Hawaii"',
-        'p:Grandiosa rdfs:label "Grandiosa"'
+        'p:Grandiosa rdfs:label "Grandiosa"',
     ]
 
     unexpected = []
@@ -39,11 +40,10 @@ def process_scenario_01():
     for triple in triples:
         if triple in expected:
             expected.remove(triple)
-        else: 
+        else:
             unexpected.append(triple)
-    
+
     if len(expected) > 0 or len(unexpected) > 0:
         print(f"Missing triples: {expected}")
         print(f"Unexpected triples: {unexpected}")
         raise AssertionError
-    
