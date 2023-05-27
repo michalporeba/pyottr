@@ -8,14 +8,22 @@ class Directive:
 
 
 class Instance:
-    def __init__(self, template_name):
+    def __init__(self, template_name) -> None:
         self._template_name = template_name
+        self._terms = []
 
     def get_template_name(self):
         return self._template_name
 
-    def is_part_of_a_template(self):
-        return self._template_name is not None
+    def add_term(self, term) -> None:
+        self._terms.append(term)
+
+    def __str__(self):
+        repr = [str(self._template_name)]
+        repr += ['(']
+        repr += [str(t) for t in self._terms]
+        repr += [')']
+        return ''.join(repr)
 
 
 class Parameter:
@@ -54,7 +62,7 @@ class Parameter:
 
 
 class Patterns:
-    def __init__(self, instances):
+    def __init__(self, instances: Union[Instance, List[Instance]]) -> None:
         self.instances = instances
 
 
@@ -80,6 +88,11 @@ class Term:
     def __eq__(self, other) -> bool:
         if isinstance(other, type(self)):
             return self.value == other.value
+
+
+class Constant(Term):
+    def __init__(self, value: str) -> None:
+        super().__init__(value)
 
 
 class Iri(Term):
@@ -111,21 +124,14 @@ class Template(Statement):
         self.instances = []
 
     def add_parameters(self, parameters: Union[Parameter, List[Parameter]]) -> None:
-        print(f"parameters = {parameters}")
-        if isinstance(parameters, list):
-            for parameter in parameters:
-                print(f"parameter = {parameter}")
-                self.parameters.append(parameter)
-        else:
-            self.parameters.append(parameters)
+        for parameter in always_a_list(parameters):
+            self.parameters.append(parameter)
 
     def get_parameter(self, variable: str) -> Parameter:
         return [p for p in self.parameters if p.variable == variable][0]
 
     def add_instances(self, instances: Union[Instance, List[Instance]]) -> None:
-        print(f"pattern instances = {instances}")
         for instance in always_a_list(instances):
-            print("pattern instance = {instance}")
             self.instances.append(instance)
 
     def __str__(self) -> str:

@@ -10,6 +10,7 @@ from .model import (
     Patterns,
     Prefix,
     Template,
+    Term,
     Type,
     TypedList,
 )
@@ -46,7 +47,7 @@ class stOTTRVisitor(BaseVisitor):
                 template = c
                 continue
             if isinstance(c, Patterns):
-                template.add_instances(c)
+                template.add_instances(c.instances)
                 continue
             if isinstance(c, Instance):
                 return c
@@ -120,8 +121,13 @@ class stOTTRVisitor(BaseVisitor):
     # Visit a parse tree produced by stOTTRParser#instance.
     def visitInstance(self, ctx: stOTTRParser.InstanceContext):
         print(f"Visited instance: {ctx.getText()}")
-        return Instance(self.visit(ctx.templateName()))
-        return self.visitChildren(ctx)
+        instance = Instance(self.visit(ctx.templateName()))
+        # TODO: ExpanderList is a property of InstanceContext
+        #for c in self.visitChildren(ctx):
+        #    print(f"c -> {type(c)} -> {c}")
+        for c in always_a_list(self.visit(ctx.argumentList())):
+            pass #print(f"d -> {type(c)} -> {c}")
+        return instance
 
     # Visit a parse tree produced by stOTTRParser#argumentList.
     def visitArgumentList(self, ctx: stOTTRParser.ArgumentListContext):
@@ -157,7 +163,7 @@ class stOTTRVisitor(BaseVisitor):
     # Visit a parse tree produced by stOTTRParser#term.
     def visitTerm(self, ctx: stOTTRParser.TermContext):
         print(f"Visited term {ctx.getText()}")
-        return self.visitChildren(ctx)
+        return Term(ctx.getText())
 
     # Visit a parse tree produced by stOTTRParser#constantTerm.
     def visitConstantTerm(self, ctx: stOTTRParser.ConstantTermContext):

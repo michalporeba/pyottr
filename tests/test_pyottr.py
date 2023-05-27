@@ -226,6 +226,24 @@ PATTERNS_TEST_DATA = [
             "patterns": ["ottr:Triple(?identifier, rdfs:label, ?label)"],
         },
     ),
+    (
+        """ex:MultiplePatterns [ ?identifier, ?label ] :: {
+            ottr:Triple(?identifier, rdf:type, owl:Class),
+            ottr:Triple(?identifier, rdfs:label, ?label)
+        }.
+        """,
+        {
+            "name": "ex:MultiplePatterns",
+            "parameters": [
+                {"variable": "?identifier"},
+                {"variable": "?label"},
+            ],
+            "patterns": [
+                "ottr:Triple(?identifier, rdf:type, owl:Class)",
+                "ottr:Triple(?identifier, rdfs:label, ?label)"
+            ],
+        },
+    ),
 ]
 
 
@@ -237,4 +255,9 @@ def test_templates_with_patterns(signature, description):
     sut.parse(signature)
     template = sut.get_template(description["name"])
     assert template is not None
-    assert len(template.instances) == 1
+    assert len(template.instances) == len(description["patterns"])
+
+    for instance in template.instances:
+        print(f"Instance: {instance}")
+
+    #raise AssertionError()
