@@ -9,7 +9,7 @@ But if you are unsure, let me give you some context before I tell you more about
 ## Introduction
 
 The [Resource Description Framework (RDF)](https://www.w3.org/RDF/) is one of the [W3C Open Web Standards](https://www.w3.org/standards/). 
-It is a flexible data model underpinning the [Semantic Web](https://www.w3.org/standards/semanticweb/). From [w3.org/RDF]:
+It is a flexible data model underpinning the [Semantic Web](https://www.w3.org/standards/semanticweb/). From [w3.org/RDF](https://www.w3.org/RDF/):
 
 >RDF is a standard model for data interchange on the Web. RDF has features that facilitate data merging even if the underlying schemas differ, and it specifically supports the evolution of schemas over time without requiring all the data consumers to be changed.
 >
