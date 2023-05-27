@@ -18,6 +18,23 @@ class Instance:
     def add_argument(self, argument) -> None:
         self._arguments.append(argument)
 
+    def expand(self, parameters: dict) -> str:
+        if not self._template_name == "ottr:Triple":
+            raise NotImplementedError(
+                f"Expanding template {self._template_name} is not implemented"
+            )
+
+        if len(self._arguments) != 3:
+            raise ValueError("ottr:Triple must have exactly 3 arguments")
+
+        triple = []
+        for term in self._arguments:
+            if isinstance(term, Variable):
+                triple.append(parameters[term.value])
+                continue
+            triple.append(str(term))
+        return " ".join(triple)
+
     def __str__(self):
         repr = [str(self._template_name)]
         repr += ["("]
@@ -90,9 +107,9 @@ class Term:
             return self.value == other.value
 
 
-class Constant(Term):
-    def __init__(self, value: str) -> None:
-        super().__init__(value)
+class Variable(Term):
+    def __init__(self, name: str) -> None:
+        super().__init__(name)
 
 
 class Iri(Term):

@@ -1,4 +1,4 @@
-from pyottr.model import Iri, Parameter, Prefix, Template, Term
+from pyottr.model import Instance, Iri, Parameter, Prefix, Template, Term, Variable
 
 
 def test_simple_parameter_name():
@@ -67,3 +67,14 @@ def test_term_inequality():
     assert Term("a") != Term("b")
     assert Term("abc") != Term(123)
     assert Iri(":Pizza") != Iri("ex:Pizza")
+
+
+def test_expand_instance_with_ottr_Triple():
+    sut = Instance("ottr:Triple")
+    sut.add_argument(Variable("?identifier"))
+    sut.add_argument(Term("rdf:type"))
+    sut.add_argument(Term("owl:Class"))
+    assert (
+        sut.expand({"?identifier": "p:Margherita"}) == "p:Margherita rdf:type owl:Class"
+    )
+    assert sut.expand({"?identifier": "p:Hawaii"}) == "p:Hawaii rdf:type owl:Class"
