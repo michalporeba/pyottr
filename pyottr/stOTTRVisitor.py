@@ -32,24 +32,10 @@ class stOTTRVisitor(BaseVisitor):
         return [aggregate, nextResult]
 
     def visitStOTTRDoc(self, ctx: stOTTRParser.StOTTRDocContext):
-        prefixes = []
-        templates = []
-        instances = []
         for c in ctx.children:
             for node in always_a_list(self.visit(c)):
-                if isinstance(node, Template):
-                    templates += [node]
-                    continue
-                if isinstance(node, Prefix):
-                    prefixes += [node]
-                    continue
-                if isinstance(node, Instance):
-                    if node.is_part_of_a_template():
-                        instances += [node]
-                    continue
-                print(f" WARNING: unknown statement type: {type(node)}")
-
-        return (prefixes, templates, instances)
+                if node is not None:
+                    yield node
 
     def visitStatement(self, ctx):
         print(f"Visited statement: {ctx.getText()}")

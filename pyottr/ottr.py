@@ -7,16 +7,16 @@ from .stOTTRVisitor import stOTTRVisitor
 
 def tryit():
     stottr_input = """
-    #@prefix : <http://example.xyz/ns> .
-    #@prefix ex: <http://example.net/ns> .
-    #PREFIX ex2: <http://example.com/ns>
+    @prefix : <http://example.xyz/ns> .
+    @prefix ex: <http://example.net/ns> .
+    PREFIX ex2: <http://example.com/ns>
 
     # modifiers
     ex:NamedPizza [ owl:Class ?pizza ] .
-    #ex:NamedPizzaA [ ??pizza  ] .
-    #ex:NamedPizzaB [ !?pizza ] .
-    #ex:NamedPizzaC [ ?!?pizza ] .
-    #ex:NamedPizzaD [ !??pizza ] .
+    ex:NamedPizzaA [ ??pizza  ] .
+    ex:NamedPizzaB [ !?pizza ] .
+    ex:NamedPizzaC [ ?!?pizza ] .
+    ex:NamedPizzaD [ !??pizza ] .
     """
     input_stream = InputStream(stottr_input)
     lexer = stOTTRLexer(input_stream)
@@ -25,6 +25,5 @@ def tryit():
     parse_tree = parser.stOTTRDoc()
 
     visitor = stOTTRVisitor()
-    (prefixes, templates) = visitor.visit(parse_tree)
-
-    print(templates)
+    for n in visitor.visit(parse_tree):
+        print(f" -> {type(n)} -> {(n)}")

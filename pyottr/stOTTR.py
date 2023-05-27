@@ -1,9 +1,11 @@
 from antlr4 import CommonTokenStream, InputStream
 
+from typing import Iterator
 from .grammar.stOTTRLexer import stOTTRLexer
 from .grammar.stOTTRParser import stOTTRParser
-from .model import Iri, Template
+from .model import Instance, Iri, Template
 from .stOTTRVisitor import stOTTRVisitor
+from diogi.functions import always_a_list
 
 
 class stOTTR:
@@ -17,7 +19,7 @@ class stOTTR:
             return None
         return results[0]
 
-    def parse(self, definition: str) -> None:
+    def parse(self, definition: str) -> dict:
         input_stream = InputStream(definition)
         lexer = stOTTRLexer(input_stream)
         token_stream = CommonTokenStream(lexer)
@@ -25,9 +27,16 @@ class stOTTR:
         parse_tree = parser.stOTTRDoc()
 
         visitor = stOTTRVisitor()
-        (_, templates, instances) = visitor.visit(parse_tree)
-
-        self._templates += templates
-        self._instances += instances
-
+        for element in visitor.visit(parse_tree):
+            print('*')
+            if isinstance(element, Instance):
+                self._instances.append(element)
+                continue
+            if isinstance(element, Template):
+                self._templates.append(element)
+                continue    
+            print(f"Unknown element type {type(element)} with value {element}")
         return {"templates": len(self._templates), "instances": len(self._instances)}
+    
+    def process(self, definition: str) -> Iterator[str]:
+        return ""
