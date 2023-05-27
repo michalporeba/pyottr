@@ -15,6 +15,7 @@ from .model import (
 )
 
 
+# noinspection PyPep8Naming
 class stOTTRVisitor(BaseVisitor):
     def __init__(self):
         pass
@@ -39,7 +40,19 @@ class stOTTRVisitor(BaseVisitor):
 
     def visitStatement(self, ctx):
         print(f"Visited statement: {ctx.getText()}")
-        return self.visitChildren(ctx)
+        template = None
+        for c in always_a_list(self.visitChildren(ctx)):
+            if isinstance(c, Template):
+                template = c
+                continue
+            if isinstance(c, Patterns):
+                template.add_instances(c)
+                continue
+            if isinstance(c, Instance):
+                return c
+            print(f"WARNING: Unsupported statement child {type(c)}")
+
+        return template
 
     def visitSignature(self, ctx: stOTTRParser.SignatureContext):
         print(f"Visited signature: {ctx.getText()}")
@@ -51,8 +64,6 @@ class stOTTRVisitor(BaseVisitor):
             if isinstance(c, stOTTRParser.ParameterListContext):
                 template.add_parameters(self.visit(c))
                 continue
-            if isinstance(c, stOTTRParser.PatternListContext):
-                pass
 
         return template
 
@@ -104,10 +115,7 @@ class stOTTRVisitor(BaseVisitor):
 
     # Visit a parse tree produced by stOTTRParser#patternList.
     def visitPatternList(self, ctx: stOTTRParser.PatternListContext):
-        print(f"Visited pattern list: {ctx.getText()}")
-        result = self.visitChildren(ctx)
-        print(result)
-        return Patterns(result)
+        return Patterns(self.visitChildren(ctx))
 
     # Visit a parse tree produced by stOTTRParser#instance.
     def visitInstance(self, ctx: stOTTRParser.InstanceContext):

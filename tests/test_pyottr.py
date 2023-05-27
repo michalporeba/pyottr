@@ -179,14 +179,12 @@ def test_single_minimal_template():
     assert sut.get_template("ex:EmptyTemplate") is not None
 
 
-@pytest.mark.parametrize(
-    "representation,description", TEMPLATES_WITH_PARAMETERS_TEST_DATA
-)
-def test_templates_with_parameters(representation, description):
-    print(f"parsing {representation}")
+@pytest.mark.parametrize("signature,description", TEMPLATES_WITH_PARAMETERS_TEST_DATA)
+def test_templates_with_parameters(signature, description):
+    print(f"parsing {signature}")
     print(f"expecting {description}")
     sut = PyOTTR()
-    sut.parse(representation)
+    sut.parse(signature)
     template = sut.get_template(description["name"])
     assert template is not None, f'template {description["name"]} should be found'
     assert len(template.parameters) == len(
@@ -211,3 +209,32 @@ def test_templates_with_parameters(representation, description):
             assert actual.default_value == expected.get(
                 "default_value", None
             ), f"default value should be {expected.get('default_value')}"
+
+
+PATTERNS_TEST_DATA = [
+    (
+        """ex:SinglePatterns [ ?identifier, ?label ] :: {
+            ottr:Triple(?identifier, rdfs:label, ?label)
+        }.
+        """,
+        {
+            "name": "ex:SinglePatterns",
+            "parameters": [
+                {"variable": "?identifier"},
+                {"variable": "?label"},
+            ],
+            "patterns": ["ottr:Triple(?identifier, rdfs:label, ?label)"],
+        },
+    ),
+]
+
+
+@pytest.mark.parametrize("signature,description", PATTERNS_TEST_DATA)
+def test_templates_with_patterns(signature, description):
+    print(f"parsing = {signature}")
+    print(f"expecting = {description}")
+    sut = PyOTTR()
+    sut.parse(signature)
+    template = sut.get_template(description["name"])
+    assert template is not None
+    assert len(template.instances) == 1

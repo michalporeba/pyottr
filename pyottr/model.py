@@ -1,5 +1,7 @@
 from typing import List, Union
 
+from diogi.functions import always_a_list
+
 
 class Directive:
     pass
@@ -52,8 +54,8 @@ class Parameter:
 
 
 class Patterns:
-    def __init__(self, patterns):
-        self.patterns = patterns
+    def __init__(self, instances):
+        self.instances = instances
 
 
 class Prefix(Directive):
@@ -106,6 +108,7 @@ class Template(Statement):
             )
 
         self.parameters = []
+        self.instances = []
 
     def add_parameters(self, parameters: Union[Parameter, List[Parameter]]) -> None:
         print(f"parameters = {parameters}")
@@ -118,6 +121,12 @@ class Template(Statement):
 
     def get_parameter(self, variable: str) -> Parameter:
         return [p for p in self.parameters if p.variable == variable][0]
+
+    def add_instances(self, instances: Union[Instance, List[Instance]]) -> None:
+        print(f"pattern instances = {instances}")
+        for instance in always_a_list(instances):
+            print("pattern instance = {instance}")
+            self.instances.append(instance)
 
     def __str__(self) -> str:
         repr = [str(self.name), " ["]
