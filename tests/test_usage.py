@@ -1,9 +1,9 @@
-from pyottr.stOTTR import stOTTR
+from pyottr.PyOTTR import PyOTTR
 
 
 def test_parse_scenario_01():
-    stottr = stOTTR()
-    stats = stottr.parse(
+    sut = PyOTTR()
+    stats = sut.parse(
         """
         ex:Pizza [ ?identifier, ?label ] :: {
             ottr:Triple( ?idnetifier, rdfs:label, ?label )
@@ -17,8 +17,8 @@ def test_parse_scenario_01():
 
 
 def process_scenario_01():
-    stottr = stOTTR()
-    triples = stottr.process(
+    sut = PyOTTR()
+    triples = sut.process(
         """
         ex:Pizza [ ?identifier, ?label ] :: {
             ottr:Triple( ?idnetifier, rdfs:label, ?label )

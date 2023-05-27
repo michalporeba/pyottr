@@ -1,7 +1,7 @@
 import pytest
 
 from pyottr.model import Basic, Top, TypedList
-from pyottr.stOTTR import stOTTR
+from pyottr.PyOTTR import PyOTTR
 
 TEMPLATES = """
 # This is a base template:
@@ -173,10 +173,10 @@ TEMPLATES_WITH_PARAMETERS_TEST_DATA = [
 
 
 def test_single_minimal_template():
-    stottr = stOTTR()
-    assert stottr.get_template("ex:EmptyTemplate") is None
-    stottr.parse("ex:EmptyTemplate [ ] .")
-    assert stottr.get_template("ex:EmptyTemplate") is not None
+    sut = PyOTTR()
+    assert sut.get_template("ex:EmptyTemplate") is None
+    sut.parse("ex:EmptyTemplate [ ] .")
+    assert sut.get_template("ex:EmptyTemplate") is not None
 
 
 @pytest.mark.parametrize(
@@ -185,9 +185,9 @@ def test_single_minimal_template():
 def test_templates_with_parameters(representation, description):
     print(f"parsing {representation}")
     print(f"expecting {description}")
-    stottr = stOTTR()
-    stottr.parse(representation)
-    template = stottr.get_template(description["name"])
+    sut = PyOTTR()
+    sut.parse(representation)
+    template = sut.get_template(description["name"])
     assert template is not None, f'template {description["name"]} should be found'
     assert len(template.parameters) == len(
         description["parameters"]

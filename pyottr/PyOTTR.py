@@ -8,14 +8,14 @@ from .model import Instance, Iri, Template
 from .stOTTRVisitor import stOTTRVisitor
 
 
-class stOTTR:
+class PyOTTR:
     def __init__(self):
         self._templates = []
         self._instances = []
 
     def get_template(self, name: Union[str, Iri]) -> Union[Template, None]:
         results = [t for t in self._templates if t.name == name]
-        if len(results) == 0:   
+        if len(results) == 0:
             return None
         return results[0]
 
