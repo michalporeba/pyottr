@@ -10,20 +10,20 @@ class Directive:
 class Instance:
     def __init__(self, template_name) -> None:
         self._template_name = template_name
-        self._terms = []
+        self._arguments = []
 
     def get_template_name(self):
         return self._template_name
 
-    def add_term(self, term) -> None:
-        self._terms.append(term)
+    def add_argument(self, argument) -> None:
+        self._arguments.append(argument)
 
     def __str__(self):
         repr = [str(self._template_name)]
-        repr += ['(']
-        repr += [str(t) for t in self._terms]
-        repr += [')']
-        return ''.join(repr)
+        repr += ["("]
+        repr += [", ".join([str(t) for t in self._arguments])]
+        repr += [")"]
+        return "".join(repr)
 
 
 class Parameter:

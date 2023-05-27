@@ -1,3 +1,5 @@
+import logging as log
+
 from diogi.functions import always_a_list
 
 from .grammar.stOTTRParser import stOTTRParser
@@ -34,13 +36,14 @@ class stOTTRVisitor(BaseVisitor):
         return [aggregate, nextResult]
 
     def visitStOTTRDoc(self, ctx: stOTTRParser.StOTTRDocContext):
+        log.debug(f"Visited document: {ctx.getText()}")
         for c in ctx.children:
             for node in always_a_list(self.visit(c)):
                 if node is not None:
                     yield node
 
     def visitStatement(self, ctx):
-        print(f"Visited statement: {ctx.getText()}")
+        log.debug(f"Visited statement: {ctx.getText()}")
         template = None
         for c in always_a_list(self.visitChildren(ctx)):
             if isinstance(c, Template):
@@ -51,12 +54,12 @@ class stOTTRVisitor(BaseVisitor):
                 continue
             if isinstance(c, Instance):
                 return c
-            print(f"WARNING: Unsupported statement child {type(c)}")
+            log.warning(f"WARNING: Unsupported statement child {type(c)}")
 
         return template
 
     def visitSignature(self, ctx: stOTTRParser.SignatureContext):
-        print(f"Visited signature: {ctx.getText()}")
+        log.debug(f"Visited signature: {ctx.getText()}")
         template = None
         for c in ctx.children:
             if isinstance(c, stOTTRParser.TemplateNameContext):
@@ -65,23 +68,25 @@ class stOTTRVisitor(BaseVisitor):
             if isinstance(c, stOTTRParser.ParameterListContext):
                 template.add_parameters(self.visit(c))
                 continue
+            log.warning(f"Unexpected context type {type(c)} found in signature!")
 
         return template
 
     def visitTemplateName(self, ctx: stOTTRParser.TemplateNameContext):
+        log.debug(f"Visited template name: {ctx.getText()}")
         return self.visitChildren(ctx)
 
     def visitParameterList(self, ctx: stOTTRParser.ParameterListContext):
+        log.debug(f"Visited parameter list: {ctx.getText()}")
         return self.visitChildren(ctx)
 
-    # Visit a parse tree produced by stOTTRParser#parameter.
     def visitParameter(self, ctx: stOTTRParser.ParameterContext):
+        log.debug(f"Visited parameter: {ctx.getText()}")
         p = Parameter(str(ctx.Variable()))
         modifiers = [str(x) for x in ctx.ParameterMode()]
         p.optional = "?" in modifiers
         p.nonblank = "!" in modifiers
-        children = self.visitChildren(ctx)
-        for c in always_a_list(children):
+        for c in always_a_list(self.visitChildren(ctx)):
             if isinstance(c, Type):
                 p.type_ = c
                 continue
@@ -89,160 +94,145 @@ class stOTTRVisitor(BaseVisitor):
 
         return p
 
-    # Visit a parse tree produced by stOTTRParser#defaultValue.
     def visitDefaultValue(self, ctx: stOTTRParser.DefaultValueContext):
-        # print(f"Visited default value: {ctx.getText()}")
+        log.debug(f"Visited default value: {ctx.getText()}")
         return self.visitChildren(ctx)
 
-    # Visit a parse tree produced by stOTTRParser#annotationList.
     def visitAnnotationList(self, ctx: stOTTRParser.AnnotationListContext):
-        print(f"Visited annotation list: {ctx.getText()}")
+        log.debug(f"Visited annotation list: {ctx.getText()}")
         return self.visitChildren(ctx)
 
-    # Visit a parse tree produced by stOTTRParser#annotation.
     def visitAnnotation(self, ctx: stOTTRParser.AnnotationContext):
-        print(f"Visited annotation: {ctx.getText()}")
+        log.debug(f"Visited annotation: {ctx.getText()}")
         return self.visitChildren(ctx)
 
-    # Visit a parse tree produced by stOTTRParser#baseTemplate.
     def visitBaseTemplate(self, ctx: stOTTRParser.BaseTemplateContext):
-        # print(f"Visited base template : {ctx.getText()}")
+        log.debug(f"Visited base template : {ctx.getText()}")
         return self.visitChildren(ctx)
 
-    # Visit a parse tree produced by stOTTRParser#template.
     def visitTemplate(self, ctx: stOTTRParser.TemplateContext):
-        print(f"Visited template: {ctx.getText()}")
+        log.debug(f"Visited template: {ctx.getText()}")
         return self.visitChildren(ctx)
 
-    # Visit a parse tree produced by stOTTRParser#patternList.
     def visitPatternList(self, ctx: stOTTRParser.PatternListContext):
+        log.debug(f"Visited pattern list: {ctx.getText()}")
         return Patterns(self.visitChildren(ctx))
 
-    # Visit a parse tree produced by stOTTRParser#instance.
     def visitInstance(self, ctx: stOTTRParser.InstanceContext):
-        print(f"Visited instance: {ctx.getText()}")
+        log.debug(f"Visited instance: {ctx.getText()}")
         instance = Instance(self.visit(ctx.templateName()))
-        # TODO: ExpanderList is a property of InstanceContext
-        #for c in self.visitChildren(ctx):
-        #    print(f"c -> {type(c)} -> {c}")
-        for c in always_a_list(self.visit(ctx.argumentList())):
-            pass #print(f"d -> {type(c)} -> {c}")
+
+        if ctx.ListExpander():
+            log.warning("ListExpander is not implmented in visitInstance")
+
+        for argument in always_a_list(self.visit(ctx.argumentList())):
+            instance.add_argument(argument)
         return instance
 
-    # Visit a parse tree produced by stOTTRParser#argumentList.
     def visitArgumentList(self, ctx: stOTTRParser.ArgumentListContext):
-        print(f"Visited argument list: {ctx.getText()}")
+        log.debug(f"Visited argument list: {ctx.getText()}")
         return self.visitChildren(ctx)
 
-    # Visit a parse tree produced by stOTTRParser#argument.
     def visitArgument(self, ctx: stOTTRParser.ArgumentContext):
-        print(f"Visited argument: {ctx.getText()}")
+        log.debug(f"Visited argument: {ctx.getText()}")
         return self.visitChildren(ctx)
 
-    # Visit a parse tree produced by stOTTRParser#type.
     def visitType(self, ctx: stOTTRParser.TypeContext):
-        print(f"Visited type: {ctx.getText()}")
+        log.debug(f"Visited type: {ctx.getText()}")
         return self.visitChildren(ctx)
 
     def visitListType(self, ctx: stOTTRParser.ListTypeContext):
+        log.debug(f"Visited list type: {ctx.getText()}")
         return TypedList(self.visit(ctx.type_()))
 
-    # Visit a parse tree produced by stOTTRParser#neListType.
     def visitNeListType(self, ctx: stOTTRParser.NeListTypeContext):
-        print(f"Visited NeListType: {ctx.getText()}")
+        log.debug(f"Visited NeListType: {ctx.getText()}")
         return self.visitChildren(ctx)
 
-    # Visit a parse tree produced by stOTTRParser#lubType.
     def visitLubType(self, ctx: stOTTRParser.LubTypeContext):
-        print(f"Visited LubType: {ctx.getText()}")
+        log.debug(f"Visited LubType: {ctx.getText()}")
         return self.visitChildren(ctx)
 
     def visitBasicType(self, ctx: stOTTRParser.BasicTypeContext):
+        log.debug(f"Visited basic type: {ctx.getText()}")
         return Basic(ctx.getText())
 
-    # Visit a parse tree produced by stOTTRParser#term.
     def visitTerm(self, ctx: stOTTRParser.TermContext):
-        print(f"Visited term {ctx.getText()}")
+        log.debug(f"Visited term {ctx.getText()}")
         return Term(ctx.getText())
 
-    # Visit a parse tree produced by stOTTRParser#constantTerm.
     def visitConstantTerm(self, ctx: stOTTRParser.ConstantTermContext):
-        print(f"Visited constant term: {ctx.getText()}")
+        log.debug(f"Visited constant term: {ctx.getText()}")
         return self.visitChildren(ctx)
 
-    # Visit a parse tree produced by stOTTRParser#constant.
     def visitConstant(self, ctx: stOTTRParser.ConstantContext):
-        print(f"Visited constant: {ctx.getText()}")
+        log.debug(f"Visited constant: {ctx.getText()}")
         return self.visitChildren(ctx)
 
-    # Visit a parse tree produced by stOTTRParser#none.
     def visitNone(self, ctx: stOTTRParser.NoneContext):
-        print(f"Visited none: {ctx.getText()}")
+        log.debug(f"Visited none: {ctx.getText()}")
         return self.visitChildren(ctx)
 
-    # Visit a parse tree produced by stOTTRParser#termList.
     def visitTermList(self, ctx: stOTTRParser.TermListContext):
+        log.debug(f"Visited term list: {ctx.getText()}")
         return self.visitChildren(ctx)
 
-    # Visit a parse tree produced by stOTTRParser#constantList.
     def visitConstantList(self, ctx: stOTTRParser.ConstantListContext):
-        print(f"Visited constant list: {ctx.getText()}")
+        log.debug(f"Visited constant list: {ctx.getText()}")
         return self.visitChildren(ctx)
 
-    # Visit a parse tree produced by stOTTRParser#turtleDoc.
     def visitTurtleDoc(self, ctx: stOTTRParser.TurtleDocContext):
-        print(f"Visited turtle doc: {ctx.getText()}")
+        log.debug(f"Visited turtle doc: {ctx.getText()}")
         return self.visitChildren(ctx)
 
     def visitDirective(self, ctx: stOTTRParser.DirectiveContext):
+        log.debug(f"Visited directive: {ctx.getText()}")
         return self.visitChildren(ctx)
 
     def visitPrefixID(self, ctx: stOTTRParser.PrefixIDContext):
+        log.debug(f"Visited prefix ID: {ctx.getText()}")
         return Prefix(ctx.PNAME_NS(), ctx.IRIREF())
 
-    # Visit a parse tree produced by stOTTRParser#base.
     def visitBase(self, ctx: stOTTRParser.BaseContext):
-        print(f"Visited base: {ctx.getText()}")
+        log.debug(f"Visited base: {ctx.getText()}")
         return self.visitChildren(ctx)
 
-    # Visit a parse tree produced by stOTTRParser#sparqlBase.
     def visitSparqlBase(self, ctx: stOTTRParser.SparqlBaseContext):
-        print(f"Visited SPARQL base: {ctx.getText()}")
+        log.debug(f"Visited SPARQL base: {ctx.getText()}")
         return self.visitChildren(ctx)
 
     def visitSparqlPrefix(self, ctx: stOTTRParser.SparqlPrefixContext):
+        log.debug(f"Visited SPARQL prefix: {ctx.getText()}")
         return Prefix(ctx.PNAME_NS(), ctx.IRIREF())
 
     def visitLiteral(self, ctx: stOTTRParser.LiteralContext):
+        log.debug(f"Visited literal: {ctx.getText()}")
         return ctx.getText()
 
     def visitNumericLiteral(self, ctx: stOTTRParser.NumericLiteralContext):
+        log.debug(f"Visited numeric literal: {ctx.getText()}")
         number = ctx.getText()
         if number.isdigit():
             return int(number)
         else:
             return float(number)
 
-    # Visit a parse tree produced by stOTTRParser#rdfLiteral.
     def visitRdfLiteral(self, ctx: stOTTRParser.RdfLiteralContext):
-        print(f"Visited rdf literal: {ctx.getText()}")
+        log.debug(f"Visited rdf literal: {ctx.getText()}")
         return self.visitChildren(ctx)
 
-    # Visit a parse tree produced by stOTTRParser#iri.
     def visitIri(self, ctx: stOTTRParser.IriContext):
+        log.debug(f"Visited IRI: {ctx.getText()}")
         return Iri(ctx.getText())
 
-    # Visit a parse tree produced by stOTTRParser#prefixedName.
     def visitPrefixedName(self, ctx: stOTTRParser.PrefixedNameContext):
-        print(f"Visited prefixed name: {ctx.getText()}")
+        log.debug(f"Visited prefixed name: {ctx.getText()}")
         return self.visitChildren(ctx)
 
-    # Visit a parse tree produced by stOTTRParser#blankNode.
     def visitBlankNode(self, ctx: stOTTRParser.BlankNodeContext):
-        print(f"Visited blank node: {ctx.getText()}")
+        log.debug(f"Visited blank node: {ctx.getText()}")
         return self.visitChildren(ctx)
 
-    # Visit a parse tree produced by stOTTRParser#anon.
     def visitAnon(self, ctx: stOTTRParser.AnonContext):
-        print(f"Visited anon: {ctx.getText()}")
+        log.debug(f"Visited anon: {ctx.getText()}")
         return self.visitChildren(ctx)

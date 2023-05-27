@@ -240,7 +240,7 @@ PATTERNS_TEST_DATA = [
             ],
             "patterns": [
                 "ottr:Triple(?identifier, rdf:type, owl:Class)",
-                "ottr:Triple(?identifier, rdfs:label, ?label)"
+                "ottr:Triple(?identifier, rdfs:label, ?label)",
             ],
         },
     ),
@@ -257,7 +257,16 @@ def test_templates_with_patterns(signature, description):
     assert template is not None
     assert len(template.instances) == len(description["patterns"])
 
+    expected = description["patterns"]
+    unexpected = []
     for instance in template.instances:
-        print(f"Instance: {instance}")
+        if str(instance) in expected:
+            expected.remove(str(instance))
+        else:
+            unexpected.append(str(instance))
 
-    #raise AssertionError()
+    if len(expected) + len(unexpected) > 0:
+        raise AssertionError(
+            f"Expected patterns {expected} were not found!\n"
+            f"Unexpected patterns {unexpected} were found!"
+        )

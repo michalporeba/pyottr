@@ -1,3 +1,4 @@
+import logging as log
 from typing import Iterator, Union
 
 from antlr4 import CommonTokenStream, InputStream
@@ -34,7 +35,7 @@ class PyOTTR:
             if isinstance(element, Template):
                 self._templates.append(element)
                 continue
-            print(f"Unknown element type {type(element)} with value {element}")
+            log.warning(f"Unknown element type {type(element)} with value {element}")
         return {"templates": len(self._templates), "instances": len(self._instances)}
 
     def process(self, definition: str) -> Iterator[str]:
