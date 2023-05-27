@@ -18,7 +18,7 @@ class Instance:
     def add_argument(self, argument) -> None:
         self._arguments.append(argument)
 
-    def expand(self, parameters: dict) -> str:
+    def expand(self, template, parameters: dict) -> str:
         if not self._template_name == "ottr:Triple":
             raise NotImplementedError(
                 f"Expanding template {self._template_name} is not implemented"
@@ -27,12 +27,14 @@ class Instance:
         if len(self._arguments) != 3:
             raise ValueError("ottr:Triple must have exactly 3 arguments")
 
+        values = template.get_variable_values(parameters)
         triple = []
         for term in self._arguments:
             if isinstance(term, Variable):
-                triple.append(parameters[term.value])
+                triple.append(values[term.value])
                 continue
             triple.append(str(term))
+
         return " ".join(triple)
 
     def __str__(self):
@@ -150,6 +152,12 @@ class Template(Statement):
     def add_instances(self, instances: Union[Instance, List[Instance]]) -> None:
         for instance in always_a_list(instances):
             self.instances.append(instance)
+
+    def get_variable_values(self, *values):
+        output = {}
+        for i in range(len(values)):
+            output[self.parameters[i].variable] = values[i]
+        return output
 
     def __str__(self) -> str:
         repr = [str(self.name), " ["]

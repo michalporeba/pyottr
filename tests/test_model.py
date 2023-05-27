@@ -70,11 +70,12 @@ def test_term_inequality():
 
 
 def test_expand_instance_with_ottr_Triple():
+    template = Template(Iri("ex:Pizza"))
+    template.add_parameters(Parameter("?identifier"))
+    template.add_parameters(Parameter("?label"))
     sut = Instance("ottr:Triple")
     sut.add_argument(Variable("?identifier"))
     sut.add_argument(Term("rdf:type"))
     sut.add_argument(Term("owl:Class"))
-    assert (
-        sut.expand({"?identifier": "p:Margherita"}) == "p:Margherita rdf:type owl:Class"
-    )
-    assert sut.expand({"?identifier": "p:Hawaii"}) == "p:Hawaii rdf:type owl:Class"
+    assert sut.expand(template, "p:Margherita") == "p:Margherita rdf:type owl:Class"
+    assert sut.expand(template, "p:Hawaii") == "p:Hawaii rdf:type owl:Class"

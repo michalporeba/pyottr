@@ -43,7 +43,7 @@ def process_scenario_01():
         else:
             unexpected.append(triple)
 
-    if len(expected) > 0 or len(unexpected) > 0:
-        print(f"Missing triples: {expected}")
-        print(f"Unexpected triples: {unexpected}")
-        raise AssertionError
+    if len(expected) + len(unexpected) > 0:
+        raise AssertionError(
+            f"Missing triples: {expected}" f"Unexpected triples: {unexpected}"
+        )
