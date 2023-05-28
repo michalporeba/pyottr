@@ -119,27 +119,6 @@ def test_expand_triple_instance_with_variable_substitution():
     ]
 
 
-def expand_template_with_ottr_triples():
-    template = Template(Iri("ex:Pizza"))
-    template.add_parameters(Parameter("?identifier"))
-    template.add_parameters(Parameter("?label"))
-    template.add_instances(
-        Triple(Variable("?identifier"), Term("rdf:type"), Term("owl:Class"))
-    )
-    template.add_instances(
-        Triple(Variable("?identifier"), Term("rdfs:label"), Variable("?label"))
-    )
-
-    assert template.expand_with(Iri("p:Margherita"), "Margherita") == [
-        "p:Margherita rdf:type owl:Class",
-        'p:Margherita rdfs:label "Margherita"',
-    ]
-    assert template.expand_with(Iri("p:Hawaii"), "Hawaii") == [
-        "p:Hawaii rdf:type owl:Class",
-        'p:Hawaii rdfs:label "Hawaii"',
-    ]
-
-
 def test_expand_top_level_instance():
     pizza = Template(Iri("ex:Pizza"))
     pizza.add_parameters(Parameter("?identifier"))
@@ -171,4 +150,56 @@ def test_expand_top_level_instance():
     assert list(instance.expand_with(get_template)) == [
         "p:Grandiosa rdf:type owl:Class",
         'p:Grandiosa rdfs:label "Grandiosa"',
+    ]
+
+
+def test_expand_top_level_instance_with_recursion():
+    subclass = Template(Iri("ax:SubClassOf"))
+    subclass.add_parameters(Parameter("?sub"))
+    subclass.add_parameters(Parameter("?super"))
+
+    pattern = Instance("ottr:Triple")
+    pattern.add_argument(Variable("?sub"))
+    pattern.add_argument(Iri("rdfs:subClassOf"))
+    pattern.add_argument(Variable("?super"))
+    subclass.add_instances(pattern)
+
+    pizza = Template(Iri("ex:Pizza"))
+    pizza.add_parameters(Parameter("?identifier"))
+    pizza.add_parameters(Parameter("?label"))
+
+    pattern_type = Instance("ottr:Triple")
+    pattern_type.add_argument(Variable("?identifier"))
+    pattern_type.add_argument(Iri("rdf:type"))
+    pattern_type.add_argument(Iri("owl:Class"))
+    pizza.add_instances(pattern_type)
+
+    pattern_sub = Instance("ax:SubClassOf")
+    pattern_sub.add_argument(Variable("?identifier"))
+    pattern_sub.add_argument(Iri("p:Pizza"))
+    pizza.add_instances(pattern_sub)
+
+    pattern_label = Instance("ottr:Triple")
+    pattern_label.add_argument(Variable("?identifier"))
+    pattern_label.add_argument(Iri("rdfs:label"))
+    pattern_label.add_argument(Variable("?label"))
+    pizza.add_instances(pattern_label)
+
+    def get_template(name: str):
+        if name == "ottr:Triple":
+            return Triple()
+        if name == "ex:Pizza":
+            return pizza
+        if name == "ax:SubClassOf":
+            return subclass
+        raise AssertionError(f"Incorrect template {name} has been requested!")
+
+    instance = Instance("ex:Pizza")
+    instance.add_argument(Iri("p:Hawaii"))
+    instance.add_argument(Literal("Hawaii"))
+
+    assert list(instance.expand_with(get_template)) == [
+        "p:Hawaii rdf:type owl:Class",
+        "p:Hawaii rdfs:subClassOf p:Pizza",
+        'p:Hawaii rdfs:label "Hawaii"',
     ]
