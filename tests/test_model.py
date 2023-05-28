@@ -81,16 +81,32 @@ def test_term_inequality():
 def test_expand_triple_template():
     triple = Triple()
     assert (
-        triple.expand_with(Iri("p:Pizza"), Term("rdf:type"), Term("owl:Class"))
-        == "p:Pizza rdf:type owl:Class"
+        triple.expand_with(Iri("p:Hawaii"), Term("rdf:type"), Term("owl:Class"))
+        == "p:Hawaii rdf:type owl:Class"
     )
+
+
+def test_expand_triple_instance():
+    instance = Instance(Iri("ottr:Triple"))
+    instance.add_argument(Iri("p:Grandiosa"))
+    instance.add_argument(Term("rdf:type"))
+    instance.add_argument(Term("owl:Class"))
+
+    def get_template(name: str):
+        if name == "ottr:Triple":
+            return Triple()
+        raise AssertionError(f"Incorrect template {name} has been requested!")
+
+    assert instance.expand_with(get_template, {}) == ["p:Grandiosa rdf:type owl:Class"]
 
 
 def expand_template_with_ottr_triple():
     template = Template(Iri("ex:Pizza"))
     template.add_parameters(Parameter("?identifier"))
     template.add_parameters(Parameter("?label"))
-    template.add_instances(Triple(Variable("?identifier"), Term("rdfs:label"), Variable("?label")))
+    template.add_instances(
+        Triple(Variable("?identifier"), Term("rdfs:label"), Variable("?label"))
+    )
 
     assert template.expand_with(Iri("p:Margherita"), "Margherita") == [
         'p:Margherita rdfs:label "Margherita"'
@@ -104,16 +120,20 @@ def expand_template_with_ottr_triples():
     template = Template(Iri("ex:Pizza"))
     template.add_parameters(Parameter("?identifier"))
     template.add_parameters(Parameter("?label"))
-    template.add_instances(Triple(Variable("?identifier"), Term("rdf:type"), Term("owl:Class")))
-    template.add_instances(Triple(Variable("?identifier"), Term("rdfs:label"), Variable("?label")))
+    template.add_instances(
+        Triple(Variable("?identifier"), Term("rdf:type"), Term("owl:Class"))
+    )
+    template.add_instances(
+        Triple(Variable("?identifier"), Term("rdfs:label"), Variable("?label"))
+    )
 
     assert template.expand_with(Iri("p:Margherita"), "Margherita") == [
-        'p:Margherita rdf:type owl:Class',
-        'p:Margherita rdfs:label "Margherita"'
+        "p:Margherita rdf:type owl:Class",
+        'p:Margherita rdfs:label "Margherita"',
     ]
     assert template.expand_with(Iri("p:Hawaii"), "Hawaii") == [
-        'p:Hawaii rdf:type owl:Class',
-        'p:Hawaii rdfs:label "Hawaii"'
+        "p:Hawaii rdf:type owl:Class",
+        'p:Hawaii rdfs:label "Hawaii"',
     ]
 
 

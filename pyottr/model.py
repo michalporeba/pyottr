@@ -1,4 +1,4 @@
-from typing import List, Union
+from typing import Callable, List, Union
 
 from diogi.functions import always_a_list
 
@@ -18,27 +18,10 @@ class Instance:
     def add_argument(self, argument) -> None:
         self._arguments.append(argument)
 
-    def expand_with(self, template, variables: dict) -> str:
-        if not self._template_name == "ottr:Triple":
-            raise NotImplementedError(
-                f"Expanding template {self._template_name} is not implemented"
-            )
-
-        if len(self._arguments) != 3:
-            raise ValueError("ottr:Triple must have exactly 3 arguments")
-
-        triple = []
-        for term in self._arguments:
-            if isinstance(term, Variable):
-                value = variables[term.value]
-                if isinstance(value, Term):
-                    triple.append(str(value))
-                else:
-                    triple.append(f'"{variables[term.value]}"')
-                continue
-            triple.append(str(term))
-
-        return " ".join(triple)
+    def expand_with(self, get_template: Callable[[str], object], variables: dict):
+        template = get_template(self._template_name)
+        parameters = Instance._resolve_variables(self._arguments, variables)
+        return always_a_list(template.expand_with(*parameters))
 
     def __str__(self):
         repr = [str(self._template_name)]
@@ -46,7 +29,6 @@ class Instance:
         repr += [", ".join([str(t) for t in self._arguments])]
         repr += [")"]
         return "".join(repr)
-
 
     @staticmethod
     def _resolve_variables(arguments, variables):
@@ -56,15 +38,7 @@ class Instance:
                 continue
             yield argument
 
-    @staticmethod
-    def _format_term_or_literal(value) -> str:
-        if isinstance(value, Term):
-            return str(value)
-        if isinstance(value, int) or isinstance(value, float):
-            return str(value)
-        return f'"{value}"'
-
-    #def expand_with(self, variables) -> str:
+    # def expand_with(self, variables) -> str:
     #    return " ".join(
     #        [
     #            Triple._format_term_or_literal(a)
@@ -222,12 +196,7 @@ class Triple(Template):
         super().__init__(Iri("ottr:Triple"))
 
     def expand_with(self, *parameters) -> str:
-        return " ".join(
-            [
-                _format_term_or_literal(p)
-                for p in parameters
-            ]
-        )
+        return " ".join([_format_term_or_literal(p) for p in parameters])
 
 
 class Type:
