@@ -48,20 +48,6 @@ class Instance:
         return "".join(repr)
 
 
-class Triple(Instance):
-    def __init__(self, *arguments) -> None:
-        super().__init__("ottr:Triple")
-        for argument in arguments:
-            self.add_argument(argument)
-
-    def expand_with(self, variables) -> str:
-        return " ".join(
-            [
-                Triple._format_term_or_literal(a)
-                for a in Triple._resolve_variables(self._arguments, variables)
-            ]
-        )
-
     @staticmethod
     def _resolve_variables(arguments, variables):
         for argument in arguments:
@@ -77,6 +63,14 @@ class Triple(Instance):
         if isinstance(value, int) or isinstance(value, float):
             return str(value)
         return f'"{value}"'
+
+    #def expand_with(self, variables) -> str:
+    #    return " ".join(
+    #        [
+    #            Triple._format_term_or_literal(a)
+    #            for a in Triple._resolve_variables(self._arguments, variables)
+    #        ]
+    #    )
 
 
 class Parameter:
@@ -223,6 +217,19 @@ class Template(Statement):
         return self.__str__()
 
 
+class Triple(Template):
+    def __init__(self) -> None:
+        super().__init__(Iri("ottr:Triple"))
+
+    def expand_with(self, *parameters) -> str:
+        return " ".join(
+            [
+                _format_term_or_literal(p)
+                for p in parameters
+            ]
+        )
+
+
 class Type:
     pass
 
@@ -266,3 +273,11 @@ class LowestUpperBound(Type):
 
 class NonEmptyList(Type):
     pass
+
+
+def _format_term_or_literal(value) -> str:
+    if isinstance(value, Term):
+        return str(value)
+    if isinstance(value, int) or isinstance(value, float):
+        return str(value)
+    return f'"{value}"'

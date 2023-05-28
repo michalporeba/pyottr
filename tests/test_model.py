@@ -78,7 +78,15 @@ def test_term_inequality():
     assert Iri(":Pizza") != Iri("ex:Pizza")
 
 
-def test_expand_template_with_ottr_triple():
+def test_expand_triple_template():
+    triple = Triple()
+    assert (
+        triple.expand_with(Iri("p:Pizza"), Term("rdf:type"), Term("owl:Class"))
+        == "p:Pizza rdf:type owl:Class"
+    )
+
+
+def expand_template_with_ottr_triple():
     template = Template(Iri("ex:Pizza"))
     template.add_parameters(Parameter("?identifier"))
     template.add_parameters(Parameter("?label"))
@@ -92,7 +100,7 @@ def test_expand_template_with_ottr_triple():
     ]
 
 
-def test_expand_template_with_ottr_triples():
+def expand_template_with_ottr_triples():
     template = Template(Iri("ex:Pizza"))
     template.add_parameters(Parameter("?identifier"))
     template.add_parameters(Parameter("?label"))
