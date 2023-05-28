@@ -1,6 +1,7 @@
 from pyottr.model import (
     Instance,
     Iri,
+    Literal,
     Parameter,
     Prefix,
     Template,
@@ -100,19 +101,20 @@ def test_expand_triple_instance():
     assert instance.expand_with(get_template, {}) == ["p:Grandiosa rdf:type owl:Class"]
 
 
-def expand_template_with_ottr_triple():
-    template = Template(Iri("ex:Pizza"))
-    template.add_parameters(Parameter("?identifier"))
-    template.add_parameters(Parameter("?label"))
-    template.add_instances(
-        Triple(Variable("?identifier"), Term("rdfs:label"), Variable("?label"))
-    )
+def test_expand_triple_instance_with_variable_substitution():
+    instance = Instance(Iri("ottr:Triple"))
+    instance.add_argument(Variable("?identifier"))
+    instance.add_argument(Term("rdfs:label"))
+    instance.add_argument(Variable("?label"))
 
-    assert template.expand_with(Iri("p:Margherita"), "Margherita") == [
+    def get_template(name: str):
+        if name == "ottr:Triple":
+            return Triple()
+        raise AssertionError(f"Incorrect template {name} has been requested!")
+
+    variables = {"?identifier": Iri("p:Margherita"), "?label": Literal("Margherita")}
+    assert instance.expand_with(get_template, variables) == [
         'p:Margherita rdfs:label "Margherita"'
-    ]
-    assert template.expand_with(Iri("p:Hawaii"), "Hawaii") == [
-        'p:Hawaii rdfs:label "Hawaii"'
     ]
 
 

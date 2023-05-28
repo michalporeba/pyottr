@@ -196,7 +196,7 @@ class Triple(Template):
         super().__init__(Iri("ottr:Triple"))
 
     def expand_with(self, *parameters) -> str:
-        return " ".join([_format_term_or_literal(p) for p in parameters])
+        return " ".join([str(p) for p in parameters])
 
 
 class Type:
@@ -242,11 +242,3 @@ class LowestUpperBound(Type):
 
 class NonEmptyList(Type):
     pass
-
-
-def _format_term_or_literal(value) -> str:
-    if isinstance(value, Term):
-        return str(value)
-    if isinstance(value, int) or isinstance(value, float):
-        return str(value)
-    return f'"{value}"'
