@@ -1,3 +1,5 @@
+import logging
+
 from pyottr.model import Instance, Iri, Parameter, Prefix, Template, Term, Variable
 
 
@@ -69,13 +71,14 @@ def test_term_inequality():
     assert Iri(":Pizza") != Iri("ex:Pizza")
 
 
-def test_expand_instance_with_ottr_Triple():
+def test_expand_instance_with_ottr_Triple(caplog):
+    caplog.set_level(logging.DEBUG)
     template = Template(Iri("ex:Pizza"))
     template.add_parameters(Parameter("?identifier"))
     template.add_parameters(Parameter("?label"))
     sut = Instance("ottr:Triple")
     sut.add_argument(Variable("?identifier"))
-    sut.add_argument(Term("rdf:type"))
-    sut.add_argument(Term("owl:Class"))
-    assert sut.expand(template, "p:Margherita") == "p:Margherita rdf:type owl:Class"
-    assert sut.expand(template, "p:Hawaii") == "p:Hawaii rdf:type owl:Class"
+    sut.add_argument(Term("rdfs:label"))
+    sut.add_argument(Variable("?label"))
+    assert sut.expand(template, Iri("p:Margherita"), "Margherita") == 'p:Margherita rdfs:label "Margherita"'
+    assert sut.expand(template, Iri("p:Hawaii"), "Hawaii") == 'p:Hawaii rdfs:label "Hawaii"'

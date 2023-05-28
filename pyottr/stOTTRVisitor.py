@@ -8,6 +8,7 @@ from .model import (
     Basic,
     Instance,
     Iri,
+    Literal,
     Parameter,
     Patterns,
     Prefix,
@@ -207,15 +208,15 @@ class stOTTRVisitor(BaseVisitor):
 
     def visitLiteral(self, ctx: stOTTRParser.LiteralContext):
         log.debug(f"Visited literal: {ctx.getText()}")
-        return ctx.getText()
+        return Literal(ctx.getText())
 
     def visitNumericLiteral(self, ctx: stOTTRParser.NumericLiteralContext):
         log.debug(f"Visited numeric literal: {ctx.getText()}")
         number = ctx.getText()
         if number.isdigit():
-            return int(number)
+            return Literal(int(number))
         else:
-            return float(number)
+            return Literal(float(number))
 
     def visitRdfLiteral(self, ctx: stOTTRParser.RdfLiteralContext):
         log.debug(f"Visited rdf literal: {ctx.getText()}")

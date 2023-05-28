@@ -18,7 +18,7 @@ class Instance:
     def add_argument(self, argument) -> None:
         self._arguments.append(argument)
 
-    def expand(self, template, parameters: dict) -> str:
+    def expand(self, template, *parameters: tuple) -> str:
         if not self._template_name == "ottr:Triple":
             raise NotImplementedError(
                 f"Expanding template {self._template_name} is not implemented"
@@ -31,7 +31,11 @@ class Instance:
         triple = []
         for term in self._arguments:
             if isinstance(term, Variable):
-                triple.append(values[term.value])
+                value = values[term.value]
+                if isinstance(value, Term):
+                    triple.append(str(value))
+                else:
+                    triple.append(f'"{values[term.value]}"')
                 continue
             triple.append(str(term))
 
@@ -101,12 +105,27 @@ class Term:
     def __init__(self, value) -> None:
         self.value = value
 
-    def __str__(self):
+    def __str__(self) -> str:
         return str(self.value)
 
     def __eq__(self, other) -> bool:
         if isinstance(other, type(self)):
             return self.value == other.value
+
+
+class Literal(Term):
+    def __init__(self, value: Union[str, int, float]) -> None:
+        super().__init__(value)
+
+    def __str__(self) -> str:
+        if isinstance(self.value, int) or isinstance(self.value, float):
+            return str(self.value)
+        return f'"{self.value}"'
+
+    def __eq__(self, other) -> bool:
+        if isinstance(other, Literal):
+            return self.value == other.value
+        return self.value == other
 
 
 class Variable(Term):
@@ -153,7 +172,7 @@ class Template(Statement):
         for instance in always_a_list(instances):
             self.instances.append(instance)
 
-    def get_variable_values(self, *values):
+    def get_variable_values(self, values: tuple):
         output = {}
         for i in range(len(values)):
             output[self.parameters[i].variable] = values[i]
