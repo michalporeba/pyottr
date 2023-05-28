@@ -95,7 +95,7 @@ class Prefix(Directive):
         self.iri = iri
 
     def __str__(self) -> str:
-        return f"P({self.label} -> {self.iri})"
+        return f"@prefix {self.label} {self.iri}"
 
     def __repr__(self) -> str:
         return self.__str__()
