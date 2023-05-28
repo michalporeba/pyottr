@@ -18,7 +18,7 @@ class Instance:
     def add_argument(self, argument) -> None:
         self._arguments.append(argument)
 
-    def expand(self, template, *parameters: tuple) -> str:
+    def expand_with(self, template, variables: dict) -> str:
         if not self._template_name == "ottr:Triple":
             raise NotImplementedError(
                 f"Expanding template {self._template_name} is not implemented"
@@ -27,15 +27,14 @@ class Instance:
         if len(self._arguments) != 3:
             raise ValueError("ottr:Triple must have exactly 3 arguments")
 
-        values = template.get_variable_values(parameters)
         triple = []
         for term in self._arguments:
             if isinstance(term, Variable):
-                value = values[term.value]
+                value = variables[term.value]
                 if isinstance(value, Term):
                     triple.append(str(value))
                 else:
-                    triple.append(f'"{values[term.value]}"')
+                    triple.append(f'"{variables[term.value]}"')
                 continue
             triple.append(str(term))
 
@@ -47,6 +46,37 @@ class Instance:
         repr += [", ".join([str(t) for t in self._arguments])]
         repr += [")"]
         return "".join(repr)
+
+
+class Triple(Instance):
+    def __init__(self, *arguments) -> None:
+        super().__init__("ottr:Triple")
+        for argument in arguments:
+            self.add_argument(argument)
+
+    def expand_with(self, variables) -> str:
+        return " ".join(
+            [
+                Triple._format_term_or_literal(a)
+                for a in Triple._resolve_variables(self._arguments, variables)
+            ]
+        )
+
+    @staticmethod
+    def _resolve_variables(arguments, variables):
+        for argument in arguments:
+            if isinstance(argument, Variable):
+                yield variables[argument.value]
+                continue
+            yield argument
+
+    @staticmethod
+    def _format_term_or_literal(value) -> str:
+        if isinstance(value, Term):
+            return str(value)
+        if isinstance(value, int) or isinstance(value, float):
+            return str(value)
+        return f'"{value}"'
 
 
 class Parameter:
@@ -172,11 +202,12 @@ class Template(Statement):
         for instance in always_a_list(instances):
             self.instances.append(instance)
 
-    def get_variable_values(self, values: tuple):
-        output = {}
-        for i in range(len(values)):
-            output[self.parameters[i].variable] = values[i]
-        return output
+    def expand_with(self, *arguments: tuple):
+        variables = {}
+        for i in range(len(arguments)):
+            variables[self.parameters[i].variable] = arguments[i]
+
+        return [i.expand_with(variables) for i in self.instances]
 
     def __str__(self) -> str:
         repr = [str(self.name), " ["]

@@ -1,4 +1,13 @@
-from pyottr.model import Instance, Iri, Parameter, Prefix, Template, Term, Variable
+from pyottr.model import (
+    Instance,
+    Iri,
+    Parameter,
+    Prefix,
+    Template,
+    Term,
+    Triple,
+    Variable,
+)
 
 
 def test_simple_parameter_name():
@@ -69,19 +78,31 @@ def test_term_inequality():
     assert Iri(":Pizza") != Iri("ex:Pizza")
 
 
-def test_expand_instance_with_ottr_triple():
+def test_expand_template_with_ottr_triple():
     template = Template(Iri("ex:Pizza"))
     template.add_parameters(Parameter("?identifier"))
     template.add_parameters(Parameter("?label"))
-    sut = Instance("ottr:Triple")
-    sut.add_argument(Variable("?identifier"))
-    sut.add_argument(Term("rdfs:label"))
-    sut.add_argument(Variable("?label"))
-    assert (
-        sut.expand(template, Iri("p:Margherita"), "Margherita")
-        == 'p:Margherita rdfs:label "Margherita"'
-    )
-    assert (
-        sut.expand(template, Iri("p:Hawaii"), "Hawaii")
-        == 'p:Hawaii rdfs:label "Hawaii"'
-    )
+    triple = Triple(Variable("?identifier"), Term("rdfs:label"), Variable("?label"))
+    template.add_instances(triple)
+
+    assert template.expand_with(Iri("p:Margherita"), "Margherita") == [
+        'p:Margherita rdfs:label "Margherita"'
+    ]
+    assert template.expand_with(Iri("p:Hawaii"), "Hawaii") == [
+        'p:Hawaii rdfs:label "Hawaii"'
+    ]
+
+
+def expand_top_level_instance():
+    template = Template(Iri("ex:Pizza"))
+    template.add_parameters(Parameter("?identifier"))
+    template.add_parameters(Parameter("?label"))
+    instance = Instance("ottr:Triple")
+    instance.add_argument(Variable("?identifier"))
+    instance.add_argument(Term("rdfs:label"))
+    instance.add_argument(Variable("?label"))
+    template.add_instances(instance)
+    sut = Instance("ex:Pizza")
+    sut.add_argument(Iri("p:Grandiosa"))
+    sut.add_argument(Term("Grandiosa"))
+    assert sut.expand(template) == 'p:Grandiosa rdfs:label "Grandiosa"'
