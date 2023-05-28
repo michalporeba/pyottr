@@ -82,13 +82,29 @@ def test_expand_template_with_ottr_triple():
     template = Template(Iri("ex:Pizza"))
     template.add_parameters(Parameter("?identifier"))
     template.add_parameters(Parameter("?label"))
-    triple = Triple(Variable("?identifier"), Term("rdfs:label"), Variable("?label"))
-    template.add_instances(triple)
+    template.add_instances(Triple(Variable("?identifier"), Term("rdfs:label"), Variable("?label")))
 
     assert template.expand_with(Iri("p:Margherita"), "Margherita") == [
         'p:Margherita rdfs:label "Margherita"'
     ]
     assert template.expand_with(Iri("p:Hawaii"), "Hawaii") == [
+        'p:Hawaii rdfs:label "Hawaii"'
+    ]
+
+
+def test_expand_template_with_ottr_triples():
+    template = Template(Iri("ex:Pizza"))
+    template.add_parameters(Parameter("?identifier"))
+    template.add_parameters(Parameter("?label"))
+    template.add_instances(Triple(Variable("?identifier"), Term("rdf:type"), Term("owl:Class")))
+    template.add_instances(Triple(Variable("?identifier"), Term("rdfs:label"), Variable("?label")))
+
+    assert template.expand_with(Iri("p:Margherita"), "Margherita") == [
+        'p:Margherita rdf:type owl:Class',
+        'p:Margherita rdfs:label "Margherita"'
+    ]
+    assert template.expand_with(Iri("p:Hawaii"), "Hawaii") == [
+        'p:Hawaii rdf:type owl:Class',
         'p:Hawaii rdfs:label "Hawaii"'
     ]
 
