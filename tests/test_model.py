@@ -81,10 +81,9 @@ def test_term_inequality():
 
 def test_expand_triple_template():
     triple = Triple()
-    assert (
-        triple.expand_with(Iri("p:Hawaii"), Term("rdf:type"), Term("owl:Class"))
-        == "p:Hawaii rdf:type owl:Class"
-    )
+    assert list(
+        triple.expand_with(None, Iri("p:Hawaii"), Term("rdf:type"), Term("owl:Class"))
+    ) == ["p:Hawaii rdf:type owl:Class"]
 
 
 def test_expand_triple_instance():
@@ -98,7 +97,9 @@ def test_expand_triple_instance():
             return Triple()
         raise AssertionError(f"Incorrect template {name} has been requested!")
 
-    assert instance.expand_with(get_template, {}) == ["p:Grandiosa rdf:type owl:Class"]
+    assert list(instance.expand_with(get_template)) == [
+        "p:Grandiosa rdf:type owl:Class"
+    ]
 
 
 def test_expand_triple_instance_with_variable_substitution():
@@ -113,7 +114,7 @@ def test_expand_triple_instance_with_variable_substitution():
         raise AssertionError(f"Incorrect template {name} has been requested!")
 
     variables = {"?identifier": Iri("p:Margherita"), "?label": Literal("Margherita")}
-    assert instance.expand_with(get_template, variables) == [
+    assert list(instance.expand_with(get_template, variables)) == [
         'p:Margherita rdfs:label "Margherita"'
     ]
 
@@ -139,16 +140,35 @@ def expand_template_with_ottr_triples():
     ]
 
 
-def expand_top_level_instance():
-    template = Template(Iri("ex:Pizza"))
-    template.add_parameters(Parameter("?identifier"))
-    template.add_parameters(Parameter("?label"))
-    instance = Instance("ottr:Triple")
-    instance.add_argument(Variable("?identifier"))
-    instance.add_argument(Term("rdfs:label"))
-    instance.add_argument(Variable("?label"))
-    template.add_instances(instance)
-    sut = Instance("ex:Pizza")
-    sut.add_argument(Iri("p:Grandiosa"))
-    sut.add_argument(Term("Grandiosa"))
-    assert sut.expand(template) == 'p:Grandiosa rdfs:label "Grandiosa"'
+def test_expand_top_level_instance():
+    pizza = Template(Iri("ex:Pizza"))
+    pizza.add_parameters(Parameter("?identifier"))
+    pizza.add_parameters(Parameter("?label"))
+
+    pattern_type = Instance("ottr:Triple")
+    pattern_type.add_argument(Variable("?identifier"))
+    pattern_type.add_argument(Iri("rdf:type"))
+    pattern_type.add_argument(Iri("owl:Class"))
+    pizza.add_instances(pattern_type)
+
+    pattern_label = Instance("ottr:Triple")
+    pattern_label.add_argument(Variable("?identifier"))
+    pattern_label.add_argument(Iri("rdfs:label"))
+    pattern_label.add_argument(Variable("?label"))
+    pizza.add_instances(pattern_label)
+
+    def get_template(name: str):
+        if name == "ottr:Triple":
+            return Triple()
+        if name == "ex:Pizza":
+            return pizza
+        raise AssertionError(f"Incorrect template {name} has been requested!")
+
+    instance = Instance("ex:Pizza")
+    instance.add_argument(Iri("p:Grandiosa"))
+    instance.add_argument(Literal("Grandiosa"))
+
+    assert list(instance.expand_with(get_template)) == [
+        "p:Grandiosa rdf:type owl:Class",
+        'p:Grandiosa rdfs:label "Grandiosa"',
+    ]

@@ -18,10 +18,10 @@ class Instance:
     def add_argument(self, argument) -> None:
         self._arguments.append(argument)
 
-    def expand_with(self, get_template: Callable[[str], object], variables: dict):
+    def expand_with(self, get_template: Callable[[str], object], variables: dict = {}):
         template = get_template(self._template_name)
         parameters = Instance._resolve_variables(self._arguments, variables)
-        return always_a_list(template.expand_with(*parameters))
+        yield from template.expand_with(get_template, *parameters)
 
     def __str__(self):
         repr = [str(self._template_name)]
@@ -37,14 +37,6 @@ class Instance:
                 yield variables[argument.value]
                 continue
             yield argument
-
-    # def expand_with(self, variables) -> str:
-    #    return " ".join(
-    #        [
-    #            Triple._format_term_or_literal(a)
-    #            for a in Triple._resolve_variables(self._arguments, variables)
-    #        ]
-    #    )
 
 
 class Parameter:
@@ -170,12 +162,13 @@ class Template(Statement):
         for instance in always_a_list(instances):
             self.instances.append(instance)
 
-    def expand_with(self, *arguments: tuple):
+    def expand_with(self, get_template: Callable[[str], object], *arguments: tuple):
         variables = {}
         for i in range(len(arguments)):
             variables[self.parameters[i].variable] = arguments[i]
 
-        return [i.expand_with(variables) for i in self.instances]
+        for i in self.instances:
+            yield from i.expand_with(get_template, variables)
 
     def __str__(self) -> str:
         repr = [str(self.name), " ["]
@@ -195,8 +188,8 @@ class Triple(Template):
     def __init__(self) -> None:
         super().__init__(Iri("ottr:Triple"))
 
-    def expand_with(self, *parameters) -> str:
-        return " ".join([str(p) for p in parameters])
+    def expand_with(self, get_template: Callable[[str], object], *parameters) -> str:
+        yield " ".join([str(p) for p in parameters])
 
 
 class Type:
