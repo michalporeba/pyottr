@@ -256,17 +256,4 @@ def test_templates_with_patterns(signature, description):
     template = sut.get_template(description["name"])
     assert template is not None
     assert len(template.instances) == len(description["patterns"])
-
-    expected = description["patterns"]
-    unexpected = []
-    for instance in template.instances:
-        if str(instance) in expected:
-            expected.remove(str(instance))
-        else:
-            unexpected.append(str(instance))
-
-    if len(expected) + len(unexpected) > 0:
-        raise AssertionError(
-            f"Expected patterns {expected} were not found!\n"
-            f"Unexpected patterns {unexpected} were found!"
-        )
+    assert [str(t) for t in template.instances] == description["patterns"]

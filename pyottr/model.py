@@ -13,7 +13,10 @@ class Instance:
         self.arguments = []
 
     def add_argument(self, argument) -> None:
-        self.arguments.append(argument)
+        if isinstance(argument, Term):
+            self.arguments.append(argument)
+        else:
+            self.arguments.append(Literal(argument))
 
     def expand_with(self, get_template: Callable[[str], object], variables: dict = {}):
         template = get_template(self.name)
