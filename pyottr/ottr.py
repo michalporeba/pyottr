@@ -1,3 +1,4 @@
+from pyottr.model import Iri
 from pyottr.PyOTTR import PyOTTR
 
 
@@ -24,4 +25,13 @@ def tryit():
 
     print()
     for triple in pyottr.process('pz:Pizza(p:Pepperoni, "Pepperoni") .'):
+        print(triple)
+
+    print()
+    data = [
+        (Iri("p:Capricciosa"), "Capricciosa"),
+        (Iri("p:Marinara"), "Marinara"),
+        (Iri("p:Crudo"), "Crudo"),
+    ]
+    for triple in pyottr.apply("pz:Pizza").to(data):
         print(triple)

@@ -93,22 +93,96 @@ ottr = PyOTTR("pizzeria.stottr")
 with open("pizzas.csv", "r") as data:
     for pizza in csv.DictReader(data):
         name = pizza["name"].strip()
-        print(ottr.expand("pz:Pizza", f"p:{name}", name))
+        print(ottr.apply("pz:Pizza").to(Iri(f"p:{name}"), name))
 ```
 
 Or even simpler, if the column names and variable names are aligned:
 
 ```python
-PyOTTR("pizzeria.stottr").expand("pizzas.csv").into("pz:Pizza")
+# this is the ambition, but the code will not work just yet
+PyOTTR("pizzeria.stottr").make("pizzas.csv").into("pz:Pizza")
 ```
+
+&nbsp;
+## Try it yourself
+
+If you try it yourself by starting with this code:
+```python
+from pyottr.model import Iri
+from pyottr.PyOTTR import PyOTTR
+
+stottr_input = """
+ax:SubClassOf [ ?sub, ?super ] :: {
+    ottr:Triple(?sub, rdfs:subClassOf, ?super)
+} .
+
+pz:Pizza [ ?identifier, ?label ] :: {
+    ottr:Triple(?identifier, rdf:type, owl:Class),
+    ax:SubClassOf(?identifier, p:Pizza),
+    ottr:Triple(?identifier, rdfs:label, ?label)
+} .
+
+pz:Pizza(p:Margherita, "Margherita") .
+pz:Pizza(p:Hawaii, "Hawaii") .
+pz:Pizza(p:Grandiosa, "Grandiosa") .
+"""
+
+pyottr = PyOTTR()
+for triple in pyottr.process(stottr_input):
+    print(triple)
+
+print()
+for triple in pyottr.process('pz:Pizza(p:Pepperoni, "Pepperoni") .'):
+    print(triple)
+
+print()
+data = [
+    (Iri("p:Capricciosa"), "Capricciosa"),
+    (Iri("p:Marinara"), "Marinara"),
+    (Iri("p:Crudo"), "Crudo"),
+]
+for triple in pyottr.apply("pz:Pizza").to(data):
+    print(triple)
+```
+
+It will output: 
+```
+p:Margherita rdf:type owl:Class
+p:Margherita rdfs:subClassOf p:Pizza
+p:Margherita rdfs:label "Margherita"
+
+p:Hawaii rdf:type owl:Class
+p:Hawaii rdfs:subClassOf p:Pizza
+p:Hawaii rdfs:label "Hawaii"
+
+p:Grandiosa rdf:type owl:Class
+p:Grandiosa rdfs:subClassOf p:Pizza
+p:Grandiosa rdfs:label "Grandiosa"
+
+p:Pepperoni rdf:type owl:Class
+p:Pepperoni rdfs:subClassOf p:Pizza
+p:Pepperoni rdfs:label "Pepperoni"
+
+p:Capricciosa rdf:type owl:Class
+p:Capricciosa rdfs:subClassOf p:Pizza
+p:Capricciosa rdfs:label "Capricciosa"
+
+p:Marinara rdf:type owl:Class
+p:Marinara rdfs:subClassOf p:Pizza
+p:Marinara rdfs:label "Marinara"
+
+p:Crudo rdf:type owl:Class
+p:Crudo rdfs:subClassOf p:Pizza
+p:Crudo rdfs:label "Crudo"
+```
+
 &nbsp;
 ## Usage
 
-At the moment the project is in early stages of development, so you cannot use it just yet. 
-However, the idea is that you will be able to run it either as a script or a library from inside your project. 
-It will not do everything the reference implementation - [Lutra](https://gitlab.com/ottr/lutra/lutra) - does. The focus is on translating CSV and [CSVW](https://csvw.org/standards.html) files, or data available as python objects, arrays or dictionaries. 
-
-Currently, the work is focused on `stOTTR` implementation. The `tabOTTR` is likely the next step followed by potentially a new OTTR flavour to deal with CSVW. 
+At the moment the project is in early stages of development. 
+You can clone the repository and play with PyOTTR as it is. 
+As shown above it can already process simple templates and currently new features are added daily. 
+Very soon it will be available on PyPi (although the names probably will change by then). 
 
 If you cannot wait, you can always help to get it done. It's an open-source project after all!
 
