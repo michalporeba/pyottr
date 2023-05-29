@@ -6,7 +6,7 @@ def test_parse_scenario_01():
     stats = sut.parse(
         """
         ex:Pizza [ ?identifier, ?label ] :: {
-            ottr:Triple( ?idnetifier, rdfs:label, ?label )
+            ottr:Triple( ?identifier, rdfs:label, ?label )
         } .
         ex:Pizza(p:Margherita, "Margherita") .
         ex:Pizza(p:Hawaii, "Hawaii") .
@@ -16,17 +16,19 @@ def test_parse_scenario_01():
     assert stats["instances"] == 2
 
 
-def process_scenario_01():
+def test_process_scenario_01():
     sut = PyOTTR()
-    triples = sut.process(
-        """
+    triples = list(
+        sut.process(
+            """
         ex:Pizza [ ?identifier, ?label ] :: {
-            ottr:Triple( ?idnetifier, rdfs:label, ?label )
+            ottr:Triple( ?identifier, rdfs:label, ?label )
         } .
         ex:Pizza(p:Margherita, "Margherita") .
         ex:Pizza(p:Hawaii, "Hawaii") .
         ex:Pizza(p:Grandiosa, "Grandiosa") .
     """
+        )
     )
 
     expected = [
@@ -45,5 +47,5 @@ def process_scenario_01():
 
     if len(expected) + len(unexpected) > 0:
         raise AssertionError(
-            f"Missing triples: {expected}" f"Unexpected triples: {unexpected}"
+            f"\n Missing triples   : {expected}" f"\n Unexpected triples: {unexpected}"
         )

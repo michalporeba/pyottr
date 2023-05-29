@@ -16,6 +16,7 @@ from .model import (
     Term,
     Type,
     TypedList,
+    Variable,
 )
 
 
@@ -160,7 +161,10 @@ class stOTTRVisitor(BaseVisitor):
 
     def visitTerm(self, ctx: stOTTRParser.TermContext):
         log.debug(f"Visited term {ctx.getText()}")
-        return Term(ctx.getText())
+        text = ctx.getText()
+        if text[0:1] == "?":
+            return Variable(text)
+        return Term(text)
 
     def visitConstantTerm(self, ctx: stOTTRParser.ConstantTermContext):
         log.debug(f"Visited constant term: {ctx.getText()}")

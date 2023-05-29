@@ -5,18 +5,24 @@ from antlr4 import CommonTokenStream, InputStream
 
 from .grammar.stOTTRLexer import stOTTRLexer
 from .grammar.stOTTRParser import ParserRuleContext, stOTTRParser
-from .model import Instance, Iri, Template
+from .model import Instance, Iri, Template, Triple
 from .stOTTRVisitor import stOTTRVisitor
 
 
 class PyOTTR:
+    TRIPLE_TEMPLATE = Triple()
+
     def __init__(self):
         self._templates = []
         self._instances = []
 
     def get_template(self, name: Union[str, Iri]) -> Union[Template, None]:
+        if name == "ottr:Triple":
+            return PyOTTR.TRIPLE_TEMPLATE
+
         results = [t for t in self._templates if t.name == name]
         if len(results) == 0:
+            log.warning(f"There is no template {name} defined")
             return None
         return results[0]
 
@@ -32,16 +38,15 @@ class PyOTTR:
         return {"templates": len(self._templates), "instances": len(self._instances)}
 
     def process(self, definition: str) -> Iterator[str]:
+        def get_template(name: str) -> Template:
+            print(f"Getting template: {name}")
+            template = self.get_template(name)
+            print(f"Template is {template}")
+            return template
+
         for element in PyOTTR._visit_definition(definition):
             if isinstance(element, Instance):
-                template = self.get_template(element.get_template_name())
-                if template is None:
-                    log.warning(
-                        f"There is no template {element.get_template_name()} defined"
-                    )
-                    continue
-
-                self._instances.append(element)
+                yield from element.expand_with(get_template)
                 continue
             if isinstance(element, Template):
                 self._templates.append(element)

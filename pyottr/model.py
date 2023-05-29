@@ -20,6 +20,7 @@ class Instance:
 
     def expand_with(self, get_template: Callable[[str], object], variables: dict = {}):
         template = get_template(self._template_name)
+        print(f"Parameters: {self._arguments}")
         parameters = Instance._resolve_variables(self._arguments, variables)
         yield from template.expand_with(get_template, *parameters)
 
