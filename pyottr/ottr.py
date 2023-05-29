@@ -21,3 +21,7 @@ def tryit():
     pyottr = PyOTTR()
     for triple in pyottr.process(stottr_input):
         print(triple)
+
+    print()
+    for triple in pyottr.process('pz:Pizza(p:Pepperoni, "Pepperoni") .'):
+        print(triple)

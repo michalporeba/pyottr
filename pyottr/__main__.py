@@ -1,8 +1,9 @@
 from .ottr import tryit
+import logging
 
 
 def main():
-    # Code to run when the package is executed as a script goes here.
+    logging.basicConfig(level=logging.ERROR)
     tryit()
 
 
