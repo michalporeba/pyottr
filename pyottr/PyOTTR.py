@@ -5,7 +5,7 @@ from antlr4 import CommonTokenStream, InputStream
 
 from .grammar.stOTTRLexer import stOTTRLexer
 from .grammar.stOTTRParser import ParserRuleContext, stOTTRParser
-from .model import Instance, Iri, Template, Term, Triple
+from .model import Instance, Iri, Template, Triple
 from .stOTTRVisitor import stOTTRVisitor
 
 
@@ -21,6 +21,16 @@ class Applicator:
         for a in arguments:
             instance.add_argument(a)
         yield from instance.expand_with(self.get_template)
+
+    def to_many(self, data: Iterator[tuple]) -> Iterator[str]:
+        first = True
+        for d in data:
+            if first:
+                first = False
+            else:
+                yield ""
+
+            yield from self.to(*d)
 
 
 class PyOTTR:

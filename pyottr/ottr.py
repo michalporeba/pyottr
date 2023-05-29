@@ -6,13 +6,13 @@ def tryit():
     ax:SubClassOf [ ?sub, ?super ] :: {
         ottr:Triple(?sub, rdfs:subClassOf, ?super)
     } .
-    
+
     pz:Pizza [ ?identifier, ?label ] :: {
         ottr:Triple(?identifier, rdf:type, owl:Class),
         ax:SubClassOf(?identifier, p:Pizza),
         ottr:Triple(?identifier, rdfs:label, ?label)
     } .
-    
+
     pz:Pizza(p:Margherita, "Margherita") .
     pz:Pizza(p:Hawaii, "Hawaii") .
     pz:Pizza(p:Grandiosa, "Grandiosa") .

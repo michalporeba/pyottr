@@ -66,3 +66,41 @@ def test_processing_pizzas_from_data_in_arguments():
         'p:Margherita rdfs:label "Margherita"',
     ]
     assert triples == expected
+
+
+def test_processing_pizzas_from_data_in_array():
+    sut = PyOTTR()
+    sut.parse(PIZZA_TEMPLATES)
+    data = [(Iri("p:Margherita"), "Margherita"), (Iri("p:Hawaii"), "Hawaii")]
+    triples = list(sut.apply("pz:Pizza").to_many(data))
+    expected = [
+        "p:Margherita rdf:type owl:Class",
+        "p:Margherita rdfs:subClassOf p:Pizza",
+        'p:Margherita rdfs:label "Margherita"',
+        "",
+        "p:Hawaii rdf:type owl:Class",
+        "p:Hawaii rdfs:subClassOf p:Pizza",
+        'p:Hawaii rdfs:label "Hawaii"',
+    ]
+    assert triples == expected
+
+
+def test_processing_pizzas_from_data_generator():
+    sut = PyOTTR()
+    sut.parse(PIZZA_TEMPLATES)
+
+    def data_generator():
+        yield Iri("p:Margherita"), "Margherita"
+        yield Iri("p:Hawaii"), "Hawaii"
+
+    triples = list(sut.apply("pz:Pizza").to_many(data_generator()))
+    expected = [
+        "p:Margherita rdf:type owl:Class",
+        "p:Margherita rdfs:subClassOf p:Pizza",
+        'p:Margherita rdfs:label "Margherita"',
+        "",
+        "p:Hawaii rdf:type owl:Class",
+        "p:Hawaii rdfs:subClassOf p:Pizza",
+        'p:Hawaii rdfs:label "Hawaii"',
+    ]
+    assert triples == expected

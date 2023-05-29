@@ -1,3 +1,5 @@
+import logging as log
+
 import pytest
 
 from pyottr.model import Basic, Top, TypedList
@@ -181,8 +183,8 @@ def test_single_minimal_template():
 
 @pytest.mark.parametrize("signature,description", TEMPLATES_WITH_PARAMETERS_TEST_DATA)
 def test_templates_with_parameters(signature, description):
-    print(f"parsing {signature}")
-    print(f"expecting {description}")
+    log.info(f"parsing {signature}")
+    log.info(f"expecting {description}")
     sut = PyOTTR()
     sut.parse(signature)
     template = sut.get_template(description["name"])
@@ -249,8 +251,8 @@ PATTERNS_TEST_DATA = [
 
 @pytest.mark.parametrize("signature,description", PATTERNS_TEST_DATA)
 def test_templates_with_patterns(signature, description):
-    print(f"parsing = {signature}")
-    print(f"expecting = {description}")
+    log.info(f"parsing = {signature}")
+    log.info(f"expecting = {description}")
     sut = PyOTTR()
     sut.parse(signature)
     template = sut.get_template(description["name"])
