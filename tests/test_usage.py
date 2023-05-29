@@ -47,7 +47,7 @@ PIZZA_TEMPLATES = """
     ax:SubClassOf [ ?sub, ?super ] :: {
         ottr:Triple(?sub, rdfs:subClassOf, ?super)
     } .
-    
+
     pz:Pizza [ ?identifier, ?label ] :: {
         ottr:Triple(?identifier, rdf:type, owl:Class),
         ax:SubClassOf(?identifier, p:Pizza),
@@ -72,7 +72,7 @@ def test_processing_pizzas_from_data_in_array():
     sut = PyOTTR()
     sut.parse(PIZZA_TEMPLATES)
     data = [(Iri("p:Margherita"), "Margherita"), (Iri("p:Hawaii"), "Hawaii")]
-    triples = list(sut.apply("pz:Pizza").to_many(data))
+    triples = list(sut.apply("pz:Pizza").to(data))
     expected = [
         "p:Margherita rdf:type owl:Class",
         "p:Margherita rdfs:subClassOf p:Pizza",
@@ -93,7 +93,7 @@ def test_processing_pizzas_from_data_generator():
         yield Iri("p:Margherita"), "Margherita"
         yield Iri("p:Hawaii"), "Hawaii"
 
-    triples = list(sut.apply("pz:Pizza").to_many(data_generator()))
+    triples = list(sut.apply("pz:Pizza").to(data_generator()))
     expected = [
         "p:Margherita rdf:type owl:Class",
         "p:Margherita rdfs:subClassOf p:Pizza",

@@ -1,4 +1,5 @@
 import logging as log
+from collections.abc import Iterable
 from typing import Callable, Iterator, Union
 
 from antlr4 import CommonTokenStream, InputStream
@@ -17,12 +18,18 @@ class Applicator:
         self.get_template = get_template
 
     def to(self, *arguments: tuple) -> Iterator[str]:
+        if len(arguments) == 1 and isinstance(arguments[0], Iterable):
+            yield from self._to_many(arguments[0])
+        else:
+            yield from self._to_single(*arguments)
+
+    def _to_single(self, *arguments: tuple) -> Iterator[str]:
         instance = Instance(self.template_name)
         for a in arguments:
             instance.add_argument(a)
         yield from instance.expand_with(self.get_template)
 
-    def to_many(self, data: Iterator[tuple]) -> Iterator[str]:
+    def _to_many(self, data: Iterator[tuple]) -> Iterator[str]:
         first = True
         for d in data:
             if first:
@@ -30,7 +37,7 @@ class Applicator:
             else:
                 yield ""
 
-            yield from self.to(*d)
+            yield from self._to_single(*d)
 
 
 class PyOTTR:
