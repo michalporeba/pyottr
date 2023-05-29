@@ -8,26 +8,22 @@ class Directive:
 
 
 class Instance:
-    def __init__(self, template_name) -> None:
-        self._template_name = template_name
-        self._arguments = []
-
-    def get_template_name(self):
-        return self._template_name
+    def __init__(self, name) -> None:
+        self.name = name
+        self.arguments = []
 
     def add_argument(self, argument) -> None:
-        self._arguments.append(argument)
+        self.arguments.append(argument)
 
     def expand_with(self, get_template: Callable[[str], object], variables: dict = {}):
-        template = get_template(self._template_name)
-        print(f"Parameters: {self._arguments}")
-        parameters = Instance._resolve_variables(self._arguments, variables)
+        template = get_template(self.name)
+        parameters = Instance._resolve_variables(self.arguments, variables)
         yield from template.expand_with(get_template, *parameters)
 
     def __str__(self):
-        repr = [str(self._template_name)]
+        repr = [str(self.name)]
         repr += ["("]
-        repr += [", ".join([str(t) for t in self._arguments])]
+        repr += [", ".join([str(t) for t in self.arguments])]
         repr += [")"]
         return "".join(repr)
 
