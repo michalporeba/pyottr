@@ -38,11 +38,17 @@ class PyOTTR:
         return {"templates": len(self.templates), "instances": instances}
 
     def process(self, definition: str) -> Iterator[str]:
+        first = True
+
         def get_template(name: str) -> Template:
             return self.get_template(name)
 
         for element in PyOTTR._visit_definition(definition):
             if isinstance(element, Instance):
+                if first:
+                    first = False
+                else:
+                    yield ""
                 yield from element.expand_with(get_template)
                 continue
             if isinstance(element, Template):

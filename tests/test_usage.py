@@ -33,7 +33,9 @@ def test_process_scenario_01():
 
     expected = [
         'p:Margherita rdfs:label "Margherita"',
+        "",
         'p:Hawaii rdfs:label "Hawaii"',
+        "",
         'p:Grandiosa rdfs:label "Grandiosa"',
     ]
 

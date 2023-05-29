@@ -1,29 +1,23 @@
-from antlr4 import CommonTokenStream, InputStream
-
-from .grammar.stOTTRLexer import stOTTRLexer
-from .grammar.stOTTRParser import stOTTRParser
-from .stOTTRVisitor import stOTTRVisitor
+from pyottr.PyOTTR import PyOTTR
 
 
 def tryit():
     stottr_input = """
-    @prefix : <http://example.xyz/ns> .
-    @prefix ex: <http://example.net/ns> .
-    PREFIX ex2: <http://example.com/ns>
-
-    # modifiers
-    ex:NamedPizza [ owl:Class ?pizza ] .
-    ex:NamedPizzaA [ ??pizza  ] .
-    ex:NamedPizzaB [ !?pizza ] .
-    ex:NamedPizzaC [ ?!?pizza ] .
-    ex:NamedPizzaD [ !??pizza ] .
+    ax:SubClassOf [ ?sub, ?super ] :: {
+        ottr:Triple(?sub, rdfs:subClassOf, ?super)
+    } .
+    
+    pz:Pizza [ ?identifier, ?label ] :: {
+        ottr:Triple(?identifier, rdf:type, owl:Class),
+        ax:SubClassOf(?identifier, p:Pizza),
+        ottr:Triple(?identifier, rdfs:label, ?label)
+    } .
+    
+    pz:Pizza(p:Margherita, "Margherita") .
+    pz:Pizza(p:Hawaii, "Hawaii") .
+    pz:Pizza(p:Grandiosa, "Grandiosa") .
     """
-    input_stream = InputStream(stottr_input)
-    lexer = stOTTRLexer(input_stream)
-    token_stream = CommonTokenStream(lexer)
-    parser = stOTTRParser(token_stream)
-    parse_tree = parser.stOTTRDoc()
 
-    visitor = stOTTRVisitor()
-    for n in visitor.visit(parse_tree):
-        print(f" -> {type(n)} -> {(n)}")
+    pyottr = PyOTTR()
+    for triple in pyottr.process(stottr_input):
+        print(triple)
