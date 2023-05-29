@@ -1,6 +1,6 @@
-# Generated from Turtle.g4 by ANTLR 4.12.0
+# Generated from Turtle.g4 by ANTLR 4.13.0
 from antlr4 import *
-if __name__ is not None and "." in __name__:
+if "." in __name__:
     from .TurtleParser import TurtleParser
 else:
     from TurtleParser import TurtleParser
