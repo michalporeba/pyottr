@@ -202,3 +202,4 @@ If the ANTLR grammar has to be updated (due to changes to the specification) you
 * To learn about ANTLR, see [the mega tutorial](https://tomassetti.me/antlr-mega-tutorial) by Gabriele Tomassetti.
 * [Lutra stOTTR parser tests](https://github.com/rtto/lutra-mirror/blob/develop/lutra-stottr/src/test/java/xyz/ottr/lutra/stottr/parser/ParserTest.java) have example of usage and what needs to be covered. 
 * [Lutra model](https://github.com/rtto/lutra-mirror/tree/develop/lutra-core/src/main/java/xyz/ottr/lutra/model). 
+* [Language Server Protocol with ANTRL4](https://tomassetti.me/go-to-definition-in-the-language-server-protocol/)
