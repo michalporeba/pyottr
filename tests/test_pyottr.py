@@ -3,7 +3,7 @@ import logging as log
 import pytest
 
 from ottrlib.model import Basic, Top, TypedList
-from ottrlib.PyOTTR import PyOTTR
+from ottrlib.Ottr import Ottr
 
 TEMPLATES = """
 # This is a base template:
@@ -175,7 +175,7 @@ TEMPLATES_WITH_PARAMETERS_TEST_DATA = [
 
 
 def test_single_minimal_template():
-    sut = PyOTTR()
+    sut = Ottr()
     assert sut.get_template("ex:EmptyTemplate") is None
     sut.parse("ex:EmptyTemplate [ ] .")
     assert sut.get_template("ex:EmptyTemplate") is not None
@@ -185,7 +185,7 @@ def test_single_minimal_template():
 def test_templates_with_parameters(signature, description):
     log.info(f"parsing {signature}")
     log.info(f"expecting {description}")
-    sut = PyOTTR()
+    sut = Ottr()
     sut.parse(signature)
     template = sut.get_template(description["name"])
     assert template is not None, f'template {description["name"]} should be found'
@@ -253,7 +253,7 @@ PATTERNS_TEST_DATA = [
 def test_templates_with_patterns(signature, description):
     log.info(f"parsing = {signature}")
     log.info(f"expecting = {description}")
-    sut = PyOTTR()
+    sut = Ottr()
     sut.parse(signature)
     template = sut.get_template(description["name"])
     assert template is not None

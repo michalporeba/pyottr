@@ -1,5 +1,5 @@
 from ottrlib.model import Iri
-from ottrlib.PyOTTR import PyOTTR
+from ottrlib.Ottr import Ottr
 
 
 def tryit():
@@ -19,12 +19,12 @@ def tryit():
     pz:Pizza(p:Grandiosa, "Grandiosa") .
     """
 
-    pyottr = PyOTTR()
-    for triple in pyottr.process(stottr_input):
+    pyottr = Ottr()
+    for triple in pyottr.expand(stottr_input):
         print(triple)
 
     print()
-    for triple in pyottr.process('pz:Pizza(p:Pepperoni, "Pepperoni") .'):
+    for triple in pyottr.expand('pz:Pizza(p:Pepperoni, "Pepperoni") .'):
         print(triple)
 
     print()

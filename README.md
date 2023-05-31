@@ -61,7 +61,7 @@ p:Grandiosa rdfs:subClassOf p:Pizza .
 p:Grandiosa rdfs:label "Grandiosa" .
 ```
 
-But with just a few instances it is a lot of typing, many opportunities for errors. So instead, we can wrte two stOTTR templates in a `pizzas.stottr`.
+But with just a few instances it is a lot of typing, many opportunities for errors. So instead, we can write two stOTTR templates in a `pizzas.stottr` file.
 
 ```stottr
 ax:SubClassOf [ ?sub, ?super ] :: {
@@ -88,7 +88,7 @@ The above will produce the exact RDF example as above with less chance of a typo
 But we want to take it a step further. We already have the information in `pizzas.csv` and the stottr template in `pizzeria.stottr`. Now, let's use python to generate the RDF. 
 
 ```python
-ottr = PyOTTR("pizzeria.stottr")
+ottr = Ottr("pizzeria.stottr")
 
 with open("pizzas.csv", "r") as data:
     for pizza in csv.DictReader(data):
@@ -100,7 +100,7 @@ Or even simpler, if the column names and variable names are aligned:
 
 ```python
 # this is the ambition, but the code will not work just yet
-PyOTTR("pizzeria.stottr").make("pizzas.csv").into("pz:Pizza")
+Ottr("pizzeria.stottr").make("pizzas.csv").into("pz:Pizza")
 ```
 
 &nbsp;
@@ -110,7 +110,7 @@ If you try it yourself by starting with this code:
 
 ```python
 from ottrlib.model import Iri
-from ottrlib.PyOTTR import PyOTTR
+from ottrlib.Ottr import Ottr
 
 stottr_input = """
 ax:SubClassOf [ ?sub, ?super ] :: {
@@ -128,12 +128,12 @@ pz:Pizza(p:Hawaii, "Hawaii") .
 pz:Pizza(p:Grandiosa, "Grandiosa") .
 """
 
-pyottr = PyOTTR()
-for triple in pyottr.process(stottr_input):
+ottr = Ottr()
+for triple in ottr.expand(stottr_input):
     print(triple)
 
 print()
-for triple in pyottr.process('pz:Pizza(p:Pepperoni, "Pepperoni") .'):
+for triple in ottr.expand('pz:Pizza(p:Pepperoni, "Pepperoni") .'):
     print(triple)
 
 print()
@@ -142,7 +142,7 @@ data = [
     (Iri("p:Marinara"), "Marinara"),
     (Iri("p:Crudo"), "Crudo"),
 ]
-for triple in pyottr.apply("pz:Pizza").to(data):
+for triple in ottr.apply("pz:Pizza").to(data):
     print(triple)
 ```
 

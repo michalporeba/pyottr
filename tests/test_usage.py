@@ -1,9 +1,9 @@
 from ottrlib.model import Iri
-from ottrlib.PyOTTR import PyOTTR
+from ottrlib.Ottr import Ottr
 
 
 def test_parse_scenario_01():
-    sut = PyOTTR()
+    sut = Ottr()
     stats = sut.parse(
         """
         ex:Pizza [ ?identifier, ?label ] :: {
@@ -18,9 +18,9 @@ def test_parse_scenario_01():
 
 
 def test_process_scenario_01():
-    sut = PyOTTR()
+    sut = Ottr()
     triples = list(
-        sut.process(
+        sut.expand(
             """
         ex:Pizza [ ?identifier, ?label ] :: {
             ottr:Triple( ?identifier, rdfs:label, ?label )
@@ -57,7 +57,7 @@ PIZZA_TEMPLATES = """
 
 
 def test_processing_pizzas_from_data_in_arguments():
-    sut = PyOTTR()
+    sut = Ottr()
     sut.parse(PIZZA_TEMPLATES)
     triples = list(sut.apply("pz:Pizza").to(Iri("p:Margherita"), "Margherita"))
     expected = [
@@ -69,7 +69,7 @@ def test_processing_pizzas_from_data_in_arguments():
 
 
 def test_processing_pizzas_from_data_in_array():
-    sut = PyOTTR()
+    sut = Ottr()
     sut.parse(PIZZA_TEMPLATES)
     data = [(Iri("p:Margherita"), "Margherita"), (Iri("p:Hawaii"), "Hawaii")]
     triples = list(sut.apply("pz:Pizza").to(data))
@@ -86,7 +86,7 @@ def test_processing_pizzas_from_data_in_array():
 
 
 def test_processing_pizzas_from_data_generator():
-    sut = PyOTTR()
+    sut = Ottr()
     sut.parse(PIZZA_TEMPLATES)
 
     def data_generator():
@@ -107,8 +107,8 @@ def test_processing_pizzas_from_data_generator():
 
 
 def test_deeper_nesting():
-    sut = PyOTTR()
-    rdf = list(sut.process("""
+    sut = Ottr()
+    rdf = list(sut.expand("""
     ex:A[?x] :: {
         ottr:Triple(p:Test, rdfs:label, ?x), 
         ottr:Triple(p:Test, rdfs:label, "A") 

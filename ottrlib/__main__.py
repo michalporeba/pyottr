@@ -1,6 +1,6 @@
 import logging
 
-from .ottr import tryit
+from .ottr_demo import tryit
 
 
 def main():

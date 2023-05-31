@@ -10,7 +10,7 @@ from .model import Instance, Iri, Template, Triple
 from .stOTTRVisitor import stOTTRVisitor
 
 
-class Applicator:
+class _Applicator:
     def __init__(
         self, template_name: str, get_template: Callable[[str], Template]
     ) -> None:
@@ -40,7 +40,7 @@ class Applicator:
             yield from self._to_single(*d)
 
 
-class PyOTTR:
+class Ottr:
     TRIPLE_TEMPLATE = Triple()
 
     def __init__(self):
@@ -48,7 +48,7 @@ class PyOTTR:
 
     def get_template(self, name: Union[str, Iri]) -> Union[Template, None]:
         if name == "ottr:Triple":
-            return PyOTTR.TRIPLE_TEMPLATE
+            return Ottr.TRIPLE_TEMPLATE
 
         log.debug(f"searching for {name} ({type(name)} in\n{self.templates}")
         results = [t for t in self.templates if t.name == name]
@@ -58,24 +58,12 @@ class PyOTTR:
         return results[0]
 
     def apply(self, template_name: str):
-        return Applicator(template_name, self.get_template)
+        return _Applicator(template_name, self.get_template)
 
-    def parse(self, definition: str) -> dict:
-        instances = 0
-        for element in PyOTTR._visit_definition(definition):
-            if isinstance(element, Instance):
-                instances += 1
-                continue
-            if isinstance(element, Template):
-                self.templates.append(element)
-                continue
-            log.warning(f"Unknown element type {type(element)} with value {element}")
-        return {"templates": len(self.templates), "instances": instances}
-
-    def process(self, definition: str) -> Iterator[str]:
+    def expand(self, definition: str) -> Iterator[str]:
         first = True
 
-        for element in PyOTTR._visit_definition(definition):
+        for element in Ottr._visit_definition(definition):
             if isinstance(element, Instance):
                 if first:
                     first = False
@@ -88,9 +76,21 @@ class PyOTTR:
                 continue
             log.warning(f"Unknown element type {type(element)} with value {element}")
 
+    def parse(self, definition: str) -> dict:
+        instances = 0
+        for element in Ottr._visit_definition(definition):
+            if isinstance(element, Instance):
+                instances += 1
+                continue
+            if isinstance(element, Template):
+                self.templates.append(element)
+                continue
+            log.warning(f"Unknown element type {type(element)} with value {element}")
+        return {"templates": len(self.templates), "instances": instances}
+
     @staticmethod
     def _visit_definition(definition: str):
-        parse_tree = PyOTTR._create_parse_tree(definition)
+        parse_tree = Ottr._create_parse_tree(definition)
         visitor = stOTTRVisitor()
         return visitor.visit(parse_tree)
 
