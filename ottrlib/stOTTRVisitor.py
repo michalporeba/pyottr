@@ -1,8 +1,11 @@
 import logging as log
+from typing import Iterable
 
+from antlr4 import CommonTokenStream, InputStream
 from diogi.functions import always_a_list
 
-from .grammar.stOTTRParser import stOTTRParser
+from .grammar.stOTTRLexer import stOTTRLexer
+from .grammar.stOTTRParser import ParserRuleContext, stOTTRParser
 from .grammar.stOTTRVisitor import stOTTRVisitor as BaseVisitor
 from .model import (
     Basic,
@@ -12,6 +15,7 @@ from .model import (
     Parameter,
     Patterns,
     Prefix,
+    Statement,
     Template,
     Term,
     Type,
@@ -24,6 +28,20 @@ from .model import (
 class stOTTRVisitor(BaseVisitor):
     def __init__(self):
         pass
+
+    @staticmethod
+    def get_elements(definition: str) -> Iterable[Statement]:
+        parse_tree = stOTTRVisitor._create_parse_tree(definition)
+        visitor = stOTTRVisitor()
+        return visitor.visit(parse_tree)
+
+    @staticmethod
+    def _create_parse_tree(definition: str) -> ParserRuleContext:
+        input_stream = InputStream(definition)
+        lexer = stOTTRLexer(input_stream)
+        token_stream = CommonTokenStream(lexer)
+        parser = stOTTRParser(token_stream)
+        return parser.stOTTRDoc()
 
     def aggregateResult(self, aggregate, nextResult):
         if nextResult is None:

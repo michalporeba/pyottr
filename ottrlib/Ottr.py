@@ -2,10 +2,6 @@ import logging as log
 from collections.abc import Iterable
 from typing import Callable, Iterator, Union
 
-from antlr4 import CommonTokenStream, InputStream
-
-from .grammar.stOTTRLexer import stOTTRLexer
-from .grammar.stOTTRParser import ParserRuleContext, stOTTRParser
 from .model import Instance, Iri, Template, Triple
 from .stOTTRVisitor import stOTTRVisitor
 
@@ -63,7 +59,7 @@ class Ottr:
     def expand(self, definition: str) -> Iterator[str]:
         first = True
 
-        for element in Ottr._visit_definition(definition):
+        for element in stOTTRVisitor.get_elements(definition):
             if isinstance(element, Instance):
                 if first:
                     first = False
@@ -78,7 +74,7 @@ class Ottr:
 
     def parse(self, definition: str) -> dict:
         instances = 0
-        for element in Ottr._visit_definition(definition):
+        for element in stOTTRVisitor.get_elements(definition):
             if isinstance(element, Instance):
                 instances += 1
                 continue
@@ -87,17 +83,3 @@ class Ottr:
                 continue
             log.warning(f"Unknown element type {type(element)} with value {element}")
         return {"templates": len(self.templates), "instances": instances}
-
-    @staticmethod
-    def _visit_definition(definition: str):
-        parse_tree = Ottr._create_parse_tree(definition)
-        visitor = stOTTRVisitor()
-        return visitor.visit(parse_tree)
-
-    @staticmethod
-    def _create_parse_tree(definition: str) -> ParserRuleContext:
-        input_stream = InputStream(definition)
-        lexer = stOTTRLexer(input_stream)
-        token_stream = CommonTokenStream(lexer)
-        parser = stOTTRParser(token_stream)
-        return parser.stOTTRDoc()
