@@ -108,22 +108,26 @@ def test_processing_pizzas_from_data_generator():
 
 def test_deeper_nesting():
     sut = Ottr()
-    rdf = list(sut.expand("""
+    rdf = list(
+        sut.expand(
+            """
     ex:A[?x] :: {
-        ottr:Triple(p:Test, rdfs:label, ?x), 
-        ottr:Triple(p:Test, rdfs:label, "A") 
+        ottr:Triple(p:Test, rdfs:label, ?x),
+        ottr:Triple(p:Test, rdfs:label, "A")
     } .
     ex:B[?x] :: { ex:A(?x) } .
     ex:C[?x] :: { ex:B(?x), ottr:Triple(p:Test, rdfs:label, "C") } .
     ex:D[?x] :: { ex:C(?x) } .
-    
+
     ex:D("Test Argument") .
-    """))
+    """
+        )
+    )
 
     expected = [
         'p:Test rdfs:label "Test Argument"',
         'p:Test rdfs:label "A"',
-        'p:Test rdfs:label "C"'
+        'p:Test rdfs:label "C"',
     ]
 
     assert rdf == expected
