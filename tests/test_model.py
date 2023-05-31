@@ -1,4 +1,4 @@
-from pyottr.model import (
+from ottrlib.model import (
     Instance,
     Iri,
     Literal,

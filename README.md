@@ -107,9 +107,10 @@ PyOTTR("pizzeria.stottr").make("pizzas.csv").into("pz:Pizza")
 ## Try it yourself
 
 If you try it yourself by starting with this code:
+
 ```python
-from pyottr.model import Iri
-from pyottr.PyOTTR import PyOTTR
+from ottrlib.model import Iri
+from ottrlib.PyOTTR import PyOTTR
 
 stottr_input = """
 ax:SubClassOf [ ?sub, ?super ] :: {

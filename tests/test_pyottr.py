@@ -2,8 +2,8 @@ import logging as log
 
 import pytest
 
-from pyottr.model import Basic, Top, TypedList
-from pyottr.PyOTTR import PyOTTR
+from ottrlib.model import Basic, Top, TypedList
+from ottrlib.PyOTTR import PyOTTR
 
 TEMPLATES = """
 # This is a base template:

@@ -1,5 +1,5 @@
-from pyottr.model import Iri
-from pyottr.PyOTTR import PyOTTR
+from ottrlib.model import Iri
+from ottrlib.PyOTTR import PyOTTR
 
 
 def test_parse_scenario_01():
