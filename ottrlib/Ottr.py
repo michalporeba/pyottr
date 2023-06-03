@@ -2,7 +2,7 @@ import logging as log
 from collections.abc import Iterable
 from typing import Callable, Iterator, Union
 
-from .model import Instance, Iri, Template, Triple
+from .model import Error, Instance, Iri, Template, Triple
 from .stOTTRVisitor import stOTTRVisitor
 
 
@@ -83,3 +83,10 @@ class Ottr:
                 continue
             log.warning(f"Unknown element type {type(element)} with value {element}")
         return {"templates": len(self.templates), "instances": instances}
+
+    def validate(self, definition: str) -> Iterator[Error]:
+        for element in stOTTRVisitor.get_elements(definition):
+            if isinstance(element, Instance):
+                template = self.get_template(element.name)
+                yield from template.validate(element)
+                continue

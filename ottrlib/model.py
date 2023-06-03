@@ -1,10 +1,27 @@
-from typing import Callable, List, Union
+from typing import Callable, List, Union, Iterator
 
 from diogi.functions import always_a_list
 
 
 class Directive:
     pass
+
+
+class Error:
+    def __init__(self, message: str) -> None:
+        self.message = message
+
+    def __str__(self):
+        return self.message
+
+
+class LineError(Error):
+    def __init__(self, line: int, message: str) -> None:
+        super().__init__(message)
+        self.line = line
+
+    def __str__(self):
+        return f"Line {self.line}: {self.message}"
 
 
 class Instance:
@@ -22,6 +39,9 @@ class Instance:
         template = get_template(self.name)
         parameters = Instance._resolve_variables(self.arguments, variables)
         yield from template.expand_with(get_template, *parameters)
+
+    def create_error(self, message: str) -> Error:
+        return LineError(3, message)
 
     def __str__(self):
         repr = [str(self.name)]
@@ -169,6 +189,13 @@ class Template(Statement):
 
         for i in self.instances:
             yield from i.expand_with(get_template, variables)
+
+    def validate(self, instance: Instance) -> Iterator[Error]:
+        if len(instance.arguments) < len(self.parameters):
+            yield instance.create_error(
+                f"Not enough parameters for an instance of {instance.name}! "
+                f"The template expects {len(self.parameters)} parameters but only {len(instance.arguments)} was provided."
+            )
 
     def __str__(self) -> str:
         repr = [str(self.name), " ["]
