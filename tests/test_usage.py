@@ -133,6 +133,22 @@ def test_deeper_nesting():
     assert rdf == expected
 
 
+def test_validation_for_missing_template():
+    sut = Ottr()
+    sut.parse("ex:X[?x] :: { ex:A(?x) } .")
+    errors = list(
+        sut.validate(
+            """
+        ex:B("test") .
+        """
+        )
+    )
+
+    expected = ["Line 2: An instance of an undefined template ex:B!"]
+
+    assert [str(e) for e in errors] == expected
+
+
 def test_validation_for_incorrect_number_of_parameters():
     sut = Ottr()
     sut.parse(

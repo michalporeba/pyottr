@@ -88,5 +88,11 @@ class Ottr:
         for element in stOTTRVisitor.get_elements(definition):
             if isinstance(element, Instance):
                 template = self.get_template(element.name)
+                if template is None:
+                    yield element.create_error(
+                        f"An instance of an undefined template {element.name}!"
+                    )
+                    continue
+
                 yield from template.validate(element)
                 continue
