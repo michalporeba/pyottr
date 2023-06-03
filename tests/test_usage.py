@@ -136,13 +136,22 @@ def test_deeper_nesting():
 def test_validation_for_incorrect_number_of_parameters():
     sut = Ottr()
     sut.parse("ex:T[?a, ?b] :: { ottr:Triple(?a, rdfs:label, ?b) } .")
-    errors = list(sut.validate("""
+    errors = list(
+        sut.validate(
+            """
     ex:T(p:Test, "test") .
     ex:T(p:Test) .
+    ex:T() .
     ex:T(p:Test, "test") .
-    """))
+    """
+        )
+    )
 
-    expected = ['Line 3: Not enough parameters for an instance of ex:T! '
-                'The template expects 2 parameters but only 1 was provided.']
+    expected = [
+        "Line 3: Not enough parameters for an instance of ex:T! "
+        "The template expects 2 parameters but only 1 was provided.",
+        "Line 4: Not enough parameters for an instance of ex:T! "
+        "The template expects 2 parameters but none were provided.",
+    ]
 
     assert [str(e) for e in errors] == expected

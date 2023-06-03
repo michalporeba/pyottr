@@ -140,13 +140,15 @@ class stOTTRVisitor(BaseVisitor):
 
     def visitInstance(self, ctx: stOTTRParser.InstanceContext):
         log.debug(f"Visited instance: {ctx.getText()}")
-        instance = Instance(self.visit(ctx.templateName()))
+        line = ctx.start.line
+        instance = Instance(self.visit(ctx.templateName()), line)
 
         if ctx.ListExpander():
             log.warning("ListExpander is not implmented in visitInstance")
 
         for argument in always_a_list(self.visit(ctx.argumentList())):
-            instance.add_argument(argument)
+            if argument is not None:
+                instance.add_argument(argument)
         return instance
 
     def visitArgumentList(self, ctx: stOTTRParser.ArgumentListContext):

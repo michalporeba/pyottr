@@ -1,4 +1,4 @@
-from typing import Callable, List, Union, Iterator
+from typing import Callable, Iterator, List, Union
 
 from diogi.functions import always_a_list
 
@@ -25,7 +25,8 @@ class LineError(Error):
 
 
 class Instance:
-    def __init__(self, name) -> None:
+    def __init__(self, name: str, line: int = None) -> None:
+        self.line = line
         self.name = name
         self.arguments = []
 
@@ -41,7 +42,7 @@ class Instance:
         yield from template.expand_with(get_template, *parameters)
 
     def create_error(self, message: str) -> Error:
-        return LineError(3, message)
+        return LineError(self.line, message)
 
     def __str__(self):
         repr = [str(self.name)]
@@ -191,10 +192,19 @@ class Template(Statement):
             yield from i.expand_with(get_template, variables)
 
     def validate(self, instance: Instance) -> Iterator[Error]:
+        def fewer_parameters(number: int) -> str:
+            if number == 0:
+                return "none were provided."
+            elif number == 1:
+                return "only 1 was provided."
+            else:
+                return f"only {number} were provided."
+
         if len(instance.arguments) < len(self.parameters):
             yield instance.create_error(
                 f"Not enough parameters for an instance of {instance.name}! "
-                f"The template expects {len(self.parameters)} parameters but only {len(instance.arguments)} was provided."
+                f"The template expects {len(self.parameters)} parameters but "
+                + fewer_parameters(len(instance.arguments))
             )
 
     def __str__(self) -> str:
