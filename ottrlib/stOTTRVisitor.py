@@ -9,6 +9,7 @@ from .grammar.stOTTRParser import ParserRuleContext, stOTTRParser
 from .grammar.stOTTRVisitor import stOTTRVisitor as BaseVisitor
 from .model import (
     Basic,
+    BlankNode,
     Instance,
     Iri,
     Literal,
@@ -116,7 +117,10 @@ class stOTTRVisitor(BaseVisitor):
 
     def visitDefaultValue(self, ctx: stOTTRParser.DefaultValueContext):
         log.debug(f"Visited default value: {ctx.getText()}")
-        return self.visitChildren(ctx)
+        print("DEFAULT VALUE")
+        result = self.visitChildren(ctx)
+        print(result)
+        return result
 
     def visitAnnotationList(self, ctx: stOTTRParser.AnnotationListContext):
         log.debug(f"Visited annotation list: {ctx.getText()}")
@@ -232,7 +236,7 @@ class stOTTRVisitor(BaseVisitor):
 
     def visitLiteral(self, ctx: stOTTRParser.LiteralContext):
         log.debug(f"Visited literal: {ctx.getText()}")
-        return Literal(ctx.getText())
+        return self.visitChildren(ctx)
 
     def visitNumericLiteral(self, ctx: stOTTRParser.NumericLiteralContext):
         log.debug(f"Visited numeric literal: {ctx.getText()}")
@@ -244,7 +248,7 @@ class stOTTRVisitor(BaseVisitor):
 
     def visitRdfLiteral(self, ctx: stOTTRParser.RdfLiteralContext):
         log.debug(f"Visited rdf literal: {ctx.getText()}")
-        return self.visitChildren(ctx)
+        return Literal(ctx.getText()[1:-1])
 
     def visitIri(self, ctx: stOTTRParser.IriContext):
         log.debug(f"Visited IRI: {ctx.getText()}")
@@ -256,7 +260,7 @@ class stOTTRVisitor(BaseVisitor):
 
     def visitBlankNode(self, ctx: stOTTRParser.BlankNodeContext):
         log.debug(f"Visited blank node: {ctx.getText()}")
-        return self.visitChildren(ctx)
+        return BlankNode()
 
     def visitAnon(self, ctx: stOTTRParser.AnonContext):
         log.debug(f"Visited anon: {ctx.getText()}")

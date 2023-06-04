@@ -30,6 +30,12 @@ def test_nonempty_parameter():
     assert str(sut) == "!?x"
 
 
+def test_parameter_with_default_literal_value():
+    sut = Parameter("?x")
+    sut.set_default_value(Literal("test"))
+    assert str(sut) == '?x = "test"'
+
+
 def test_optional_nonempty_parameter():
     sut = Parameter("?hello")
     sut.set_nonblank(True)

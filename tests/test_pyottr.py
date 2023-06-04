@@ -2,7 +2,7 @@ import logging as log
 
 import pytest
 
-from ottrlib.model import Basic, Top, TypedList
+from ottrlib.model import Basic, Literal, Top, TypedList
 from ottrlib.Ottr import Ottr
 
 TEMPLATES = """
@@ -153,7 +153,7 @@ TEMPLATES_WITH_PARAMETERS_TEST_DATA = [
                     "variable": "?b",
                     "type": Basic("xsd:int"),
                     "optional": True,
-                    "default_value": "5",
+                    "default_value": Literal(5),
                 },
             ],
         },

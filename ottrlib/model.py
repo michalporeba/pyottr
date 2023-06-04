@@ -69,13 +69,17 @@ class Parameter:
         self.type_ = Top()
 
     def set_default_value(self, default_value: str) -> None:
-        self.default_value = default_value
+        if isinstance(default_value, Term):
+            self.default_value = default_value
+        else:
+            self.default_value = Literal(default_value)
 
     def set_nonblank(self, nonblank: bool) -> None:
         self.nonblank = nonblank
 
     def set_optional(self, optional: bool) -> None:
         self.optional = optional
+        self.default_value = self.default_value if self.default_value else BlankNode()
 
     def __str__(self) -> str:
         repr = []
@@ -88,8 +92,8 @@ class Parameter:
                 repr += [" "]
             repr += [str(self.type_), " "]
         repr += [self.variable]
-        if self.default_value:
-            repr += [" = ", f'"{self.default_value}"']
+        if self.default_value and not isinstance(self.default_value, BlankNode):
+            repr += [" = ", f"{self.default_value}"]
         if len(repr) == 0:
             return ""
         return "".join(repr)
@@ -122,6 +126,11 @@ class Term:
     def __eq__(self, other) -> bool:
         if isinstance(other, type(self)):
             return self.value == other.value
+
+
+class BlankNode(Term):
+    def __init__(self):
+        super().__init__("")
 
 
 class Literal(Term):
@@ -185,8 +194,12 @@ class Template(Statement):
 
     def expand_with(self, get_template: Callable[[str], object], *arguments: tuple):
         variables = {}
-        for i in range(len(arguments)):
-            variables[self.parameters[i].variable] = arguments[i]
+        for i in range(len(self.parameters)):
+            argument = self.parameters[i].default_value
+            if i < len(arguments):
+                argument = arguments[i]
+
+            variables[self.parameters[i].variable] = argument
 
         for i in self.instances:
             yield from i.expand_with(get_template, variables)
@@ -214,7 +227,9 @@ class Template(Statement):
             else:
                 return f"{number} were provided."
 
-        if len(instance.arguments) < len(self.parameters):
+        if len(instance.arguments) < len(
+            [p for p in self.parameters if not p.optional]
+        ):
             yield instance.create_error(
                 f"Not enough parameters for an instance of {instance.name}! "
                 f"The template expects {parameters(len(self.parameters))} but "

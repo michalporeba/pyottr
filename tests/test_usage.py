@@ -182,3 +182,25 @@ def test_validation_for_incorrect_number_of_parameters():
     ]
 
     assert [str(e) for e in errors] == expected
+
+
+def test_optional_parameters():
+    sut = Ottr()
+    sut.parse('ex:T[??a, ??b = "test"] :: { ottr:Triple(?a, rdfs:label, ?b) } .')
+    instances = """
+    ex:T(p:Pizza) .
+    ex:T(p:Pizza, "Margherita") .
+    """
+    errors = list(sut.validate(instances))
+    expected_errors = []
+
+    assert [str(e) for e in errors] == expected_errors
+
+    triples = list(sut.expand(instances))
+    expected_triples = [
+        'p:Pizza rdfs:label "test"',
+        "",
+        'p:Pizza rdfs:label "Margherita"',
+    ]
+
+    assert triples == expected_triples

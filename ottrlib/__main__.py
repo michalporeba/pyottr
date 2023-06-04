@@ -6,6 +6,8 @@ from ottrlib.Ottr import Ottr
 def main():
     logging.basicConfig(level=logging.DEBUG)
     sut = Ottr()
+    sut.parse('ex:T[??a, ??b = "test"] :: { ottr:Triple(?a, rdfs:label, ?b) } .')
+    return
     sut.parse("ex:T[?a, ?b] :: { ottr:Triple(?a, rdfs:label, ?b) } .")
     errors = sut.validate(
         """
