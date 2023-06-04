@@ -2,6 +2,8 @@ from typing import Callable, Iterator, List, Union
 
 from diogi.functions import always_a_list
 
+from ottrlib.validators import TemplateValidator
+
 
 class Directive:
     pass
@@ -178,6 +180,7 @@ class Template(Statement):
                 f"Templates name has to be a str or an Iri! It was {type(name)}"
             )
 
+        self.validator = TemplateValidator(self)
         self.parameters = []
         self.instances = []
 
@@ -205,43 +208,7 @@ class Template(Statement):
             yield from i.expand_with(get_template, variables)
 
     def validate(self, instance: Instance) -> Iterator[Error]:
-        def parameters(number: int) -> str:
-            if number == 1:
-                return "1 parameter"
-            else:
-                return f"{number} parameters"
-
-        def fewer_parameters(number: int) -> str:
-            if number == 0:
-                return "none were provided."
-            elif number == 1:
-                return "only 1 was provided."
-            else:
-                return f"only {number} were provided."
-
-        def more_parameters(number: int) -> str:
-            if number == 0:
-                return "none were provided."
-            elif number == 1:
-                return "1 was provided."
-            else:
-                return f"{number} were provided."
-
-        if len(instance.arguments) < len(
-            [p for p in self.parameters if not p.optional]
-        ):
-            yield instance.create_error(
-                f"Not enough parameters for an instance of {instance.name}! "
-                f"The template expects {parameters(len(self.parameters))} but "
-                + fewer_parameters(len(instance.arguments))
-            )
-
-        if len(instance.arguments) > len(self.parameters):
-            yield instance.create_error(
-                f"Too many parameters for an instance of {instance.name}! "
-                f"The template expects {parameters(len(self.parameters))} but "
-                + more_parameters(len(instance.arguments))
-            )
+        yield from self.validator.validate(instance)
 
     def __str__(self) -> str:
         repr = [str(self.name), " ["]
