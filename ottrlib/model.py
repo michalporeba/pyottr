@@ -117,6 +117,10 @@ class Prefix(Directive):
     def __repr__(self) -> str:
         return self.__str__()
 
+    def __eq__(self, other):
+        if isinstance(other, Prefix):
+            return self.label == other.label and self.iri == other.iri
+
 
 class Term:
     def __init__(self, value) -> None:

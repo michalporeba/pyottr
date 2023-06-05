@@ -2,7 +2,7 @@ import logging as log
 
 import pytest
 
-from ottrlib.model import Basic, Literal, Top, TypedList
+from ottrlib.model import Basic, Literal, Prefix, Top, TypedList
 from ottrlib.Ottr import Ottr
 
 TEMPLATES = """
@@ -22,7 +22,7 @@ ex:Template [ ?a, ?b ]
   { ex:Template3 ( true, ex:A ) } .
 """
 
-NAMED_PIZZA = """x
+NAMED_PIZZA = """
 ex:NamedPizza [
   ! owl:Class ?pizza = p:Grandiosa , ?! LUB<owl:NamedIndividual> ?country  , List<owl:Class> ?toppings
   ]
@@ -259,3 +259,25 @@ def test_templates_with_patterns(signature, description):
     assert template is not None
     assert len(template.instances) == len(description["patterns"])
     assert [str(t) for t in template.instances] == description["patterns"]
+
+
+DEFAULT_PREFIX_DATA = [
+    ("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#"),
+    ("rdfs", "http://www.w3.org/2000/01/rdf-schema#"),
+    ("owl", "http://www.w3.org/2002/07/owl#"),
+    ("xsd", "http://www.w3.org/2001/XMLSchema#"),
+    ("ottr", "http://ns.ottr.xyz/0.4/"),
+    ("ax", "http://tpl.ottr.xyz/owl/axiom/0.1/"),
+    ("rstr", "http://tpl.ottr.xyz/owl/restriction/0.1/"),
+    ("ex", "http://example.com/ns#"),
+]
+
+
+@pytest.mark.parametrize("label,iri", DEFAULT_PREFIX_DATA)
+def test_default_prefixes(caplog, label, iri):
+    caplog.set_level(log.WARNING)
+    sut = Ottr()
+    prefix = sut.get_prefix(label)
+    print(caplog.records)
+    assert any([r for r in caplog.records if r.levelno == log.WARNING])
+    assert prefix == Prefix(label, iri)

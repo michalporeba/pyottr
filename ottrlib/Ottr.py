@@ -2,7 +2,7 @@ import logging as log
 from collections.abc import Iterable
 from typing import Callable, Iterator, Union
 
-from .model import Error, Instance, Iri, Template, Triple
+from .model import Error, Instance, Iri, Prefix, Template, Triple
 from .stOTTRVisitor import stOTTRVisitor
 
 
@@ -38,9 +38,33 @@ class _Applicator:
 
 class Ottr:
     TRIPLE_TEMPLATE = Triple()
+    DEFAULT_PREFIXES = {
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "owl": "http://www.w3.org/2002/07/owl#",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "ottr": "http://ns.ottr.xyz/0.4/",
+        "ax": "http://tpl.ottr.xyz/owl/axiom/0.1/",
+        "rstr": "http://tpl.ottr.xyz/owl/restriction/0.1/",
+        "ex": "http://example.com/ns#",
+    }
 
     def __init__(self):
         self.templates = []
+        self.prefixes = {}
+
+    def get_prefix(self, prefix: str) -> Union[Prefix, None]:
+        result = self.prefixes.get(prefix)
+        if result:
+            return result
+
+        result = Ottr.DEFAULT_PREFIXES.get(prefix)
+        if result:
+            log.warning(f"Using default value of prefix {prefix}")
+            self.prefixes[prefix] = Prefix(prefix, result)
+            return self.prefixes[prefix]
+
+        return None
 
     def get_template(self, name: Union[str, Iri]) -> Union[Template, None]:
         if name == "ottr:Triple":
