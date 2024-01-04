@@ -275,9 +275,19 @@ DEFAULT_PREFIX_DATA = [
 
 @pytest.mark.parametrize("label,iri", DEFAULT_PREFIX_DATA)
 def test_default_prefixes(caplog, label, iri):
-    caplog.set_level(log.WARNING)
+    caplog.set_level(log.INFO)
     sut = Ottr()
+
+    # getting not explicitly defined prefix should be recorded in logs
     prefix = sut.get_prefix(label)
-    print(caplog.records)
-    assert any([r for r in caplog.records if r.levelno == log.WARNING])
+    for r in caplog.records:
+        print(r)
+        print(r.message)
+    assert any([r for r in caplog.records if r.levelno == log.INFO and f"Using default value of prefix {label}" in r.message])
+    assert prefix == Prefix(label, iri)
+
+    # getting the same prefix again should not result in a log entry
+    caplog.records.clear()
+    prefix = sut.get_prefix(label)
+    assert len(caplog.records) == 0
     assert prefix == Prefix(label, iri)
