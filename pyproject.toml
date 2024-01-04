@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ottrlib"
-version = "0.1.0"
+version = "0.1.1"
 description = "An implementation of Resonable Ontology Template (OTTR) for Python."
 authors = ["Michał Poręba <michalporeba@gmail.com>"]
 license = "MIT"

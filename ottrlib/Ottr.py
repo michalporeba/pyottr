@@ -60,7 +60,7 @@ class Ottr:
 
         result = Ottr.DEFAULT_PREFIXES.get(prefix)
         if result:
-            log.warning(f"Using default value of prefix {prefix}")
+            log.info(f"Using default value of prefix {prefix}.")
             self.prefixes[prefix] = Prefix(prefix, result)
             return self.prefixes[prefix]
 
